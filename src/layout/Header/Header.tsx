@@ -115,7 +115,40 @@ const Header = ({
 
   return (
     <>
-      <TopHead
+      <div className='myHeaderContainer'>
+        <div className='myHeaderContainer__logoBox'>
+          <Logo cache={cache} addItemToCache={addItemToCache} />
+        </div>
+        <div className='myHeaderContainer__menuButtonBox'>
+          <Menu history={history} category={category} />
+        </div>
+        <div className='myHeaderContainer__searchBox'>
+          <span className='myHeaderContainer__searchBox-icon'>
+            <i className='fa fa-search'></i>
+          </span>
+          <input
+            type='search'
+            className='myHeaderContainer__searchBox-input'
+            placeholder='Search your products from here'
+            value=''
+          // onChange={onChange}
+          />
+        </div>
+        <div className='myHeaderContainer__links'>
+          <span className='myHeaderContainer__link-item'>
+            Support
+          </span>
+          <span className='myHeaderContainer__link-item'>
+            Grocery
+          </span>
+        </div>
+        <div className='myHeaderContainer__joinButtonBox'>
+          <span className='myHeaderContainer__joinButtonBox-button'>
+            Join
+          </span>
+        </div>
+      </div>
+      {/* <TopHead
         history={history}
         isAuthenticated={session['isAuthenticated']}
         logout={logout}
@@ -179,15 +212,6 @@ const Header = ({
         </div>
       ) : ''}
 
-      <CartBar
-        // @ts-ignore
-        handleToggleCartBar={handleToggleCartBar}
-        isShowCartBar={isShowCartBar}
-        history={history}
-        handleModalShow={handleModalShow}
-        isAuthenticated={session['isAuthenticated']}
-      />
-
 
       {windowWidth && windowWidth < 600 ? (
         <MenuBar
@@ -200,12 +224,25 @@ const Header = ({
         />
       ) : ""}
 
+ */}
+
+
 
       <AuthenticationModal
         isModalShown={isModalShown}
         handleModalClose={handleModalClose}
         handleGoToLogin={handleGoToLogin}
       />
+
+      <CartBar
+        // @ts-ignore
+        handleToggleCartBar={handleToggleCartBar}
+        isShowCartBar={isShowCartBar}
+        history={history}
+        handleModalShow={handleModalShow}
+        isAuthenticated={session['isAuthenticated']}
+      />
+
 
       <FloatingCartIcon
         isCartIconVisiable={isCartIconVisiable}

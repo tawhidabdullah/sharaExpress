@@ -375,9 +375,10 @@ navbar-center-navItems a:hover {
 
 .navbar-center-logoBox {
   cursor: pointer;
-  width: 250px;
-  height: 100px;
-  padding: 10px;
+  width: 170px;
+  height: 55px;
+  // padding: 10px;
+  padding: 5px;
 }
 
 .navbar-center-logoBox img {
@@ -405,22 +406,20 @@ navbar-center-navItems a:hover {
   cursor: pointer;
   display: block;
   font-size: 18px;
-  padding: 10px 25px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  padding: 5px 25px 10px 25px;
+  border-radius: 3px;
   background: #fafafa;
 }
 
 .nav-menu-title {
-  margin-left: 8px;
-  font-size: 15px;
-  text-transform: uppercase;
-  color: $color-dark-1;
-  font-weight: 500;
+  font-size: 14px;
+  color: $color-primary-1;
+  font-weight: 700;
 }
 
-.nav-menu .fa-bars {
-  font-size: 15px;
+.nav-menu .fa-sort-down {
+  margin-left: 15px;
+  font-size: 20px;
   color: $color-primary-1;
 }
 
@@ -430,13 +429,14 @@ navbar-center-navItems a:hover {
   width: 100%;
   font-size: 14px;
   float: left;
-  z-index: 2;
+  z-index: 10;
   background-color: #fff;
   display: none;
+
 }
 
 .all-department-sideMenu ul {
-  border: 1px solid $color-light-2;
+  border: 1px solid #EFF5F5;
   width: 100%;
   background-color: #fff;
   position: relative;
@@ -449,7 +449,8 @@ navbar-center-navItems a:hover {
   font-weight: bold;
   cursor: pointer;
   padding: 13px 12px;
-  color: $color-primary-1;
+  color: $color-dark-1; 
+  font-weight: 700;
   text-transform: capitalize;
 }
 
@@ -476,6 +477,7 @@ navbar-center-navItems a:hover {
   border-left: 1px solid #eee;
   position: absolute;
   top: 0;
+  z-index: 10;
 }
 
 .fa.fa-angle-right {
@@ -862,3 +864,97 @@ navbar-center-navItems a:hover {
   margin-right: 5px;
   color: $color-primary-1;
 }
+
+
+
+/*
+SheraTong New Design
+*/
+
+.myHeaderContainer {
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+
+}
+
+.myHeaderContainer__menuButtonBox {
+  margin: 0 20px;
+}
+
+.myHeaderContainer__searchBox {
+  margin: 0 20px;
+  flex: 1;
+  position: relative;
+}
+
+
+.myHeaderContainer__searchBox-icon {
+  position: absolute;
+  color: #777;
+  top: 30%;
+  left: 17px;
+  font-size: 14px;
+}
+.myHeaderContainer__searchBox-input {
+  border: 0;
+  outline: 0;
+  padding: 12px 20px 12px 46px;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  resize: none;
+  font-size: 14px;
+  color: $color-dark-1 ;
+  background-color: #fafafa;
+  width: 100%;
+
+}
+
+
+.myHeaderContainer__links {
+  display: flex;
+}
+
+.myHeaderContainer__link-item {
+  margin: 0 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #444;
+}
+
+.myHeaderContainer__joinButtonBox-button {
+  background-color: $color-primary-1; 
+  display: inline-block;
+  border-radius: 3px;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .5s;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+
+.myHeaderContainer__joinButtonBox-button:hover {
+  background-color: $color-primary-2; 
+
+}
+
+// .myHeaderContainer__searchBox-input::-moz-placeholder {
+//   color: #444 ;
+//   font-weight: 700;
+// }
+
+// .myHeaderContainer__searchBox-input::placeholder {
+//   color: #444 ;
+//   font-weight: 700;
+
+// }
+
+// .myHeaderContainer__searchBox-input::-webkit-input-placeholder {
+//   color: #444 ;
+//   font-weight: 700;
+
+// }

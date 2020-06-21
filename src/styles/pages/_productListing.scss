@@ -25,6 +25,7 @@
   display: block;
   padding-bottom: 10px;
   font-size: 18px;
+  font-weight: 700;
 }
 
 .category-header-all {
@@ -328,19 +329,19 @@
   list-style: none;
   text-decoration: none;
   font-weight: 700;
-  color: $color-dark-1;
+  color: $color-primary-1;
   cursor: pointer;
 }
 
 .documentation__sidenav ul,
 .documentation__sidenav li,
 .documentation__sidenav-label {
-  line-height: 30px;
+  line-height: 40px;
   margin: 0;
   list-style: none;
   text-decoration: none;
-  font-weight: 500;
-  color: #666;
+  font-weight: 700;
+  color: $color-dark-1;
   cursor: pointer;
 }
 
@@ -415,18 +416,20 @@
   li {
     cursor: pointer;
     .subCatLink {
-      color: #666;
+      color: $color-dark-1;
+      font-weight: 700;
       text-decoration: none;
-      line-height: 28px;
+      line-height: 38px;
     }
 
     .subCatLink:hover {
-      color: #333;
+      color: $color-primary-1;
+      font-weight: 700;
     }
 
     .subCatLink.active {
-      color: $color-dark-1;
-      font-weight: 600;
+      color: $color-primary-1;
+      font-weight: 700;
     }
   }
 }
