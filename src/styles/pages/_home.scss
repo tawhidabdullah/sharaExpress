@@ -1,0 +1,201 @@
+
+// Image slider section start //////////////////////////////////-------------/////////////
+
+@media screen and (max-width: 765px) {
+  .image-slider-section-carousel {
+    margin-bottom: 20px;
+  }
+}
+
+.product-slider-section {
+  margin: 15px 25px !important;
+  background-color: $color-light-back-1;
+
+}
+
+.product-slider-section-heading {
+  background-color: #fff !important;
+  margin: 0 2px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+
+@media screen and (max-width: 452px) {
+  .product-slider-section {
+    margin: 5px 5px !important;
+  }
+}
+
+
+
+
+// Image slider section end //////////////////////////////////-------------/////////////
+
+
+/* primary button  start*/
+
+.primary-btn {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background: $color-dark-1;
+  color: #eee;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: 450ms;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: $color-primary-1;
+  outline: none;
+}
+
+
+/* primary button  end*/
+
+
+
+/* quantity counter */
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  background: #eeeeee;
+}
+
+.quantity-counter p {
+  font-size: 12px;
+  font-weight: bold;
+  color: #555;
+  margin-right: 8px;
+}
+
+.quantity-counter input {
+  border-radius: 2px;
+  border: none;
+}
+
+// add to cart button //////////////////
+
+.addTocartbtn {
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  background: #ff5c00;
+  color: #eee;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: 450ms;
+  font-weight: bold;
+}
+
+// add to cart button //////////////////
+
+
+.marginTop25 {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 770px) {
+  .marginTop25 {
+    margin-top: 25px;
+  }
+}
+
+
+.products-section-title {
+  font-size: 21px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+}
+
+// category container start //////////////////////////
+
+.categoryContainer {
+  padding: 20px 35px 20px 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: $color-light-back-1;
+}
+
+@media screen and (max-width: 640px) {
+  .categoryContainer {
+    padding: 15px 15px 15px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+@media screen and (max-width: 482px) {
+  .categoryContainer {
+    margin: 20px 5px 0 5px;
+  }
+}
+
+@media screen and (max-width: 482px) {
+  .categoryContainer {
+    margin: 20px 5px 0 5px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .categoryContainer {
+    padding: 15px 5px 15px 5px;
+  }
+}
+
+// category container end //////////////////////////
+
+
+// slider left start =///////////////////////==============
+
+.sliderLeft {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.sliderLeft li:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+.sliderLeft li {
+  line-height: 45px;
+  list-style: none;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin: 2px 2px;
+}
+
+.sliderLeft li a {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: $color-dark-1;
+  font-weight: 500;
+  font-size: 15px;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 762px) {
+  .sliderLeft {
+    display: none;
+  }
+}
+
+
+// slider left end =///////////////////////==============
+
+
+
+
+

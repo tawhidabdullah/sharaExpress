@@ -1,0 +1,36 @@
+.carousleImage {
+  height: 70vh;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.image-slider-section {
+  padding: 0 37px;
+  padding-top: 15px;
+  background-color: $color-light-back-1;
+  
+}
+
+.image-slider-section-carousel {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+@media screen and (max-width: 600px) {
+  .carousleImage {
+    height: 30vh;
+    object-fit: cover;
+  }
+  .image-slider-section-carousel {
+    margin: 0 !important;
+    padding: 0 10px 0 10px !important;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  .image-slider-section {
+    margin: 0 !important;
+    padding: 5px 10px 0 10px !important;
+    border-radius: 5px;
+  }
+}
