@@ -143,6 +143,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 13px;
+    cursor: pointer;
   }
 
   .product-bottom-attributes {
@@ -201,16 +202,6 @@
 
   
   .product-bottom-price {
-    font-weight: bold;
-    color: $color-primary-1;
-    font-size: 14px;
-
-    @media screen and (max-width: 280px) {
-      margin-bottom: 0;
-    }
-  }
-
-  .product-bottom-offerPrice {
     text-decoration: line-through;
     color: orange; 
     font-size: 12px;
@@ -228,6 +219,18 @@
       position: absolute;
       margin-bottom: 0;
 
+    }
+
+  }
+
+  .product-bottom-offerPrice {
+
+    font-weight: bold;
+    color: $color-primary-1;
+    font-size: 14px;
+
+    @media screen and (max-width: 280px) {
+      margin-bottom: 0;
     }
   }
 

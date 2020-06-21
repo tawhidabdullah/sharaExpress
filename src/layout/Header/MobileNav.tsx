@@ -51,7 +51,7 @@ const MobileNav = ({
             onChange={handleSearchBar}
             onKeyPress={handleKeyPress}
             type='text'
-            placeholder='Enter keywords to search...'
+            placeholder='Search your products from here'
             className='input-searchbox'
           />
           <span className='searchIcon' onClick={handleSearch}>

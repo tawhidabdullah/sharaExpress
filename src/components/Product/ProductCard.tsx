@@ -145,7 +145,9 @@ const ProductCard = ({
 
   return (
     <div className='product-card'>
-      <div className='product-top'>
+      <div className='product-top'
+
+      >
         <img src={cover} alt='product img' />
 
 
@@ -238,7 +240,11 @@ const ProductCard = ({
           ৳{numberWithCommas(offerPrice ? offerPrice : regularPrice)}
         </h5> */}
 
-        <h2 className='product-bottom-title'>
+        <h2 className='product-bottom-title'
+          // onClick={() => {
+          //   history.push(url);
+          // }}
+        >
           {name}
         </h2>
         <div className='product-bottom-attributes'>
@@ -252,21 +258,51 @@ const ProductCard = ({
 
         <div className='product-bottom-price-and-cartActions'>
 
-          <h2 className='product-bottom-offerPrice'>
-            ৳4.5
-          </h2>
-
-          <h2 className='product-bottom-price'>
-            ৳4.5
-          </h2>
-
-          {/* <span className='product-bottom-price-and-cartActions-cart-btn'>
-            <i className='fa fa-shopping-cart'></i>
-              Cart
-          </span> */}
 
 
-          <div className='product-bottom-quantityCounter'>
+          {parseInt(offerPrice) ? <>
+            <h2 className='product-bottom-price'>
+
+              ৳{regularPrice}
+            </h2>
+            <h2 className='product-bottom-offerPrice'>
+              ৳{offerPrice}
+            </h2>
+          </> : <h2 className='product-bottom-offerPrice'>
+
+              ৳{regularPrice}
+            </h2>}
+
+
+
+
+
+          <span
+            className='product-bottom-price-and-cartActions-cart-btn'
+            onClick={handleOnClickAddToCart}
+          >
+            {!addToCartState.isLoading && !removeFromCartState.isLoading && (
+              <>
+                {(checkIfItemExistsInCartItemById(cartItems, id) && (
+                  <> <i className='fa fa-shopping-cart'></i> Added</>
+                )) || (
+                    <>
+                      <i className='fa fa-shopping-cart'></i>
+                        Cart
+                   </>
+                  )}
+              </>
+            )}
+
+            {addToCartState.isLoading && '🐎 Adding...'}
+            {removeFromCartState.isLoading && '🐎 Removing...'}
+
+
+
+          </span>
+
+
+          {/* <div className='product-bottom-quantityCounter'>
             <span>
               <i className='fa fa-plus'></i>
             </span>
@@ -281,7 +317,7 @@ const ProductCard = ({
             <span>
               <i className='fa fa-minus'></i>
             </span>
-          </div>
+          </div> */}
 
         </div>
       </div>

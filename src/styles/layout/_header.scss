@@ -768,7 +768,7 @@ navbar-center-navItems a:hover {
 }
 
 .header-menu-search-carticon-container {
-  background-color: $color-primary-1;
+  background-color: #fff;
   display: flex;
   padding: 5px 3px;
   align-items: center;
@@ -786,6 +786,7 @@ navbar-center-navItems a:hover {
   width: 100%;
   display: flex;
   position: relative;
+  
 }
 
 .input-select select {
@@ -810,10 +811,10 @@ navbar-center-navItems a:hover {
   border: none;
   padding: 0 40px 0 15px;
   -webkit-border-radius: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   height: 40px;
   line-height: 1.66;
-  background-color: #fff;
+  background-color: #fafafa;
   width: 100%;
   box-sizing: border-box;
   font-size: 14px;
@@ -831,11 +832,11 @@ navbar-center-navItems a:hover {
 
 .headermenu-btn {
   font-size: 23px;
-  color: #fff;
+  color: $color-dark-1
 }
 
 .header-search-carticon .nav-icon {
-  color: #fff;
+  color: $color-dark-1;
 }
 
 .header-menu-search-carticon-container .header-search-carticon {
