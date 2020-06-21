@@ -68,9 +68,22 @@ const CartBar = ({
         className={isShowCartBar ? 'cart-overlay ' : ''}
       ></div>
       <div className={isShowCartBar ? 'cart showCart' : 'cart'}>
-        <span className='close-cart' onClick={handleToggleCartBar}>
-          <i className='fa fa-window-close'></i>
-        </span>
+        <div className='cartOverlayHeader'>
+          <div
+            className='cartOverlayHeader-left'
+          >
+            <span>
+              <i className='fa fa-shopping-bag'></i>
+            </span>
+            <span >
+              {cartItems && cartItems['length'] ? ` ${cartItems && cartItems['length']}` : 0} Items
+            </span>
+          </div>
+          <span className='close-cart' onClick={handleToggleCartBar}>
+            <i className='fa fa-times'></i>
+          </span>
+        </div>
+
 
         <div className='cart-content'>
           {cartItems &&
@@ -125,9 +138,24 @@ const CartBar = ({
         )}
         {cartItems && cartItems.length > 0 && (
           <div className='cart-footer'>
-            <div className='cart-total'>
-              <h3>Your total :</h3>
-              <span>৳{numberWithCommas(totalPrice)}</span>
+            <div className='cart-footer-checkoutButton'
+              onClick={(e) => {
+                e.preventDefault();
+
+                handleToggleCartBar();
+                history.push('/checkout');
+              }}
+            >
+              <span className='cart-footer-checkoutButton-text'>
+                Checkout
+              </span>
+              <span className='cart-footer-checkoutButton-total'>
+                ৳{numberWithCommas(totalPrice)}
+              </span>
+            </div>
+            {/* <div className='cart-total'>
+              <h3>Total : {" "}</h3>
+              <span> ৳{numberWithCommas(totalPrice)}</span>
             </div>
             <button
               className='clear-cart banner-btn'
@@ -138,6 +166,7 @@ const CartBar = ({
             >
               View Cart
             </button>
+
             <button
               className='clear-cart banner-btn'
               onClick={(e) => {
@@ -148,7 +177,7 @@ const CartBar = ({
               }}
             >
               Checkout
-            </button>
+            </button> */}
           </div>
         )}
       </div>

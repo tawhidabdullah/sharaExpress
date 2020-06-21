@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { sessionOperations } from '../../state/ducks/session';
 import { categoryOperations } from '../../state/ducks/category';
 import { cacheOperations } from '../../state/ducks/cache';
-import { cartOperations } from '../../state/ducks/cart';
+import { cartOperations, cartSelectors } from '../../state/ducks/cart';
 import { wishListOperations } from '../../state/ducks/wishList';
 
 // import header components
@@ -33,6 +33,7 @@ interface Props {
   cache: any;
   clearCart: () => void;
   clearWishList: () => void;
+  totalCartPrice: number;
 }
 
 const Header = ({
@@ -47,6 +48,7 @@ const Header = ({
   cache,
   clearCart,
   clearWishList,
+  totalCartPrice
 }: Props) => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [isShowCartBar, setIsShowCartBar] = useState(false);
@@ -250,6 +252,7 @@ const Header = ({
         cartLength={cartItems.length}
         windowWidth={windowWidth}
         handleToggleCartBar={handleToggleCartBar}
+        totalCartPrice={totalCartPrice}
       />
     </>
   );
@@ -266,6 +269,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   cartItems: state.cart,
+  totalCartPrice: cartSelectors.getTotalPriceOfCartItems(state.cart),
   session: state.session,
   category: state.category,
   cache: state.cache,

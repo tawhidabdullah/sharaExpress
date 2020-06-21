@@ -157,11 +157,11 @@ const ProductCard = ({
         </div>}
 
 
-        <div className='product-top-overlay' onClick={handleOnClickAddToCart}>
+        {/* <div className='product-top-overlay' onClick={handleOnClickAddToCart}>
 
-        </div>
+        </div> */}
 
-        <div className='overlay-right'>
+        {/* <div className='overlay-right'>
           <button
             onClick={() => {
               history.push(url);
@@ -208,11 +208,11 @@ const ProductCard = ({
               ></i>
             )}
           </button>
-        </div>
+        </div> */}
       </div>
 
-      <div className='product-bottom text-center'>
-        <div className='cart-btn' onClick={handleOnClickAddToCart}>
+      <div className='product-bottom'>
+        {/* <div className='cart-btn' onClick={handleOnClickAddToCart}>
           <button className='primary-btn'>
             {!addToCartState.isLoading && !removeFromCartState.isLoading && (
               <>
@@ -229,14 +229,61 @@ const ProductCard = ({
             {addToCartState.isLoading && '🐎 Adding...'}
             {removeFromCartState.isLoading && '🐎 Removing...'}
           </button>
-        </div>
+        </div> */}
 
-        <div className='ratingsandtitle'>
+        {/* <div className='ratingsandtitle'>
           <h3 className='product-bottom-title'>{name}</h3>
         </div>
         <h5 className='product-bottom-price'>
           ৳{numberWithCommas(offerPrice ? offerPrice : regularPrice)}
-        </h5>
+        </h5> */}
+
+        <h2 className='product-bottom-title'>
+          {name}
+        </h2>
+        <div className='product-bottom-attributes'>
+          <span>
+            1KG
+          </span>
+          <span>
+            500G
+          </span>
+        </div>
+
+        <div className='product-bottom-price-and-cartActions'>
+
+          <h2 className='product-bottom-offerPrice'>
+            ৳4.5
+          </h2>
+
+          <h2 className='product-bottom-price'>
+            ৳4.5
+          </h2>
+
+          {/* <span className='product-bottom-price-and-cartActions-cart-btn'>
+            <i className='fa fa-shopping-cart'></i>
+              Cart
+          </span> */}
+
+
+          <div className='product-bottom-quantityCounter'>
+            <span>
+              <i className='fa fa-plus'></i>
+            </span>
+            <input
+              // onChange={(e) => setQuantityValue(e.target.value)}
+              type='text'
+              value={3}
+              title='Quantity'
+              className='product-bottom-quantityCounter-input'
+              size={3}
+            />
+            <span>
+              <i className='fa fa-minus'></i>
+            </span>
+          </div>
+
+        </div>
       </div>
     </div>
   );

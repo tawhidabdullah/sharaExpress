@@ -6,6 +6,7 @@ interface Props {
   handleToggleCartBar: () => void;
   cartLength: number;
   windowWidth: number;
+  totalCartPrice: number;
 }
 
 const FloatingCartIcon = ({
@@ -14,26 +15,32 @@ const FloatingCartIcon = ({
   handleToggleCartBar,
   cartLength,
   windowWidth,
+  totalCartPrice
 }: Props) => {
   return (
     <>
-      {windowWidth > 600 && !isShowCartBar && isCartIconVisiable ? (
+      {windowWidth > 600 && !isShowCartBar ? (
         <div className='floatingCartIconContainer'>
           <div
             onClick={handleToggleCartBar}
             className='floatingCartIconContainerInside'
           >
-            <span className='floatingCartIconBatch'>
-              {cartLength ? ` ${cartLength}` : 0}
-            </span>
             <span className='floatingCartIcon'>
-              <i className='fa fa-shopping-cart'></i>
+              <i className='fa fa-shopping-bag'></i>
             </span>
+            <span className='floatingCartText'>
+              {cartLength ? ` ${cartLength}` : 0} Items
+            </span>
+          </div>
+          <div className='floatingCartIconContainer-priceContainer'>
+            <h4 className='floatingCartIconContainer-price'>
+              ৳{totalCartPrice}
+            </h4>
           </div>
         </div>
       ) : (
-        ''
-      )}
+          ''
+        )}
     </>
   );
 };

@@ -85,56 +85,7 @@ const CartOverLayCartItem = ({
 
   return (
     <div className='cart-item' key={id}>
-      <img
-        onClick={() => {
-          handleToggleCartBar();
-          history.push(url);
-        }}
-        src={cover}
-        alt='productImg'
-        style={{
-          cursor: 'pointer',
-        }}
-      />
-      <div>
-        <h4
-          style={{
-            lineHeight: 1.5,
-            fontWeight: 700,
-            letterSpacing: '0px',
-            fontSize: '16px',
-          }}
-          onClick={() => {
-            handleToggleCartBar();
-            history.push(url);
-          }}
-        >
-          {name}
-        </h4>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center'
-
-        }}>
-          <h5>৳{numberWithCommas(price)}</h5>
-          {/* <span
-            style={{
-              display: 'inline-block',
-              background: '#eee',
-              padding: '3px 3px',
-              borderRadius: 1,
-              fontSize: '13px',
-              marginLeft: '5px'
-            }}
-          >
-            15 kg
-          </span> */}
-        </div>
-        <span className='remove-item' onClick={handleRemoveFromCart}>
-          <i className='fa fa-trash'></i>
-        </span>
-      </div>
-      <div>
+      <div className='cart-item-quantityCounter'>
         <i
           className='fa fa-chevron-up'
           onClick={() => {
@@ -149,6 +100,53 @@ const CartOverLayCartItem = ({
           }}
         ></i>
       </div>
+
+
+      <img
+        onClick={() => {
+          handleToggleCartBar();
+          history.push(url);
+        }}
+        src={cover}
+        alt='productImg'
+        style={{
+          cursor: 'pointer',
+        }}
+      />
+      <div className='cart-item-info'>
+        <h4
+
+          onClick={() => {
+            handleToggleCartBar();
+            history.push(url);
+          }}
+        >
+          {name}
+        </h4>
+        <h5
+        >
+          ৳{numberWithCommas(price)}
+        </h5>
+        {/* <span
+          style={{
+            display: 'inline-block',
+            background: '#fafafa',
+            padding: '3px 3px',
+            borderRadius: 1,
+            fontSize: '12px',
+            marginRight: '5px',
+            color: '#777',
+            marginTop: '5px'
+          }}
+        >
+          15KG
+          </span> */}
+
+      </div>
+      <span className='remove-item' onClick={handleRemoveFromCart}>
+        <i className='fa fa-times'></i>
+      </span>
+
     </div>
   );
 };
