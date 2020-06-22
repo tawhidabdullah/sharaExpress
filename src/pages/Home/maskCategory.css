@@ -1,0 +1,44 @@
+.maskCategoryContainerTitle {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.5;
+    padding-left: 35px;
+    background-color: #fff;
+    padding-bottom: 10px;
+}
+
+.maskCategoryContainer {
+    padding: 35px 20px;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.maskCategoryContainer .maskCategoryContainer-item {
+    background-color: #eff5f5;
+    -webkit-mask-image: url('../../assets/maskImage.png');
+    mask-image: url('../../assets/maskImage.png');
+    height: 190px;
+    width: 200px;
+    -webkit-mask-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.maskCategoryContainer .maskCategoryContainer-item:hover {
+    background-color: #24bc94;
+    color: #fff;
+}
+
+.maskCategoryContainer .maskCategoryContainer-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-left: -25px;
+    width: 85%;
+    line-height: 1.5;
+}

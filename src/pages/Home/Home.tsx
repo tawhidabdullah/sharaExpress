@@ -9,6 +9,17 @@ import SliderRight from './SliderRight';
 import Categories from './Categories';
 import CategoryProducts from './CategoryProducts';
 import { tagOperations } from '../../state/ducks/tag';
+import Carousel from 'react-multi-carousel';
+import { carouselResponsive } from '../../constants';
+
+
+
+
+// import multi carousel
+import 'react-multi-carousel/lib/styles.css';
+import './maskCategory.css';
+
+
 
 interface Props {
   history: any;
@@ -57,13 +68,13 @@ const Home = ({
 
   return (
     <>
-      {windowWidth < 700 ? (
+      {/* {windowWidth < 700 ? (
         ''
       ) : (
           <TopTags history={history} addTag={addTag} tag={tag} />
-        )}
+        )} */}
 
-      <section className='image-slider-section'>
+      {/* <section className='image-slider-section'>
         <div className='row'>
           <SliderLeftMenu history={history} category={category} />
           <Slider addItemToCache={addItemToCache} cache={cache} />
@@ -71,10 +82,10 @@ const Home = ({
             windowWidth={windowWidth}
             addItemToCache={addItemToCache}
             cache={cache}
-          />
+          />`
         </div>
       </section>
-      <Categories category={category} />
+      <Categories category={category} /> */}
       {/* <CategoryProducts
         history={history}
         windowWidth={windowWidth}
@@ -82,6 +93,163 @@ const Home = ({
         cache={cache}
         addItemToCache={addItemToCache}
       /> */}
+      <section className='someClassContainer'>
+        <div className='someClassContainerLeftNavMenu'>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+            <span>
+              Menu Item
+            </span>
+
+        </div>
+       <div className='somerContainerRightContent'>
+       <div className='someClassContainerRightBannerContainer'>
+          <img 
+          src='https://shop.redq.now.sh/_next/static/images/grocery-f1565ac25de02b9295dccc2da13004ab.png'
+           alt='banner img'/>
+
+           <div className='bannerSearchBar'>
+             <span className='categoryBtn'>
+               Grocery
+             </span>
+             <input
+              type='search'
+              className='bannerSearchBar-input'
+              placeholder='Search your products from here'
+              value=''
+            // onChange={onChange}
+            />
+             <span className='searchBttn'>
+           <i className='fa fa-search'></i>
+               Search
+             </span>
+           </div>
+           
+          
+        </div>
+
+        <div className='bannerContainer'>
+        {/* <Carousel
+                    containerClass='bannerCardCarouselContainerClass'
+                    sliderClass='bannerCardCarouselSliderClass'
+                    itemClass='bannerCardCarouselItemClass'
+                    infinite={true}
+                    autoPlaySpeed={3000}
+                    autoPlay={true}
+                    responsive={carouselResponsive}>
+
+                  
+                </Carousel> */}
+                <div className='bannerCard'>
+                  <img 
+          src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
+           alt='banner img'/>
+                  </div>
+                  <div className='bannerCard'>
+                  <img 
+          src='https://shop.redq.now.sh/_next/static/images/offer-2-90d3534e1ad62a8b8a977f1290e61e9f.png'
+           alt='banner img'/>
+                  </div>
+                  <div className='bannerCard'>
+                  <img 
+          src='https://shop.redq.now.sh/_next/static/images/offer-3-2f8285b13bef950f843cb4147666af6e.png'
+           alt='banner img'/>
+                  </div>
+
+        </div>
+
+                <h3 className='maskCategoryContainerTitle'>  
+                Our Categories
+                </h3>
+        <div className='maskCategoryContainer'>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+                <div className='maskCategoryContainer-item'>
+                  <h3>
+                    Clothing Ferniture Ferniture
+                  </h3>
+                </div>
+
+        </div>
+
+       </div>
+      </section>
     </>
   );
 };
