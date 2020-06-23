@@ -318,6 +318,66 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
   };
 
 
+  const dot = (color = '#111b3d') => ({
+    alignItems: 'center',
+    display: 'flex',
+
+    ':before': {
+        backgroundColor: color,
+        borderRadius: 6,
+        content: '" "',
+        display: 'block',
+        marginRight: 8,
+        // height: 10,
+        // width: 10,
+    },
+});
+
+
+
+
+const colourStyles = {
+    control: styles => ({
+        ...styles,
+        backgroundColor: 'rgb(247, 247, 247)',
+        border: '1px solid rgb(241, 241, 241)',
+        height: '50px',
+        minHeight: '50px',
+        borderRadius: '6px'
+    }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        const color = '#009e7f';
+        return {
+            ...styles,
+            backgroundColor: isDisabled
+                ? null
+                : isSelected
+                    ? color
+                    : isFocused
+                        ? color
+                        : 'rgb(247, 247, 247)',
+            color: isDisabled
+                ? '#333'
+                : isSelected
+                    ? color
+                    : isFocused
+                        ? 'rgb(247, 247, 247)'
+                        : '#303a3f',
+            cursor: isDisabled ? 'not-allowed' : 'default',
+
+            ':active': {
+                ...styles[':active'],
+                backgroundColor: !isDisabled && (isSelected ? color : '#303a3f'),
+            },
+        };
+    },
+    input: styles => ({ ...styles, color: '#303a3f', ...dot() }),
+    placeholder: styles => ({ ...styles, color: '#303a3f', ...dot() }),
+    singleValue: (styles, { data }) => ({ ...styles, marginTop: '-2px', marginLeft: '-2px', color: '#303a3f', ...dot(data.color) }),
+};
+
+
+
 
   return (
     <div className='myAccount'>
@@ -362,7 +422,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
                   <div className='formContainerOfTwo'>
                     <div className='formContainerOfTwoItem'>
                       <TextFeildGroup
-                        label='FirstName'
+                        label='First name'
                         name='firstName'
                         placeholder='FirstName'
                         type='text'
@@ -380,7 +440,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
                     </div>
                     <div className='formContainerOfTwoItem'>
                       <TextFeildGroup
-                        label='Lastname'
+                        label='Last name'
                         name='lastName'
                         placeholder='Lastname'
                         type='text'
@@ -404,7 +464,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
                         <div>
                           <label className='formLabel'>Country</label>
                           <Select
-
+                           styles={colourStyles}
                             value={selectedCountryValue}
                             defaultValue={customerData['country'] || ''}
 
@@ -430,8 +490,8 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
                         <div>
                           <label className='formLabel'>City</label>
                           <Select
+                           styles={colourStyles}
                             value={selectedCityValue}
-
                             onChange={(value) => handleSelectCityChange(value)}
                             options={cityList.map((city) => ({
                               value: city['name'],
@@ -508,7 +568,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
             <>
               {customerData['firstName'] && !customerData['lastName'] && (
                 <TextFeildGroup
-                  label='Firstname'
+                  label='First name'
                   name='firstName'
                   value={customerData['firstName']}
                   disabled={true}
@@ -517,7 +577,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
 
               {customerData['lastName'] && !customerData['firstName'] && (
                 <TextFeildGroup
-                  label='Lastname'
+                  label='Last name'
                   name='lastname'
                   value={customerData['lastName']}
                   disabled={true}
@@ -583,12 +643,10 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
                   </div>
                 </div>
               )}
-            </>
-          )}
 
-        {customerData['address1'] && (
+{customerData['address1'] && (
           <TextFeildGroup
-            label='Address line 1'
+            label='Address'
             name='address1'
             value={customerData['address1']}
             disabled={true}
@@ -597,12 +655,15 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
 
         {customerData['address2'] && (
           <TextFeildGroup
-            label='Address line 2'
             name='address2'
             value={customerData['address2']}
             disabled={true}
           />
         )}
+            </>
+          )}
+
+       
       </div>
 
       <div className='myAccountSectionHeader'>

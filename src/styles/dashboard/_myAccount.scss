@@ -1,32 +1,54 @@
 .myAccount {
-  margin: 10px;
-  padding: 10px;
-  // width: 100%;
-  background-color: #fff;
-  border-radius: 3px;
-  border-top: 1px solid $color-primary-1;
+	margin: 0 25px;
+	padding: 20px;
+
+	// width: 100%;
+	background-color: #fff;
+	border-radius: 6px;
+	// border-top: 1px solid $color-primary-1;
+
+	@media only screen and (max-width: $bp-medium) {
+		margin: 0;
+	}
 }
 
 .myAccount .myAccountSectionHeader {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 50px;
-  border-bottom: 1px solid #ced4da;
-  display: flex;
+	font-size: 25px;
+	font-weight: 800;
+	line-height: 50px;
+	display: flex;
+	align-items: center;
 
-  &-main {
-    color: #222;
-  }
+	@media only screen and (max-width: $bp-smallest) {
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
 
-  &-button {
-    color: $color-primary-1;
-    margin-left: 20px;
-    font-size: 17px;
-    cursor: pointer;
-  }
+	&-main {
+		color: $color-dark-1;
+
+		@media only screen and (max-width: $bp-smallest) {
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 30px;
+		}
+	}
+
+	&-button {
+		color: $color-primary-1;
+		margin-left: 20px;
+		font-weight: 700;
+		font-size: 13px;
+		cursor: pointer;
+
+		@media only screen and (max-width: $bp-smallest) {
+			font-weight: 600;
+			margin-left: 0;
+		}
+	}
 }
 
 .myAccount .myAccountSectionForm {
-  padding: 0px 0 20px 0;
-  border-bottom: 1px solid #ced4da;
+	padding: 0px 0 20px 0;
+	// border-bottom: 1px solid #ced4da;
 }

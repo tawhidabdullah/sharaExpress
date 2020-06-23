@@ -68,9 +68,9 @@ const Signin = (props: Props) => {
 
   return (
     <div className='auth'>
-      <h1 className='display-4 text-center auth_title'>Signin</h1>
-      <p className='lead text-center authSubTitle'>{dictionary.signinTitle}</p>
+    
       <div className='formContainer'>
+      <h1 className='display-4 auth_title'>{dictionary.signinTitle}</h1>
         <Formik
           initialValues={{ ...initialValues }}
           onSubmit={(values, actions) => handleSubmit(values, actions)}
@@ -131,8 +131,7 @@ const Signin = (props: Props) => {
               </>
             )}
         </Formik>
-      </div>
-      <p className='lead text-center authtextInfo'>
+        <p className='lead text-center authtextInfo'>
         Don't have an account?{' '}
         <span
           className='authLink'
@@ -141,6 +140,8 @@ const Signin = (props: Props) => {
           Signup{' '}
         </span>
       </p>
+      </div>
+     
     </div>
   );
 };

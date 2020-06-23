@@ -80,7 +80,7 @@ const Dashboard = (props) => {
                 >
                   <a href='##' className='side-nav__link'>
                     <i className='fa fa-user'></i>
-                    <span className='side-nav__text'>My Accounts</span>
+                    <span className='side-nav__text'>Your Account Settings</span>
                   </a>
                 </li>
 
@@ -98,7 +98,7 @@ const Dashboard = (props) => {
                   </a>
                 </li>
 
-                <li
+                {/* <li
                   className={
                     tabs.isWishlist
                       ? 'side-nav__item side-nav__item--active'
@@ -110,7 +110,7 @@ const Dashboard = (props) => {
                     <i className='fa fa-first-order'></i>
                     <span className='side-nav__text'>Wishlist</span>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
             <main className='dashboard__main-content'>
