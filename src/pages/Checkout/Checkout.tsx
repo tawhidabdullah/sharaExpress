@@ -23,6 +23,7 @@ import {
 import { cartOperations } from '../../state/ducks/cart';
 import { sessionOperations } from '../../state/ducks/session';
 import PaymentForm from './PaymentForm';
+import CheckoutCartItem from "./CheckoutCartItem";
 
 // import checkout component
 import CheckoutSuccessModal from './CheckoutSuccessModal';
@@ -1068,7 +1069,7 @@ const Checkout = ({
               <>
                 <div className='checkout'>
                   <div className='createOrderContainer'>
-                    <div>
+                    <div className='createOrderContainer-left'>
                       {!session.isAuthenticated ? (
                         <div
                           onClick={() => history.push('/signin')}
@@ -1092,12 +1093,13 @@ const Checkout = ({
                         )}
                       <div className='checkoutSection'>
                         <div
-                          className='block-title authTitle'
-                          style={{
-                            margin: '20px 0',
-                          }}
+                          className='checkoutSectionTitleContainer'
+                        
                         >
-                          <span>Billing Address</span>
+                          <span className='checkoutSectionTitleContainer-number'>
+                            1
+                          </span>
+                          <h2 className='checkoutSectionTitleContainer-title'>Billing Address</h2>
                         </div>
 
                         {session.isAuthenticated ? (
@@ -1141,13 +1143,15 @@ const Checkout = ({
                       </div>
 
                       <div className='checkoutSection'>
+                    
                         <div
-                          className='block-title authTitle'
-                          style={{
-                            margin: '20px 0',
-                          }}
+                          className='checkoutSectionTitleContainer'
+                        
                         >
-                          <span>Shipping Address</span>
+                          <span className='checkoutSectionTitleContainer-number'>
+                            2
+                          </span>
+                          <h2 className='checkoutSectionTitleContainer-title'>Shipping Address</h2>
                         </div>
                         <Checkbox
                           name={'shipToDifferentAddress'}
@@ -1191,66 +1195,19 @@ const Checkout = ({
                           )}
                       </div>
 
-                      <div className='orderOverview'>
-                        <div
-                          className='block-title authTitle'
-                          style={{
-                            marginBottom: '40px',
-                          }}
-                        >
-                          <span>Order Overview</span>
-                        </div>
+                      <div className='checkoutSection'>
+                    
+                    <div
+                      className='checkoutSectionTitleContainer'
+                    
+                    >
+                      <span className='checkoutSectionTitleContainer-number'>
+                        2
+                      </span>
+                      <h2 className='checkoutSectionTitleContainer-title'>Delivery Option</h2>
+                    </div>
 
-                        {cartItems.length > 0 ? (
-                          <>
-                            <div>
-                              {cartItems &&
-                                cartItems.length > 0 &&
-                                cartItems.map(({ product }) => {
-                                  return (
-                                    <SmallItem
-                                      // @ts-ignore
-                                      productItem={product}
-                                      // @ts-ignore
-                                      isOrder={true}
-                                      // @ts-ignore
-                                      history={history}
-                                    />
-                                  );
-                                })}
-                            </div>
-                            <div className='order-price'>
-                              <div
-                                className='order-summary-price'
-                                style={{
-                                  paddingBottom: '10px',
-                                }}
-                              >
-                                <h3>{cartItems.length} items in Cart</h3>
-                                <span
-                                  style={{
-                                    fontWeight: 500,
-                                  }}
-                                >
-                                  ৳{totalPrice}
-                                </span>
-                              </div>
-
-                              <div
-                                style={{
-                                  borderTop: '1px solid #eee',
-                                }}
-                              >
-                                <div
-                                  className='block-title authTitle'
-                                  style={{
-                                    margin: '10px 0 15px 0',
-                                  }}
-                                >
-                                  <span>Delivery Details</span>
-                                </div>
-
-                                {isDeliveryChargeExists(
+                    {isDeliveryChargeExists(
                                   isShipToDifferentAddress
                                     ? shippingDeliveryCharge &&
                                     shippingDeliveryCharge.length > 0 &&
@@ -1263,7 +1220,7 @@ const Checkout = ({
                                       <div
                                         className='block-title authTitle sm'
                                         style={{
-                                          margin: '20px 0',
+                                          marginBottom: '20px'
                                         }}
                                       >
                                         <span>Region List</span>
@@ -1283,10 +1240,8 @@ const Checkout = ({
                                             shippingDeliveryCharge.map((item) => {
                                               return (
                                                 <ReversedRadioButton
-                                                  rootColor={
-                                                    'rgba(0, 102, 51, 0.35)'
-                                                  }
-                                                  pointColor={'#006633'}
+                                                rootColor={'rgba(5, 163, 129, 0.35)'}
+                                                pointColor={'#009e7f'}
                                                   value={item['name']}
                                                   padding={10}
                                                 >
@@ -1312,10 +1267,8 @@ const Checkout = ({
                                             billingDeliveryCharge.map((item) => {
                                               return (
                                                 <ReversedRadioButton
-                                                  rootColor={
-                                                    'rgba(0, 102, 51, 0.35)'
-                                                  }
-                                                  pointColor={'#006633'}
+                                                rootColor={'rgba(5, 163, 129, 0.35)'}
+                                                pointColor={'#009e7f'}
                                                   value={item['name']}
                                                   padding={10}
                                                 >
@@ -1386,36 +1339,27 @@ const Checkout = ({
                                   </h3>
                                     </div>
                                   )}
-                              </div>
 
-                              {deliveryChargeState.isLoading && <Spinner />}
-                            </div>
-                            <div className='deliveryProps'>
-                              <h3>Total : </h3>
-                              <span>
-                                ৳
-                              {selectedRegion &&
-                                  Object.keys(selectedRegion).length > 0
-                                  ? getTotalPrice(
-                                    totalPrice,
-                                    getDeliveryChargeTotal(
-                                      selectedRegion,
-                                      totalPrice
-                                    ) || 0
-                                  )
-                                  : totalPrice}
-                              </span>
-                            </div>
 
-                            <div className='checkoutSection'>
-                              <div
-                                className='block-title authTitle'
-                                style={{
-                                  margin: '20px 0',
-                                }}
-                              >
-                                <span>Payment Methods</span>
-                              </div>
+{deliveryChargeState.isLoading && <Spinner />}
+
+                    </div>
+
+
+
+                      <div className='checkoutSection'>
+                            <div
+                          className='checkoutSectionTitleContainer'
+                        
+                        >
+                          <span className='checkoutSectionTitleContainer-number'>
+                            1
+                          </span>
+                          <h2 className='checkoutSectionTitleContainer-title'>Payment Option</h2>
+                        </div>
+
+
+                           
 
                               <div className='paymentMethods'>
                                 <RadioGroup
@@ -1424,8 +1368,8 @@ const Checkout = ({
                                   horizontal={windowWidth > 380 ? true : false}
                                 >
                                   <ReversedRadioButton
-                                    rootColor={'rgba(0, 102, 51, 0.35)'}
-                                    pointColor={'#006633'}
+                                    rootColor={'rgba(5, 163, 129, 0.35)'}
+                                    pointColor={'#009e7f'}
                                     value='cod'
                                     padding={9}
                                   >
@@ -1440,8 +1384,8 @@ const Checkout = ({
                                   Cash on Delivery
                                 </ReversedRadioButton>
                                   <ReversedRadioButton
-                                    rootColor={'rgba(0, 102, 51, 0.35)'}
-                                    pointColor={'#006633'}
+                                   rootColor={'rgba(5, 163, 129, 0.35)'}
+                                   pointColor={'#009e7f'}
                                     value='nagad'
                                     padding={12}
                                   >
@@ -1468,8 +1412,9 @@ const Checkout = ({
                                     </div>
                                   </ReversedRadioButton>
                                   <ReversedRadioButton
-                                    rootColor={'rgba(0, 102, 51, 0.35)'}
-                                    pointColor={'#006633'}
+                                  borderRadius={'6'}
+                                  rootColor={'rgba(5, 163, 129, 0.35)'}
+                                    pointColor={'#009e7f'}
                                     value='rocket'
                                     padding={12}
                                   >
@@ -1496,8 +1441,8 @@ const Checkout = ({
                                     </div>
                                   </ReversedRadioButton>
                                   <ReversedRadioButton
-                                    rootColor={'rgba(0, 102, 51, 0.35)'}
-                                    pointColor={'#006633'}
+                                rootColor={'rgba(5, 163, 129, 0.35)'}
+                                pointColor={'#009e7f'}
                                     value='bkash'
                                     padding={12}
                                   >
@@ -1526,7 +1471,23 @@ const Checkout = ({
                                 </RadioGroup>
                               </div>
 
-                              {paymentMethod !== 'cod' && (
+
+                              <PaymentForm
+                                isSubmitting={isSubmitting}
+                                paymentMethod={paymentMethod}
+                                values={values}
+                                handleChange={handleChange}
+                                errors={errors}
+                                serverErrors={serverErrors}
+                                setFieldTouched={setFieldTouched}
+                                touched={touched}
+                              />
+
+
+
+
+                              
+{paymentMethod !== 'cod' && (
                                 <div className='paymentMethodInstruction'>
                                   <div className='paymentMethodInstruction-item'>
                                     <h3>Send </h3>
@@ -1780,50 +1741,9 @@ const Checkout = ({
                                   </div>
                                 </div>
                               )}
+                            </div>
 
-                              <PaymentForm
-                                isSubmitting={isSubmitting}
-                                paymentMethod={paymentMethod}
-                                values={values}
-                                handleChange={handleChange}
-                                errors={errors}
-                                serverErrors={serverErrors}
-                                setFieldTouched={setFieldTouched}
-                                touched={touched}
-                              />
-                            </div>
-                          </>
-                        ) : (
-                            <div
-                              style={{
-                                height: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                              }}
-                            >
-                              <p
-                                style={{
-                                  letterSpacing: '-1px',
-                                  marginBottom: '20px',
-                                  fontSize: '20px',
-                                  fontWeight: 600,
-                                }}
-                              >
-                                Your Cart is empty
-                          </p>
-                              <button
-                                className='clear-cart banner-btn'
-                                onClick={() => {
-                                  history.push('/');
-                                }}
-                              >
-                                Add Products
-                          </button>
-                            </div>
-                          )}
-                      </div>
+                    
 
                       {isDeliveryChargeExists(
                         isShipToDifferentAddress
@@ -1867,6 +1787,138 @@ const Checkout = ({
                         >
                           {isSubmitting ? 'Ordering...' : 'Place Order'}
                         </AuthButton>
+                      </div>
+                    </div>
+                    <div className='createOrderContainer-right'>
+                    <div className='orderOverview'>
+                        <div
+                          className='orderOverview-title'
+                        >
+                          <span>Your Order</span>
+                        </div>
+
+                        {cartItems.length > 0 ? (
+                          <>
+                            <div className='orderOverview-cartItems'>
+                              {cartItems &&
+                                cartItems.length > 0 &&
+                                cartItems.map(({ product }) => {
+                                  return (
+                                   <CheckoutCartItem />
+                                  );
+                                })}
+                            </div>
+                            <div className=''>
+                              <div
+                                className='order-summaryPriceCotainer'
+                             
+                              >
+                                
+                                <span
+                                
+                                >
+                                  Sub Total
+                                </span>
+                                <span
+                                
+                                >
+                                 $42.50
+                                </span>
+                              </div>
+
+                              <div
+                                className='order-summaryPriceCotainer'
+                             
+                              >
+                                
+                                <span
+                                
+                                >
+                              Delivery Fee
+
+                                </span>
+                                <span
+                                 
+                                >
+                                $0.00
+
+                                </span>
+                              </div>
+
+                              <div
+                                className='order-summaryPriceCotainerMain'
+                             
+                              >
+                                
+                                <span
+                                
+                                >
+                                  Total
+                                </span>
+                                <span
+                                
+                                >
+                                 $42.50
+                                </span>
+                              </div>
+
+
+
+                              
+
+                             
+
+                             
+                            </div>
+                            {/* <div className='deliveryProps'>
+                              <h3>Total : </h3>
+                              <span>
+                                ৳
+                              {selectedRegion &&
+                                  Object.keys(selectedRegion).length > 0
+                                  ? getTotalPrice(
+                                    totalPrice,
+                                    getDeliveryChargeTotal(
+                                      selectedRegion,
+                                      totalPrice
+                                    ) || 0
+                                  )
+                                  : totalPrice}
+                              </span>
+                            </div> */}
+
+                   
+                          </>
+                        ) : (
+                            <div
+                              style={{
+                                height: '100%',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                              }}
+                            >
+                              <p
+                                style={{
+                                  letterSpacing: '-1px',
+                                  marginBottom: '20px',
+                                  fontSize: '20px',
+                                  fontWeight: 600,
+                                }}
+                              >
+                                Your Cart is empty
+                          </p>
+                              <button
+                                className='clear-cart banner-btn'
+                                onClick={() => {
+                                  history.push('/');
+                                }}
+                              >
+                                Add Products
+                          </button>
+                            </div>
+                          )}
                       </div>
                     </div>
                   </div>

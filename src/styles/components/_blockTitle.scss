@@ -4,10 +4,8 @@
 	color: #222;
 
 	font-size: 15px;
-
 	font-weight: 600;
 	line-height: 40px;
-
 	margin-bottom: 0px;
 	position: relative;
 	display: flex;
@@ -31,13 +29,13 @@
 	text-transform: capitalize;
 	font-size: 15px;
 	color: $color-dark-1;
-	font-weight: 500;
-	color: #444;
-	line-height: 30px;
+	font-weight: 700;
+	color: $color-dark-1;
+	line-height: 35px;
 }
 
 .block-title.authTitle.sm span::before {
-	background-color: #777;
+	color: $color-dark-1;
 	width: 30px;
 }
 

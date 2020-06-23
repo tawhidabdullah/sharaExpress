@@ -3,6 +3,68 @@ import Select from 'react-select';
 
 import { TextFeildGroup } from '../../components/Field';
 
+const dot = (color = '#111b3d') => ({
+  alignItems: 'center',
+  display: 'flex',
+
+  ':before': {
+      backgroundColor: color,
+      borderRadius: 6,
+      content: '" "',
+      display: 'block',
+      marginRight: 8,
+      // height: 10,
+      // width: 10,
+  },
+});
+
+
+
+
+const colourStyles = {
+  control: styles => ({
+      ...styles,
+      backgroundColor: 'rgb(247, 247, 247)',
+      border: '1px solid rgb(241, 241, 241)',
+      height: '50px',
+      minHeight: '50px',
+      borderRadius: '6px'
+  }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      const color = '#009e7f';
+      return {
+          ...styles,
+          backgroundColor: isDisabled
+              ? null
+              : isSelected
+                  ? color
+                  : isFocused
+                      ? color
+                      : 'rgb(247, 247, 247)',
+          color: isDisabled
+              ? '#333'
+              : isSelected
+                  ? color
+                  : isFocused
+                      ? 'rgb(247, 247, 247)'
+                      : '#303a3f',
+          cursor: isDisabled ? 'not-allowed' : 'default',
+
+          ':active': {
+              ...styles[':active'],
+              backgroundColor: !isDisabled && (isSelected ? color : '#303a3f'),
+          },
+      };
+  },
+  input: styles => ({ ...styles, color: '#303a3f', ...dot() }),
+  placeholder: styles => ({ ...styles, color: '#303a3f', ...dot() }),
+  singleValue: (styles, { data }) => ({ ...styles, marginTop: '-2px', marginLeft: '-2px', color: '#303a3f', ...dot(data.color) }),
+};
+
+
+
+
+
 interface Props {
   values: any;
   handleChange: any;
@@ -90,6 +152,7 @@ const CheckoutForm = ({
               <label className='formLabel'>Country</label>
 
               <Select
+               styles={colourStyles}
                 value={selectedShippingCountryValue}
                 onChange={(value) => handleSelectShippingCountryChange(value)}
                 options={countryList.map((country) => ({
@@ -109,6 +172,7 @@ const CheckoutForm = ({
             <div>
               <label className='formLabel'>City</label>
               <Select
+               styles={colourStyles}
                 value={selectedShippingCityValue}
                 onChange={(value) => handleSelectShippingCityChange(value)}
                 options={shippingCityList.map((city) => ({
