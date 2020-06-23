@@ -53,8 +53,14 @@ const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, hi
       ></div>
       <div className={isShowMenuBar ? 'menu showMenu' : 'menu'}>
         <span className='close-menu' onClick={handleToggleMenuBar}>
-          <i className='fa fa-window-close'></i>
+          <i className='fa fa-times'></i>
         </span>
+
+        <div className='menuJoinSection'>
+        <span className='myHeaderContainer__joinButtonBox-button'>
+              Join
+         </span>
+        </div>
 
 
         {Object.keys(navLinksState.data).length > 0 && (
@@ -85,12 +91,59 @@ const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, hi
           </>
         )}
 
+<ul className='menuItems'>
 
-        {localCategory && localCategory.length > 0 && (
+<li >
+      <a
+       >
+Home
+       </a>
+
+    
+    </li>
+    <li >
+      <a
+       >
+Checkout
+       </a>
+
+    
+    </li>
+    <li >
+      <a
+       >
+Order
+       </a>
+
+    
+    </li>
+    <li >
+      <a
+       >
+Need Help
+       </a>
+
+    
+    </li>
+
+    <li >
+      <a
+       >
+Offer
+       </a>
+
+    
+    </li>
+
+
+</ul>
+
+
+
+
+        {/* {localCategory && localCategory.length > 0 && (
           <>
-            <span className='menuItemHeader'>
-              Categories
-             </span>
+
             <ul className='menuItems'>
 
               {localCategory.map(cat => {
@@ -126,7 +179,7 @@ const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, hi
 
             </ul>
           </>
-        )}
+        )} */}
 
       </div>
     </div>

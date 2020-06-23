@@ -1274,11 +1274,11 @@ const Checkout = ({
                                                 >
                                                   <div
                                                     style={{
-                                                      ...(windowWidth < 380 && {
+                                                      ...(windowWidth < 450 && {
                                                         width: '100%',
                                                         height: '30px',
                                                       }),
-                                                      ...(windowWidth > 380 && {
+                                                      ...(windowWidth > 450 && {
                                                         height: '20px',
                                                       }),
                                                     }}
@@ -1365,7 +1365,7 @@ const Checkout = ({
                                 <RadioGroup
                                   onChange={onRadioGroupChange}
                                   value={paymentMethod}
-                                  horizontal={windowWidth > 380 ? true : false}
+                                  horizontal={windowWidth > 450 ? true : false}
                                 >
                                   <ReversedRadioButton
                                     rootColor={'rgba(5, 163, 129, 0.35)'}
@@ -1375,7 +1375,7 @@ const Checkout = ({
                                   >
                                     <div
                                       style={{
-                                        ...(windowWidth < 380 && {
+                                        ...(windowWidth < 450 && {
                                           width: '100%',
                                           height: '20px',
                                         }),
@@ -1391,11 +1391,11 @@ const Checkout = ({
                                   >
                                     <div
                                       style={{
-                                        ...(windowWidth < 380 && {
+                                        ...(windowWidth < 450 && {
                                           width: '100%',
                                           height: '30px',
                                         }),
-                                        ...(windowWidth > 380 && {
+                                        ...(windowWidth > 450 && {
                                           height: '20px',
                                         }),
                                       }}
@@ -1420,11 +1420,11 @@ const Checkout = ({
                                   >
                                     <div
                                       style={{
-                                        ...(windowWidth < 380 && {
+                                        ...(windowWidth < 450 && {
                                           width: '100%',
                                           height: '30px',
                                         }),
-                                        ...(windowWidth > 380 && {
+                                        ...(windowWidth > 450 && {
                                           height: '20px',
                                         }),
                                       }}
@@ -1448,11 +1448,11 @@ const Checkout = ({
                                   >
                                     <div
                                       style={{
-                                        ...(windowWidth < 380 && {
+                                        ...(windowWidth < 450 && {
                                           width: '100%',
                                           height: '30px',
                                         }),
-                                        ...(windowWidth > 380 && {
+                                        ...(windowWidth > 450 && {
                                           height: '20px',
                                         }),
                                       }}

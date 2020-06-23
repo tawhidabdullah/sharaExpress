@@ -93,6 +93,23 @@ const Home = ({
         cache={cache}
         addItemToCache={addItemToCache}
       /> */}
+
+{windowWidth && windowWidth < 450 ? (
+      
+<div className='mobilebannerCard'>
+                  <img 
+          src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
+           alt='banner img'/>
+                  </div>
+      ) : ''}
+
+
+
+
+
+
+
+
       <section className='someClassContainer'>
         <div className='someClassContainerLeftNavMenu'>
             <span>
@@ -146,7 +163,10 @@ const Home = ({
 
         </div>
        <div className='somerContainerRightContent'>
-       <div className='someClassContainerRightBannerContainer'>
+         
+       {windowWidth && windowWidth > 450 ? (
+      
+      <div className='someClassContainerRightBannerContainer'>
           <img 
           src='https://shop.redq.now.sh/_next/static/images/grocery-f1565ac25de02b9295dccc2da13004ab.png'
            alt='banner img'/>
@@ -170,6 +190,10 @@ const Home = ({
            
           
         </div>
+            ) : ''}
+
+
+     
 
         <div className='bannerContainer'>
         {/* <Carousel
@@ -200,10 +224,67 @@ const Home = ({
                   </div>
 
         </div>
+        {windowWidth && windowWidth < 450 ? (
+      
+      
+      <div className='mobileScreenCategoryContainer'>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
+      <div className='mobileScreenCategoryContainer-item'>
+        <h3>
+          Clothing Ferniture Ferniture
+        </h3>
+      </div>
 
-                <h3 className='maskCategoryContainerTitle'>  
+</div>
+            ) : ''}
+
+
+
+              
+              
+
+        {windowWidth && windowWidth > 450 ? (
+      
+   <>
+      <h3 className='maskCategoryContainerTitle'>  
                 Our Categories
                 </h3>
+
+
         <div className='maskCategoryContainer'>
                 <div className='maskCategoryContainer-item'>
                   <h3>
@@ -247,6 +328,11 @@ const Home = ({
                 </div>
 
         </div>
+   </>
+            ) : ''}
+
+            
+        
 
        </div>
       </section>

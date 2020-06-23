@@ -1,7 +1,10 @@
 .checkout {
 	padding-bottom: 20px;
 	background-color: $color-light-2;
-	padding-top: 20px;
+
+	@media screen and (max-width: 700px) {
+		padding-top: 0;
+	}
 }
 
 .checkoutSection {
@@ -11,6 +14,11 @@
 	background-color: rgb(255, 255, 255);
 	box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 5px;
 	border-radius: 6px;
+
+	@media screen and (max-width: 700px) {
+		margin-bottom: 10px;
+		margin-top: 15px;
+	}
 
 	.checkoutSectionTitleContainer {
 		display: flex;
@@ -44,6 +52,11 @@
 	display: flex;
 	align-items: flex-start;
 
+	@media screen and (max-width: 700px) {
+		flex-direction: column;
+		align-items: center;
+	}
+
 	&-left {
 		flex: 1;
 	}
@@ -55,7 +68,25 @@
 		position: sticky;
 		top: 100px;
 
+		@media screen and (max-width: 992px) {
+			min-width: 300px;
+			max-width: 300px;
+			margin: 30px;
+		}
+
+		@media screen and (max-width: 800px) {
+			min-width: 250px;
+			max-width: 250px;
+			margin: 20px;
+		}
+
+		@media screen and (max-width: 700px) {
+			min-width: 100%;
+			max-width: 100%;
+		}
+
 		.orderOverview {
+			margin: 25px;
 			&-title {
 				text-align: center;
 				font-size: 16px;
@@ -71,6 +102,10 @@
 				overflow-y: auto;
 				margin-bottom: 20px;
 				border-bottom: 1px solid #eee;
+
+				@media screen and (max-width: 700px) {
+					max-height: calc(5000px);
+				}
 			}
 		}
 	}
@@ -203,12 +238,14 @@
 		color: #777;
 		padding: 0 5px;
 		font-weight: 600;
+		line-height: 1.5;
 	}
 
 	span {
 		font-size: 15px;
 		font-weight: 700;
 		margin-left: 5px;
+		line-height: 1.5;
 	}
 }
 
@@ -217,6 +254,7 @@
 	justify-content: space-between;
 	font-size: 14px;
 	margin-bottom: 30px;
+
 	&-left {
 		&-quantity {
 			color: $color-dark-1;
@@ -251,7 +289,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
-	padding: 0 10px;
+	padding: 0 0;
 
 	span {
 		color: #777;
@@ -264,7 +302,7 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
-	padding: 0 10px;
+	padding: 0 0;
 
 	span {
 		color: #333;

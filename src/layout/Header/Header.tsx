@@ -118,7 +118,7 @@ const Header = ({
   return (
     <>
 
-      {windowWidth && windowWidth > 600 ? (
+      {windowWidth && windowWidth > 950 ? (
         <div className='myHeaderContainer'>
           <div className='myHeaderContainer__logoBox'>
             <Logo cache={cache} addItemToCache={addItemToCache} />
@@ -236,7 +236,7 @@ const Header = ({
 
 
 
-      {windowWidth && windowWidth < 600 ? (
+      {windowWidth && windowWidth < 950 ? (
         <MobileNav
           handleToggleCartBar={handleToggleCartBar}
           handleToggleMenuBar={handleToggleMenuBar}
@@ -247,7 +247,7 @@ const Header = ({
           ''
         )}
 
-      {windowWidth && windowWidth < 600 ? (
+      {windowWidth && windowWidth < 950 ? (
         <MenuBar
           isShowMenuBar={isShowMenuBar}
           handleToggleMenuBar={handleToggleMenuBar}

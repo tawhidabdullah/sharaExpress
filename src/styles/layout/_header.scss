@@ -227,20 +227,33 @@
 
 .cart-item-quantityCounter {
 	margin-right: 30px;
+
+	@media screen and (max-width: 330px) {
+		margin-right: 20px;
+	}
 }
 
 .cart-item img {
 	width: 55px;
 	height: 55px;
+
+	@media screen and (max-width: 430px) {
+		width: 35px;
+		height: 35px;
+	}
 }
 
 .cart-item-info {
 	margin: 0 15px 0 30px;
 	flex: 1;
+
+	@media screen and (max-width: 330px) {
+		margin: 0 15px 0 15px;
+	}
 }
 
 .cart-item-info h4 {
-	width: 170px;
+	max-width: 170px;
 	color: $color-dark-1;
 	white-space: nowrap;
 	overflow: hidden;
@@ -250,6 +263,14 @@
 	cursor: pointer;
 	margin-bottom: 15px;
 	margin-top: 15px;
+
+	@media screen and (max-width: 430px) {
+		font-size: 14px;
+	}
+
+	@media screen and (max-width: 430px) {
+		max-width: 120px;
+	}
 }
 
 .cart-item-info h5 {
@@ -260,6 +281,10 @@
 	font-weight: 600;
 	font-size: 13px;
 	cursor: pointer;
+
+	@media screen and (max-width: 430px) {
+		font-weight: 500;
+	}
 }
 
 .cart-item-quantityCounter {
@@ -855,7 +880,7 @@ navbar-center-navItems a:hover {
 	overflow: scroll;
 	z-index: 10010;
 	background: #fff;
-	padding: 0.8rem;
+	padding: 20px;
 	transition: var(--mainTransition);
 	transform: translateX(-100%);
 }
@@ -877,8 +902,9 @@ navbar-center-navItems a:hover {
 }
 
 .close-menu {
-	font-size: 1.7rem;
+	font-size: 15px;
 	cursor: pointer;
+	color: #777;
 }
 .menu h2 {
 	text-transform: capitalize;
@@ -887,28 +913,34 @@ navbar-center-navItems a:hover {
 	margin-bottom: 2rem;
 }
 
+.menuJoinSection {
+	padding: 25px 0;
+	background-color: #fafafa;
+	margin-top: 25px;
+	display: flex;
+	justify-content: center;
+}
 .menuItems {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
 	background-color: #fff !important;
 	width: 100%;
-	margin-top: 10px;
+	margin-top: 25px;
 }
 
-.menuItems li a:hover {
-	background-color: #eee;
+.menuItems li:hover {
 	cursor: pointer;
+	color: $color-primary-1;
 }
 
 .menuItems li {
-	line-height: 50px;
+	line-height: 45px;
 	list-style: none;
 	background-color: #fff;
 }
 
 .menuItems li a {
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 	border-radius: 2px;
 	margin: 3px 2px;
 

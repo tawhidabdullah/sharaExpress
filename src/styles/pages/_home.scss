@@ -196,6 +196,10 @@
 		overflow-x: hidden;
 		position: fixed;
 
+		@media screen and (max-width: 750px) {
+			display: none;
+		}
+
 		span {
 			display: inline-block;
 			font-size: 15px;
@@ -213,11 +217,20 @@
 	.somerContainerRightContent {
 		flex: 1;
 		margin-left: 220px;
+
+		@media screen and (max-width: 750px) {
+			margin-left: 0;
+		}
+
 		.someClassContainerRightBannerContainer {
 			width: 100%;
 			height: calc(100vh - 50px);
 			position: relative;
 			// max-height: 1vh;
+
+			@media screen and (max-width: 900px) {
+				height: calc(60vh - 50px);
+			}
 
 			img {
 				width: 100%;
@@ -238,6 +251,14 @@
 				top: 50%;
 				right: 50%;
 				transform: translate(50%, -50%);
+
+				@media screen and (max-width: 900px) {
+					min-width: 450px;
+				}
+
+				@media screen and (max-width: 800px) {
+					min-width: 400px;
+				}
 
 				.categoryBtn {
 					background-color: #fafafa;
@@ -291,9 +312,23 @@
 
 .bannerContainer {
 	background-color: #fff;
-	padding: 35px 20px;
+	padding: 35px 25px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+
+	@media screen and (max-width: 900px) {
+		justify-content: center;
+	}
+
+	@media screen and (max-width: 700px) {
+		padding: 35px 10px;
+	}
+
+	@media screen and (max-width: 500px) {
+		padding: 10px 10px;
+		padding-top: 15px;
+	}
 }
 
 .bannerCard {
@@ -304,7 +339,37 @@
 	overflow: hidden;
 	cursor: pointer;
 
+	margin-right: 20px;
+	margin-bottom: 20px;
+
+	@media screen and (max-width: 900px) {
+		width: 220px;
+		height: 100px;
+		margin-bottom: 20px;
+	}
+
+	@media screen and (max-width: 600px) {
+		width: 100%;
+		margin-right: 0;
+	}
+
 	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.mobilebannerCard {
+	background-color: #fff;
+	height: 200px;
+	border-radius: 5px;
+	overflow: hidden;
+	cursor: pointer;
+	padding: 10px;
+
+	img {
+		border-radius: 5px;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
