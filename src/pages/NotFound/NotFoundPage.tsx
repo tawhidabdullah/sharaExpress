@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Header from '../../layout/Header';
 interface Props {}
 
 const NotFoundPage = (props: Props) => {
   return (
+    <>
+    <Header />
     <div
       style={{
         height: '400px',
@@ -35,6 +37,7 @@ const NotFoundPage = (props: Props) => {
         <Link to='/'>Go to Home </Link>
       </p>
     </div>
+    </>
   );
 };
 

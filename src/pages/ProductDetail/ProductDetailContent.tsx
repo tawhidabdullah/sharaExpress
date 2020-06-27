@@ -303,7 +303,7 @@ const ProductDetailContent = ({
                     {removeFromCartState.isLoading && '🐎 Removing...'}
                   </a>
 
-                  {session.isAuthenticated && (
+                  {/* {session.isAuthenticated && (
                     <a
                       className='action-button'
                       onClick={handleOnClickToWishlist}
@@ -331,7 +331,7 @@ const ProductDetailContent = ({
                       {addWishlistState.isLoading && '🐎 Adding...'}
                       {removeFromWishlistState.isLoading && '🐎 Removing...'}
                     </a>
-                  )}
+                  )} */}
                 </>
               )}
           </div>

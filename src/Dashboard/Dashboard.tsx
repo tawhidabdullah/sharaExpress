@@ -6,6 +6,7 @@ import { Spinner } from '../components/Loading';
 import { useHandleFetch } from '../hooks';
 import { saveCity, deleteCity, saveCustomerData } from '../utils';
 import { sessionOperations } from '../state/ducks/session';
+import Header from '../layout/Header';
 
 import Order from './components/Order';
 import MyAccount from './components/MyAccount';
@@ -65,6 +66,7 @@ const Dashboard = (props) => {
 
   return (
     <>
+    <Header />
       {!isLoading && customerDetailState.done && (
         <div className='container__of-dashboard'>
           <div className='content'>

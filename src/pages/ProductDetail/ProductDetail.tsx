@@ -6,6 +6,7 @@ import ProductDetailContent from './ProductDetailContent';
 import { cacheOperations } from '../../state/ducks/cache';
 import { checkIfItemExistsInCache } from '../../utils';
 import Products from '../../pages/Home/Products';
+import Header from '../../layout/Header';
 
 interface Props {
   match: any;
@@ -127,7 +128,7 @@ const ProductDetail = (props: Props) => {
 
   return (
     <>
-
+<Header />
       {!fethedProductFromCache && (
         <>
           {!productDetailState.isLoading &&

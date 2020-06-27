@@ -28,6 +28,7 @@ import CheckoutCartItem from "./CheckoutCartItem";
 // import checkout component
 import CheckoutSuccessModal from './CheckoutSuccessModal';
 import CheckoutForm from './CheckoutForm';
+import Header from '../../layout/Header';
 
 // validation schemeas
 
@@ -370,7 +371,6 @@ const Checkout = ({
   }, [session]);
 
 
-  console.log('customerData', customerData);
 
 
   useEffect(() => {
@@ -1047,6 +1047,7 @@ const Checkout = ({
 
   return (
     <>
+    <Header/>
       {!isAuthLoading && (
         <Formik
           enableReinitialize={isShipToDifferentAddress ? false : true}
@@ -1802,9 +1803,9 @@ const Checkout = ({
                             <div className='orderOverview-cartItems'>
                               {cartItems &&
                                 cartItems.length > 0 &&
-                                cartItems.map(({ product }) => {
+                                cartItems.map(({ product, quantity }) => {
                                   return (
-                                   <CheckoutCartItem />
+                                   <CheckoutCartItem product={product} quantity={quantity}/>
                                   );
                                 })}
                             </div>
@@ -1822,7 +1823,7 @@ const Checkout = ({
                                 <span
                                 
                                 >
-                                 $42.50
+                                 ৳ {totalPrice}
                                 </span>
                               </div>
 
@@ -1840,7 +1841,13 @@ const Checkout = ({
                                 <span
                                  
                                 >
-                                $0.00
+                                ৳{selectedRegion &&
+                                  Object.keys(selectedRegion).length > 0
+                                  ?  getDeliveryChargeTotal(
+                                    selectedRegion,
+                                    totalPrice
+                                  ) || 0
+                                  : 0}
 
                                 </span>
                               </div>
@@ -1858,7 +1865,16 @@ const Checkout = ({
                                 <span
                                 
                                 >
-                                 $42.50
+                                ৳ {selectedRegion &&
+                                  Object.keys(selectedRegion).length > 0
+                                  ? getTotalPrice(
+                                    totalPrice,
+                                    getDeliveryChargeTotal(
+                                      selectedRegion,
+                                      totalPrice
+                                    ) || 0
+                                  )
+                                  : totalPrice}
                                 </span>
                               </div>
 

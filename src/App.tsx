@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 // import Layout
 import Header from './layout/Header';
+import AnotherHeader from './layout/Header/AnotherHeader';
 
 // import Pages
 import Home from './pages/Home';
@@ -18,46 +19,63 @@ import { NotFoundPage } from './pages/NotFound';
 import Footer from './layout/Footer';
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <React.Fragment>
-        <Header />
-        <Switch>
-          <Route exact path={'/'} component={Home} />
+	return (
+		<BrowserRouter>
+			<React.Fragment>
+				{/* <Header /> */}
+				<Switch>
+					<Route exact path={'/'} render={() => <Redirect to='/category/:categoryName' />} />
+					<Route exact path={'/category/:categoryName'} component={AnotherHeader} />
 
-          <Route
-            exact
-            path={'/product/:categoryName/:productName'}
-            component={ProductDetail}
-          />
+					<Route exact path={'/product/:categoryName/:productName'} component={ProductDetail} />
 
-          <Route
-            exact
-            path='/products'
-            render={() => <Redirect to='/productList/all' />}
-          />
+					<Route exact path='/products' render={() => <Redirect to='/productList/all' />} />
 
-          <Route
-            exact
-            path='/productList'
-            render={() => <Redirect to='/productList/all' />}
-          />
-          <Route exact path={'/productList/:id'} component={ProductList} />
-          <Route exact path={'/productSearch'} component={ProductSearch} />
+					<Route exact path='/productList' render={() => <Redirect to='/productList/all' />} />
+					<Route exact path={'/productList/:id'} component={ProductList} />
+					<Route exact path={'/productSearch'} component={ProductSearch} />
 
-          <Route exact path={'/cart'} component={ShoppingCart} />
+					<Route exact path={'/cart'} component={ShoppingCart} />
 
-          <Route exact path='/signin' component={Signin} />
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path={'/checkout'} component={Checkout} />
+					<Route exact path='/signin' component={Signin} />
+					<Route exact path='/signup' component={Signup} />
+					<Route exact path={'/checkout'} component={Checkout} />
 
-          <Route exact path={'/dashboard'} component={Dashboard} />
+					<Route exact path={'/dashboard'} component={Dashboard} />
 
-          <Route path='*' component={NotFoundPage} />
-        </Switch>
-        <Footer />
-      </React.Fragment>
-    </BrowserRouter>
-  );
+					<Route path='*' component={NotFoundPage} />
+				</Switch>
+				{/* <Footer /> */}
+			</React.Fragment>
+		</BrowserRouter>
+	);
 };
 export default App;
+
+/*
+
+
+from the top menu if a change the menu  item the home page changes it's content.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

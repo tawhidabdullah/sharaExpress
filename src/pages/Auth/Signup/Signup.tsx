@@ -10,6 +10,8 @@ import { checkIfItemExistsInCache } from '../../../utils';
 import { cacheOperations } from '../../../state/ducks/cache';
 import { withAlert } from 'react-alert';
 import dictionary from '../../../dictionary';
+import Header from '../../../layout/Header';
+
 
 // import input fields
 import { TextFeildGroup } from '../../../components/Field';
@@ -241,7 +243,7 @@ const colourStyles = {
         backgroundColor: 'rgb(247, 247, 247)',
         border: '1px solid rgb(241, 241, 241)',
         height: '50px',
-        minHeight: '50px',
+        minHeight: '40px',
         borderRadius: '6px'
     }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -284,6 +286,8 @@ const colourStyles = {
 
 
   return (
+    <>
+    <Header/>
     <div className='auth'>
      
       <div className='formContainer'>
@@ -526,6 +530,7 @@ const colourStyles = {
       </div>
       
     </div>
+    </>
   );
 };
 

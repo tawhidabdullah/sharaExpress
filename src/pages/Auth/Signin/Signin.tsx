@@ -8,6 +8,7 @@ import { useHandleFetch } from '../../../hooks';
 import { sessionOperations } from '../../../state/ducks/session';
 import { withAlert } from 'react-alert';
 import dictionary from '../../../dictionary';
+import Header from '../../../layout/Header';
 
 // import input fields
 import { TextFeildGroup } from '../../../components/Field';
@@ -67,6 +68,8 @@ const Signin = (props: Props) => {
   }, []);
 
   return (
+    <>
+    <Header/>
     <div className='auth'>
     
       <div className='formContainer'>
@@ -93,7 +96,7 @@ const Signin = (props: Props) => {
                 <TextFeildGroup
                   label='Phone or Email'
                   name='username'
-                  placeholder='phone or email address..'
+                  // placeholder='phone or email address..'
                   type='text'
                   value={values.username}
                   onChange={(e) => {
@@ -109,7 +112,7 @@ const Signin = (props: Props) => {
                 <TextFeildGroup
                   label='Password'
                   name='password'
-                  placeholder='Enter your password'
+                  // placeholder='Enter your password'
                   type='password'
                   value={values.password}
                   onChange={(e) => {
@@ -143,6 +146,7 @@ const Signin = (props: Props) => {
       </div>
      
     </div>
+    </>
   );
 };
 

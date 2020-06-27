@@ -146,7 +146,9 @@ const ProductCard = ({
   return (
     <div className='product-card'>
       <div className='product-top'
-
+   onClick={() => {
+    history.push(url);
+  }}
       >
         <img src={cover} alt='product img' />
 

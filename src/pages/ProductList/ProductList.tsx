@@ -6,6 +6,7 @@ import { SubCategoryCard } from '../../components/Category';
 import { cacheOperations } from '../../state/ducks/cache';
 import { brandOperations } from '../../state/ducks/brand';
 import { checkIfItemExistsInCache } from '../../utils';
+import Header from '../../layout/Header';
 
 // import productlisting components
 import SideFilterBar from './SideFilterBar';
@@ -789,6 +790,7 @@ const ProductList = ({
 
   return (
     <>
+    <Header />
       <div className='Bcak-bg'>
         <div
           className={'container-fluid'}

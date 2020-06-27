@@ -10,6 +10,7 @@ import { ProductCard } from '../../components/Product';
 import { checkIfItemExistsInCache } from '../../utils';
 import { cacheOperations } from '../../state/ducks/cache';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Header from '../../layout/Header';
 
 interface Props {
   location: any;
@@ -345,6 +346,8 @@ const ProductSearch = ({
   };
 
   return (
+    <>
+    <Header />
     <div
       style={{
         margin: '10px 10px 10px 25px',
@@ -568,6 +571,7 @@ const ProductSearch = ({
         </div>
       </div>
     </div>
+    </>
   );
 };
 

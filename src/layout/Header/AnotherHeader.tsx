@@ -23,6 +23,8 @@ import MenuBar from './MenuBar';
 import AuthenticationModal from './AuthenticationModal';
 import FloatingCartIcon from './FloatingCartIcon';
 
+import "../../pages/Home/maskCategory.css"
+
 interface Props {
   history: any;
   cartItems: any;
@@ -194,7 +196,9 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   };
 
 
-  
+  console.log('categoryState',categoryState)
+
+
 
 
 
@@ -243,16 +247,27 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           </div>
           </>
           
-          <div className='myHeaderContainer__links'>
-            <span className='myHeaderContainer__link-item'>
-              Support
+          <div 
+          
+          className='myHeaderContainer__links'>
+
+          <span
+          onClick={()=> history.push('/products')}
+           className='myHeaderContainer__link-item'>
+              Products
          </span>
-          <span className='myHeaderContainer__link-item'>
+          <span 
+ onClick={()=> history.push('/products')}
+          className='myHeaderContainer__link-item'>
               Grocery
          </span>
           </div>
-          <div className='myHeaderContainer__joinButtonBox'>
-            <span className='myHeaderContainer__joinButtonBox-button'>
+          <div 
+         
+          className='myHeaderContainer__joinButtonBox'>
+            <span
+             onClick={()=> history.push('/signin')}
+             className='myHeaderContainer__joinButtonBox-button'>
               Join
          </span>
           </div>
@@ -389,6 +404,206 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
         handleToggleCartBar={handleToggleCartBar}
         totalCartPrice={totalCartPrice}
       />
+
+
+
+{windowWidth && windowWidth < 450 ? (
+      
+      <div className='mobilebannerCard'>
+                        <img 
+                src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
+                 alt='banner img'/>
+                        </div>
+            ) : ''}
+      
+      
+      
+      
+      
+      
+      
+      
+            <section className='someClassContainer'>
+          {isLeftSubMenuShown && categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory['1'] && (
+                          <div className='someClassContainerLeftNavMenu'>
+
+                              {categoryDetailState.data.subCategory.map((item: any) => {
+                                  return (
+                                    <span 
+                                    onClick={() => {
+                                      history.push({
+                                        pathname: `/productList/${item.id}`,
+                                        state: { isCategory: true }
+                                      });
+                                    }}
+                                    >
+                                  {item.name}
+                                  </span>)
+                              })}
+                      </div>
+          )}
+             <div 
+             style={{
+              marginLeft: isLeftSubMenuShown 
+              && categoryDetailState.done 
+              &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory['1'] ? '220px' : '0'
+             }}
+             className='somerContainerRightContent'>
+               
+             {windowWidth && windowWidth > 450 ? (
+            
+            <div className='someClassContainerRightBannerContainer'>
+                <img 
+                src='https://shop.redq.now.sh/_next/static/images/grocery-f1565ac25de02b9295dccc2da13004ab.png'
+                 alt='banner img'/>
+      
+                 <div className='bannerSearchBar'>
+                   <span className='categoryBtn'>
+                     {categoryName === 'categoryName' || categoryState.done && categoryState.data[0] && categoryState.data[0].name}
+                   </span>
+                   <input
+                    type='search'
+                    className='bannerSearchBar-input'
+                    placeholder='Search your products from here'
+                    value={searchBarValue2}
+								     	onChange={handleSearchBar2}
+                  />
+                   <span className='searchBttn'
+                   onClick={handleSearch2}
+                   >
+                 <i className='fa fa-search'></i>
+                     Search
+                   </span>
+                 </div>
+                 
+                
+              </div>
+                  ) : ''}
+      
+      
+           
+      
+              <div className='bannerContainer'>
+              {/* <Carousel
+                          containerClass='bannerCardCarouselContainerClass'
+                          sliderClass='bannerCardCarouselSliderClass'
+                          itemClass='bannerCardCarouselItemClass'
+                          infinite={true}
+                          autoPlaySpeed={3000}
+                          autoPlay={true}
+                          responsive={carouselResponsive}>
+      
+                        
+                      </Carousel> */}
+                      <div className='bannerCard'>
+                        <img 
+                src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
+                 alt='banner img'/>
+                        </div>
+                        <div className='bannerCard'>
+                        <img 
+                src='https://shop.redq.now.sh/_next/static/images/offer-2-90d3534e1ad62a8b8a977f1290e61e9f.png'
+                 alt='banner img'/>
+                        </div>
+                        <div className='bannerCard'>
+                        <img 
+                src='https://shop.redq.now.sh/_next/static/images/offer-3-2f8285b13bef950f843cb4147666af6e.png'
+                 alt='banner img'/>
+                        </div>
+      
+              </div>
+              {windowWidth && windowWidth < 450 ? (
+            <>
+
+            {categoryState.done && (
+              <>
+             
+              <div className='mobileScreenCategoryContainer'>
+
+                            {categoryState.data.map((item: any) => {
+                                return (
+                                  <div 
+                                  onClick={() => {
+                                    history.push({
+                                      pathname: `/productList/${item.id}`,
+                                      state: { isCategory: true },
+                                      });
+                                  }}
+                                  className='mobileScreenCategoryContainer-item'>
+                                  <h3>
+                                  {item.name}
+                                  </h3>
+                                </div>
+
+
+                              
+                              
+                               )
+                            })}
+                              </div>
+                              </>
+                   
+        )}
+
+
+
+            </>
+
+                  ) : ''}
+      
+      
+      
+                    
+                    
+      
+              {windowWidth && windowWidth > 450 ? (
+            
+         <>
+           
+      
+      
+            
+              {categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory['1'] && (
+                <>
+                 <h3 className='maskCategoryContainerTitle'>  
+                      Our Sub Categories
+                      </h3>
+                           <div className='maskCategoryContainer'>
+
+                              {categoryDetailState.data.subCategory.map((item: any) => {
+                                  return (
+                                    <div 
+                                    onClick={() => {
+                                      history.push({
+                                        pathname: `/productList/${item.id}`,
+                                        state: { isCategory: true },
+                                        });
+                                    }}
+                                    className='maskCategoryContainer-item'>
+                                    <h3>
+                                    {item.name}
+                                    </h3>
+                                  </div>
+                                
+                                 )
+                              })}
+                                </div>
+                                </>
+                     
+          )}
+
+
+
+            
+         </>
+                  ) : ''}
+      
+                  
+              
+      
+             </div>
+            </section>
+      
     </>
   );
 };

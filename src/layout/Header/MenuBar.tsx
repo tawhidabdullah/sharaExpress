@@ -5,64 +5,31 @@ import config from '../../config.json';
 import { urlToString } from '../../utils';
 
 interface Props {
-  isShowMenuBar: boolean;
-  handleToggleMenuBar: () => void;
-  category: any;
-  addCategory: (any) => void;
-  history: any;
+	isShowMenuBar: boolean;
+	handleToggleMenuBar: () => void;
+	category: any;
+	addCategory: (any) => void;
+	history: any;
 }
 
 const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, history }: Props) => {
-  const navLinksState = useFetch([], [], 'navLinks');
+	const navLinksState = useFetch([], [], 'navLinks');
 
+	return (
+		<div className={isShowMenuBar ? 'show-menu-bar' : ''}>
+			<div onClick={handleToggleMenuBar} className={isShowMenuBar ? 'menu-overlay ' : ''} />
+			<div className={isShowMenuBar ? 'menu showMenu' : 'menu'}>
+				<span className='close-menu' onClick={handleToggleMenuBar}>
+					<i className='fa fa-times' />
+				</span>
 
-  const [categoryListState, handleCategoryListFetch] = useHandleFetch(
-    [],
-    'categoryList'
-  );
+				<div className='menuJoinSection'>
+					<span onClick={() => history.push('/signin')} className='myHeaderContainer__joinButtonBox-button'>
+						Join
+					</span>
+				</div>
 
-  const [localCategory, setLocalCategory] = useState([]);
-
-  useLayoutEffect(() => {
-    if (category && !(category.length > 0)) {
-      const setLocalCategoryAsync = async () => {
-        const localCategory = await handleCategoryListFetch({
-          urlOptions: {
-            params: {
-              isSubCategory: true,
-            },
-          },
-        });
-        // @ts-ignore
-        setLocalCategory(localCategory)
-        addCategory(localCategory);
-      }
-      setLocalCategoryAsync();
-    }
-    else {
-      setLocalCategory(category)
-    }
-  }, [category]);
-
-
-  return (
-    <div className={isShowMenuBar ? 'show-menu-bar' : ''}>
-      <div
-        onClick={handleToggleMenuBar}
-        className={isShowMenuBar ? 'menu-overlay ' : ''}
-      ></div>
-      <div className={isShowMenuBar ? 'menu showMenu' : 'menu'}>
-        <span className='close-menu' onClick={handleToggleMenuBar}>
-          <i className='fa fa-times'></i>
-        </span>
-
-        <div className='menuJoinSection'>
-        <span className='myHeaderContainer__joinButtonBox-button'>
-              Join
-         </span>
-        </div>
-
-
+				{/* 
         {Object.keys(navLinksState.data).length > 0 && (
           <>
             <span className='menuItemHeader'>
@@ -89,59 +56,26 @@ const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, hi
                 })}
             </ul>
           </>
-        )}
+        )} */}
 
-<ul className='menuItems'>
+				<ul className='menuItems'>
+					<li onClick={() => history.push('/')}>
+						<a>Home</a>
+					</li>
+					<li onClick={() => history.push('/checkout')}>
+						<a>Checkout</a>
+					</li>
 
-<li >
-      <a
-       >
-Home
-       </a>
+					<li>
+						<a>Need Help</a>
+					</li>
 
-    
-    </li>
-    <li >
-      <a
-       >
-Checkout
-       </a>
+					<li>
+						<a>Offer</a>
+					</li>
+				</ul>
 
-    
-    </li>
-    <li >
-      <a
-       >
-Order
-       </a>
-
-    
-    </li>
-    <li >
-      <a
-       >
-Need Help
-       </a>
-
-    
-    </li>
-
-    <li >
-      <a
-       >
-Offer
-       </a>
-
-    
-    </li>
-
-
-</ul>
-
-
-
-
-        {/* {localCategory && localCategory.length > 0 && (
+				{/* {localCategory && localCategory.length > 0 && (
           <>
 
             <ul className='menuItems'>
@@ -180,10 +114,9 @@ Offer
             </ul>
           </>
         )} */}
-
-      </div>
-    </div>
-  );
+			</div>
+		</div>
+	);
 };
 
 export default MenuBar;
