@@ -398,13 +398,13 @@ const ProductList = ({
       [];
 
     if (tempCategories && tempCategories.length > 0) {
-      const categoryItem = {
-        name: 'All Categories',
-        id: 'all',
-        [`isall`]: id ? false : true,
-      };
+      // const categoryItem = {
+      //   name: 'All Categories',
+      //   id: 'all',
+      //   [`isall`]: id ? false : true,
+      // };
 
-      return [categoryItem, ...tempCategories];
+      return [...tempCategories];
     }
     return [...tempCategories];
   };
@@ -820,7 +820,7 @@ const ProductList = ({
               setPageNumberOfBrandProduct={setPageNumberOfBrandProduct}
             />
             <div className='col-sm-8 col-md-9'>
-              <div
+              {/* <div
                 className='row productListingSubCategooryContainer'
                 style={{
                   justifyContent:
@@ -841,7 +841,7 @@ const ProductList = ({
                       </Fragment>
                     );
                   })}
-              </div>
+              </div> */}
               <Products
                 isNext={isNext}
                 products={products}

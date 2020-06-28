@@ -182,14 +182,14 @@ const SideFilterBar = ({
               {categories && categories.length > 0 && (
                 <div className='category-block'>
                   <div className='product-detail'>
-                    <h2
+                    {/* <h2
                       className='category-title'
                       style={{
                         marginBottom: '10px',
                       }}
                     >
                       Categories
-                  </h2>
+                  </h2> */}
 
                     <div className='documentation__sidenav-multi-level'>
                       <div className='documentation__sidenav-item'>

@@ -20,6 +20,7 @@ import NavItems from './NavItems';
 import Hotline from './Hotline';
 import CartBar from './CartBar';
 import MenuBar from './MenuBar';
+import AnotherMenu from './AnotherMenu';
 import AuthenticationModal from './AuthenticationModal';
 import FloatingCartIcon from './FloatingCartIcon';
 
@@ -58,6 +59,7 @@ const Header = ({
   const [isModalShown, setIsModalShown] = useState(false);
   const [isLeftSubMenuShown, setSsLeftSubMenuShown] = useState(true);
   const [isCartIconVisiable, setIsCartIconVisiable] = useState(false);
+  const [selectedCategory,setselectedCategory] = useState(false); 
 
   const {categoryName} = useParams(); 
 
@@ -78,27 +80,23 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
   useEffect(()=> {
       const getCategoryDetail = async () => {
-        if(categoryState.done){
-          const getCategoryDetailState = await handleCategoryDetailState({
-            urlOptions: {
-              placeHolders: {
-                categoryName : categoryName === ':categoryName' ? categoryState.data[0] && categoryState.data[0].name.toLowerCase() : categoryName,
-              },
-            },
-          });
+        // @ts-ignore
+        if(categoryState.done && categoryState.data.length > 0){
+
+          if(!selectedCategory){
+            setselectedCategory(categoryState.data[0])
+          }
+         
         }
        
       }
 
       getCategoryDetail(); 
-  },[categoryName,categoryState.data]); 
+  },[categoryState]); 
 
   const [ searchBarValue, setSearchBarValue ] = useState('');
 
-
-
-
-  console.log('categoryDetailStatw',categoryDetailState)
+  console.log('categoryStatecc',categoryState)
 
 
   const handleToggleCartBar = () => {
@@ -161,16 +159,15 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
 
 
-
-
-  const handleSearch = (e) => {
-		e.preventDefault();
+  const handleSearch = () => {
 		history.push({
 			pathname: '/productSearch',
-			search: `?searchCategory=${categoryDetailState.data.id}&query=${searchBarValue}`
+			search: `?searchCategory=${selectedCategory ? selectedCategory['id'] : categoryDetailState.data.id}&query=${searchBarValue}`
 		});
   };
   
+
+
   const handleSearchBar = (e) => {
 		e.preventDefault();
 
@@ -179,17 +176,17 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   
 
 
+  console.log('selectedCategory',selectedCategory)
   
+
 
 
 
   return (
     <>
 
-{windowWidth && windowWidth > 950 ? (
+     {windowWidth && windowWidth > 950 ? (
         <div className='myHeaderContainer'>
-
-
         {categoryDetailState.done &&  categoryDetailState.data.subCategory &&  categoryDetailState.data.subCategory[0] && (
           <div className='myHeaderContainer__hamburgerBox'>
           <span onClick={() => setSsLeftSubMenuShown(value => !value)}>
@@ -205,7 +202,11 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
         <>
           {categoryState.done && (
         <div className='myHeaderContainer__menuButtonBox'>
-        <Menu 
+        <AnotherMenu 
+        // @ts-ignore
+        setselectedCategory={setselectedCategory}
+          // @ts-ignore
+        selectedCategory={selectedCategory}
         history={history} 
         // @ts-ignore
         category={categoryState.data} categoryName={categoryName} />
@@ -222,8 +223,13 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
               type='search'
               className='myHeaderContainer__searchBox-input'
               placeholder='Search your products from here'
-           value={searchBarValue}
-									onChange={handleSearchBar}
+              value={searchBarValue}
+              onChange={handleSearchBar}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  handleSearch()
+                }
+              }}
             />
           </div>
           </>
@@ -243,14 +249,20 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
               Grocery
          </span>
           </div>
+     
           <div 
-         
+
           className='myHeaderContainer__joinButtonBox'>
-            <span
+            {session.isAuthenticated ?   <span
+             onClick={()=> history.push('/dashboard')}
+             className='myHeaderContainer__joinButtonBox-button'>
+              Dashboard
+         </span> :   <span
              onClick={()=> history.push('/signin')}
              className='myHeaderContainer__joinButtonBox-button'>
               Join
-         </span>
+         </span>}
+          
           </div>
         </div>
       ) : ''}
@@ -354,6 +366,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           category={category}
           addCategory={addCategory}
           history={history}
+          session={session}
 
         />
       ) : ""}

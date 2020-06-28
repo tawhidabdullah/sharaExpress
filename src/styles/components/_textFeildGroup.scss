@@ -7,9 +7,10 @@
 .form .password-eye {
 	position: absolute;
 	right: 15px;
-	top: 50px;
+	top: 48px;
 	cursor: pointer;
 	color: $color-dark-1;
+	font-size: 13px;
 }
 .form input {
 	border: 0;
@@ -36,9 +37,23 @@
 	}
 }
 
+::-webkit-input-placeholder {
+	/* Edge */
+	font-size: 13px;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	font-size: 13px;
+}
+
+::placeholder {
+	font-size: 13px;
+}
+
 .form .label {
 	font-size: 15px;
-	color: $color-dark-1;
+	color: #555;
 	text-align: left !important;
 	width: 100%;
 	font-weight: 700;
@@ -62,6 +77,7 @@
 	border-color: rgb(241, 241, 241);
 	border-image: initial;
 	cursor: not-allowed;
+	color: #666;
 }
 
 .form .invalid-feedback {
@@ -128,7 +144,7 @@
 .formLabel {
 	width: 100%;
 	font-size: 15px;
-	color: $color-dark-1;
+	color: #555;
 	width: 100%;
 	font-weight: 700;
 	margin-bottom: 4px;

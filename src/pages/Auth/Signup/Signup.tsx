@@ -147,7 +147,7 @@ const Signup = ({ addItemToCache, cache, history, alert }: Props) => {
       const cityList = cache[`cityList/${selectedCountryValue.value}`];
       setCityList(cityList);
       // @ts-ignore
-      const cityValue = cityList.length > 0 && cityList.find(city => city.name === 'Mādārīpur');
+      const cityValue = cityList.length > 0 && cityList.find(city => city.name === 'Dhaka');
 
       if (cityValue) {
         setSelectedCityValue({
@@ -177,7 +177,7 @@ const Signup = ({ addItemToCache, cache, history, alert }: Props) => {
           // @ts-ignore
           setCityList(cityList);
           // @ts-ignore
-          const cityValue = cityList.length > 0 && cityList.find(city => city.name === 'Mādārīpur');
+          const cityValue = cityList.length > 0 && cityList.find(city => city.name === 'Dhaka');
 
           if (cityValue) {
             setSelectedCityValue({
@@ -289,10 +289,10 @@ const colourStyles = {
   return (
     <>
     <Header/>
-    <div className='auth'>
+    <div className='auth auth-signup'>
      
-      <div className='formContainer'>
-      <h1 className='display-4 auth_title'>{dictionary.signupTitle}</h1>
+      <div className='formContainer formContainer-signup'>
+      <h1 className='auth_title'>{dictionary.signupTitle}</h1>
         <Formik
           initialValues={{ ...initialValues }}
           onSubmit={(values, actions) => handleSubmit(values, actions)}
@@ -325,7 +325,6 @@ const colourStyles = {
                     <TextFeildGroup
                       label='First name'
                       name='firstName'
-                      placeholder='first name'
                       type='text'
                       value={values.firstName}
                       onChange={(e) => {
@@ -343,7 +342,6 @@ const colourStyles = {
                     <TextFeildGroup
                       label='Last name'
                       name='lastName'
-                      placeholder='last name'
                       type='text'
                       value={values.lastName}
                       onChange={(e) => {
@@ -443,7 +441,6 @@ const colourStyles = {
                 <TextFeildGroup
                   label='Phone'
                   name='phone'
-                  placeholder='Mobile phone no'
                   type='text'
                   value={values.phone}
                   onChange={(e) => {
@@ -459,7 +456,6 @@ const colourStyles = {
                 <TextFeildGroup
                   label='Email'
                   name='email'
-                  placeholder='Email address'
                   type='text'
                   value={values.email}
                   onChange={(e) => {

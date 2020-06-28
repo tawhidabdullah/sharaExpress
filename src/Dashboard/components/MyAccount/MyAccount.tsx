@@ -244,7 +244,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
         if (session.isAuthenticated && Object.keys(customerData).length > 0) {
           return city.name === customerData['city']
         }
-        else return city.name === 'Mādārīpur'
+        else return city.name === 'Dhaka'
 
       });
 
@@ -281,7 +281,7 @@ const MyAccount = ({ customerDetail, cache, addItemToCache, alert, session }: Pr
             if (session.isAuthenticated && Object.keys(customerData).length > 0) {
               return city.name === customerData['city']
             }
-            else return city.name === 'Mādārīpur'
+            else return city.name === 'Dhaka'
 
           });
 
@@ -419,12 +419,11 @@ const colourStyles = {
               setFieldTouched,
             }) => (
                 <>
-                  <div className='formContainerOfTwo'>
+                  <div className='formContainerOfTwo' >
                     <div className='formContainerOfTwoItem'>
                       <TextFeildGroup
                         label='First name'
                         name='firstName'
-                        placeholder='FirstName'
                         type='text'
                         value={values.firstName}
                         onChange={(e) => {
@@ -442,7 +441,6 @@ const colourStyles = {
                       <TextFeildGroup
                         label='Last name'
                         name='lastName'
-                        placeholder='Lastname'
                         type='text'
                         value={values.lastName}
                         onChange={(e) => {
@@ -603,7 +601,9 @@ const colourStyles = {
               )}
 
               {customerData['firstName'] && customerData['lastName'] && (
-                <div className='formContainerOfTwo'>
+                <div className='formContainerOfTwo' style={{
+                  marginBottom: '-28px'
+                }}>
                   <div className='formContainerOfTwoItem'>
                     <TextFeildGroup
                       label='Firstname'
@@ -624,7 +624,9 @@ const colourStyles = {
               )}
 
               {customerData['country'] && customerData['city'] && (
-                <div className='formContainerOfTwo'>
+                <div className='formContainerOfTwo' style={{
+                  marginBottom: '-28px'
+                }}>
                   <div className='formContainerOfTwoItem'>
                     <TextFeildGroup
                       label='Country'
@@ -705,7 +707,6 @@ const colourStyles = {
                   <TextFeildGroup
                     label='Phone'
                     name='phone'
-                    placeholder='Enter your phone'
                     type='text'
                     value={values.phone}
                     onChange={(e) => {
@@ -722,7 +723,6 @@ const colourStyles = {
                   <TextFeildGroup
                     label='Email'
                     name='email'
-                    placeholder='Enter your email'
                     type='text'
                     value={values.email}
                     onChange={(e) => {
@@ -813,7 +813,7 @@ const colourStyles = {
                 <TextFeildGroup
                   label='Old Password'
                   name='password'
-                  placeholder='old password'
+                  placeholder='***'
                   type='password'
                   value={values.password}
                   onChange={(e) => {
@@ -830,7 +830,7 @@ const colourStyles = {
                 <TextFeildGroup
                   label='New Password'
                   name='newPassword'
-                  placeholder='New Password'
+                  placeholder='***'
                   type='password'
                   value={values.newPassword}
                   onChange={(e) => {
@@ -847,7 +847,7 @@ const colourStyles = {
                 <TextFeildGroup
                   label='Confirm New Password'
                   name='newPassword2'
-                  placeholder='Confirm New Password'
+                  placeholder='***'
                   type='password'
                   value={values.newPassword2}
                   onChange={(e) => {

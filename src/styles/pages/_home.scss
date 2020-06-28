@@ -192,10 +192,11 @@
 		flex-direction: column;
 		background-color: #fff;
 		padding: 20px 25px 20px 20px;
-		overflow-y: scroll;
+		overflow-y: auto;
 		overflow-x: hidden;
 		position: fixed;
-
+		border-right: 1px solid #fafafa;
+		border-top: 1px solid #fafafa;
 		@media screen and (max-width: 750px) {
 			display: none;
 		}

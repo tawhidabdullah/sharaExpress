@@ -168,8 +168,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
 
 
-  const handleSearch = (e) => {
-		e.preventDefault();
+  const handleSearch = () => {
 		history.push({
 			pathname: '/productSearch',
 			search: `?searchCategory=${categoryDetailState.data.id}&query=${searchBarValue}`
@@ -183,8 +182,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   };
   
 
-  const handleSearch2 = (e) => {
-    e.preventDefault();
+  const handleSearch2 = () => {
 		history.push({
 			pathname: '/productSearch',
 			search: `?searchCategory=${categoryDetailState.data.id}&query=${searchBarValue2}`
@@ -251,7 +249,12 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
               className='myHeaderContainer__searchBox-input'
               placeholder='Search your products from here'
            value={searchBarValue}
-									onChange={handleSearchBar}
+                  onChange={handleSearchBar}
+                  onKeyPress={event => {
+                    if (event.key === 'Enter') {
+                      handleSearch()
+                    }
+                  }}
             />
           </div>
           </>
@@ -265,20 +268,30 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
            className='myHeaderContainer__link-item'>
               Products
          </span>
+
           <span 
  onClick={()=> history.push('/products')}
           className='myHeaderContainer__link-item'>
               Grocery
          </span>
           </div>
+
+
           <div 
+
+
          
           className='myHeaderContainer__joinButtonBox'>
-            <span
+            {session.isAuthenticated ?   <span
+             onClick={()=> history.push('/dashboard')}
+             className='myHeaderContainer__joinButtonBox-button'>
+              Dashboard
+         </span> :   <span
              onClick={()=> history.push('/signin')}
              className='myHeaderContainer__joinButtonBox-button'>
               Join
-         </span>
+         </span>}
+          
           </div>
         </div>
       ) : ''}
@@ -383,6 +396,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           category={category}
           addCategory={addCategory}
           history={history}
+          session={session}
 
         />
       ) : ""}
@@ -482,7 +496,13 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
                     className='bannerSearchBar-input'
                     placeholder='Search your products from here'
                     value={searchBarValue2}
-								     	onChange={handleSearchBar2}
+                       onChange={handleSearchBar2}
+
+                       onKeyPress={event => {
+                         if (event.key === 'Enter') {
+                          handleSearch2()
+                         }
+                       }}
                   />
                    <span className='searchBttn'
                    onClick={handleSearch2}

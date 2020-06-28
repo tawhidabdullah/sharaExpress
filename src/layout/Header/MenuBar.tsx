@@ -10,9 +10,10 @@ interface Props {
 	category: any;
 	addCategory: (any) => void;
 	history: any;
+	session?: any;
 }
 
-const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, history }: Props) => {
+const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, history, session }: Props) => {
 	const navLinksState = useFetch([], [], 'navLinks');
 
 	return (
@@ -24,9 +25,21 @@ const MenuBar = ({ isShowMenuBar, handleToggleMenuBar, category, addCategory, hi
 				</span>
 
 				<div className='menuJoinSection'>
-					<span onClick={() => history.push('/signin')} className='myHeaderContainer__joinButtonBox-button'>
-						Join
-					</span>
+					{session.isAuthenticated ? (
+						<span
+							onClick={() => history.push('/dashboard')}
+							className='myHeaderContainer__joinButtonBox-button'
+						>
+							Dashboard
+						</span>
+					) : (
+						<span
+							onClick={() => history.push('/signin')}
+							className='myHeaderContainer__joinButtonBox-button'
+						>
+							Join
+						</span>
+					)}
 				</div>
 
 				{/* 

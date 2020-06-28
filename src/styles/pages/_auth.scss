@@ -27,6 +27,15 @@
 	box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 5px;
 }
 
+.formContainer.formContainer-signup {
+	min-width: 470px;
+	max-width: 470px;
+
+	@media screen and (max-width: 500px) {
+		min-width: 100%;
+	}
+}
+
 @media screen and (max-width: 500px) {
 	.formContainer {
 		min-width: 100%;
@@ -49,7 +58,7 @@
 .auth_title {
 	font-size: 25px !important;
 	color: $color-dark-1 !important;
-	font-weight: 700 !important;
+	font-weight: 800 !important;
 	margin-bottom: 20px;
 	line-height: 1.5;
 

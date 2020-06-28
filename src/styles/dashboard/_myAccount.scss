@@ -13,12 +13,16 @@
 }
 
 .myAccount .myAccountSectionHeader {
-	font-size: 25px;
+	font-size: 23px;
 	font-weight: 800;
 	line-height: 50px;
 	display: flex;
 	align-items: center;
+	margin: -25px 0 -10px 0;
 
+	&:first-child {
+		margin-top: -5px;
+	}
 	@media only screen and (max-width: $bp-smallest) {
 		justify-content: space-between;
 		flex-wrap: wrap;
