@@ -82,7 +82,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           const getCategoryDetailState = await handleCategoryDetailState({
             urlOptions: {
               placeHolders: {
-                categoryName : categoryName === 'categoryName' ? categoryState.data[0] && categoryState.data[0].name : categoryName,
+                categoryName : categoryName === ':categoryName' ? categoryState.data[0] && categoryState.data[0].name.toLowerCase() : categoryName,
               },
             },
           });
@@ -94,7 +94,6 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   },[categoryName,categoryState.data]); 
 
   const [ searchBarValue, setSearchBarValue ] = useState('');
-  const [ searchBarValue2, setSearchBarValue2 ] = useState('');
 
 
 
@@ -179,20 +178,6 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   };
   
 
-  const handleSearch2 = (e) => {
-    e.preventDefault();
-		history.push({
-			pathname: '/productSearch',
-			search: `?searchCategory=${categoryDetailState.data.id}&query=${searchBarValue2}`
-		});
-  };
-  
-  const handleSearchBar2 = (e) => {
-		e.preventDefault();
-
-		setSearchBarValue2(e.target.value);
-  };
-
 
   
 
@@ -201,11 +186,11 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   return (
     <>
 
-      {windowWidth && windowWidth > 950 ? (
+{windowWidth && windowWidth > 950 ? (
         <div className='myHeaderContainer'>
 
 
-        {categoryDetailState.done &&  categoryDetailState.data.subCategory &&  categoryDetailState.data.subCategory['1'] && (
+        {categoryDetailState.done &&  categoryDetailState.data.subCategory &&  categoryDetailState.data.subCategory[0] && (
           <div className='myHeaderContainer__hamburgerBox'>
           <span onClick={() => setSsLeftSubMenuShown(value => !value)}>
               <i className='fa fa-bars' />
@@ -243,22 +228,32 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           </div>
           </>
           
-          <div className='myHeaderContainer__links'>
-            <span className='myHeaderContainer__link-item'>
-              Support
+          <div 
+          
+          className='myHeaderContainer__links'>
+
+          <span
+          onClick={()=> history.push('/products')}
+           className='myHeaderContainer__link-item'>
+              Products
          </span>
-          <span className='myHeaderContainer__link-item'>
+          <span 
+ onClick={()=> history.push('/products')}
+          className='myHeaderContainer__link-item'>
               Grocery
          </span>
           </div>
-          <div className='myHeaderContainer__joinButtonBox'>
-            <span className='myHeaderContainer__joinButtonBox-button'>
+          <div 
+         
+          className='myHeaderContainer__joinButtonBox'>
+            <span
+             onClick={()=> history.push('/signin')}
+             className='myHeaderContainer__joinButtonBox-button'>
               Join
          </span>
           </div>
         </div>
       ) : ''}
-
 
 
       {/* <TopHead

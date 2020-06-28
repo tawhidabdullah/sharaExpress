@@ -17,6 +17,7 @@ import Checkout from './pages/Checkout';
 import Dashboard from './Dashboard';
 import { NotFoundPage } from './pages/NotFound';
 import Footer from './layout/Footer';
+import DearHome from './pages/Home/DearHome';
 
 const App = () => {
 	return (
@@ -24,8 +25,9 @@ const App = () => {
 			<React.Fragment>
 				{/* <Header /> */}
 				<Switch>
-					<Route exact path={'/'} render={() => <Redirect to='/category/:categoryName' />} />
-					<Route exact path={'/category/:categoryName'} component={AnotherHeader} />
+					<Route exact path={'/'} component={DearHome} />
+
+					<Route exact path={'/:categoryName'} component={AnotherHeader} />
 
 					<Route exact path={'/product/:categoryName/:productName'} component={ProductDetail} />
 

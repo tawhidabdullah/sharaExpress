@@ -7,29 +7,36 @@ interface Props {
 }
 
 const Menu = ({ history, category, categoryName }: Props) => {
+	console.log('fuck', category, categoryName);
 	return (
 		<div className='all-department'>
 			<span className='nav-menu'>
-				<span className='nav-menu-title'>{categoryName === 'categoryName' || category['0'].name}</span>
+				<span className='nav-menu-title'>
+					{categoryName === ':categoryName' || categoryName === undefined ? (
+						category[0] && category['0'].name
+					) : (
+						categoryName
+					)}
+				</span>
 				<i className='fa fa-sort-down' />
 			</span>
 			<div className='all-department-sideMenu'>
 				<ul>
-					{category.slice(0, 10).map((categoryItem) => {
-						console.log('url', categoryItem.url);
-						return (
-							<li
-								onClick={() => {
-									history.push({
-										pathname: categoryItem.url,
-										state: { category: true }
-									});
-								}}
-							>
-								{categoryItem.name}{' '}
-							</li>
-						);
-					})}
+					{category.length > 0 &&
+						category.slice(0, 10).map((categoryItem) => {
+							return (
+								<li
+									onClick={() => {
+										history.push({
+											pathname: `/${categoryItem.name.toLowerCase()}`,
+											state: { category: true }
+										});
+									}}
+								>
+									{categoryItem.name}{' '}
+								</li>
+							);
+						})}
 				</ul>
 			</div>
 		</div>

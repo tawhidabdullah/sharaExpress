@@ -1,150 +1,150 @@
 .maskCategoryContainerTitle {
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 1.5;
-    padding-left: 25px;
-    background-color: #fff;
-    padding-bottom: 10px;
+	font-size: 25px;
+	font-weight: 700;
+	line-height: 1.5;
+	padding-left: 25px;
+	background-color: #fff;
+	padding-bottom: 10px;
 }
 
 @media screen and (max-width: 900px) {
-    .maskCategoryContainerTitle {
-        text-align: center;
-        padding-left: 0;
-        padding-top: 10px;
-    }
+	.maskCategoryContainerTitle {
+		text-align: center;
+		padding-left: 0;
+		padding-top: 10px;
+	}
 }
 
 .maskCategoryContainer {
-    padding: 35px 20px;
-    background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
+	padding: 35px 20px;
+	background-color: #fff;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 @media screen and (max-width: 900px) {
-    .maskCategoryContainer {
-        padding: 10px 20px;
-        background-color: #fff;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+	.maskCategoryContainer {
+		padding: 10px 20px;
+		background-color: #fff;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 }
 
 .maskCategoryContainer .maskCategoryContainer-item {
-    background-color: #eff5f5;
-    -webkit-mask-image: url('../../assets/maskImage.png');
-    mask-image: url('../../assets/maskImage.png');
-    height: 190px;
-    width: 200px;
-    -webkit-mask-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    cursor: pointer;
-    margin-bottom: 30px;
+	/* background-color: #eff5f5; */
+	-webkit-mask-image: url('../../assets/maskImage.png');
+	mask-image: url('../../assets/maskImage.png');
+	height: 190px;
+	width: 200px;
+	-webkit-mask-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	cursor: pointer;
+	margin-bottom: 30px;
 }
 
 @media screen and (max-width: 900px) {
-    .maskCategoryContainer .maskCategoryContainer-item {
-        height: 180px;
-        width: 180px;
-        margin: 20px;
-    }
+	.maskCategoryContainer .maskCategoryContainer-item {
+		height: 180px;
+		width: 180px;
+		margin: 20px;
+	}
 }
 
 .maskCategoryContainer .maskCategoryContainer-item:hover {
-    background-color: #24bc94;
-    color: #fff;
+	background-color: #199977 !important;
+	color: #fff;
 }
 
 .maskCategoryContainer .maskCategoryContainer-item h3 {
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
-    margin-left: -25px;
-    width: 85%;
-    line-height: 1.5;
+	font-size: 15px;
+	font-weight: 700;
+	text-align: center;
+	margin-left: -25px;
+	width: 85%;
+	line-height: 1.5;
 }
 
 .mobileScreenCategoryContainer {
-    padding: 15px 20px;
-    background-color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+	padding: 15px 20px;
+	background-color: #fff;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
-    cursor: pointer;
-    padding: 15px 25px;
-    border-radius: 6px;
-    max-width: 100%;
-    margin: 0px 15px 20px 15px;
-    color: #303a3f;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
+	cursor: pointer;
+	padding: 15px 25px;
+	border-radius: 6px;
+	max-width: 100%;
+	margin: 0px 15px 20px 15px;
+	color: #303a3f;
+	background-color: rgb(255, 255, 255);
+	box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
 }
 
 @media screen and (max-width: 335px) {
-    .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
-        cursor: pointer;
-        padding: 15px 20px;
-        border-radius: 6px;
-        max-width: 100%;
-        margin: 0px 0 20px 0;
-        color: #303a3f;
-        background-color: rgb(255, 255, 255);
-        box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
-    }
+	.mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
+		cursor: pointer;
+		padding: 15px 20px;
+		border-radius: 6px;
+		max-width: 100%;
+		margin: 0px 0 20px 0;
+		color: #303a3f;
+		background-color: rgb(255, 255, 255);
+		box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
+	}
 }
 
 @media screen and (max-width: 425px) {
-    .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
-        cursor: pointer;
-        padding: 15px 20px;
-        border-radius: 6px;
-        margin: 0px 15px 20px 15px;
-        color: #303a3f;
-        background-color: rgb(255, 255, 255);
-        box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
-    }
+	.mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
+		cursor: pointer;
+		padding: 15px 20px;
+		border-radius: 6px;
+		margin: 0px 15px 20px 15px;
+		color: #303a3f;
+		background-color: rgb(255, 255, 255);
+		box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
+	}
 }
 
 @media screen and (max-width: 380px) {
-    .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
-        cursor: pointer;
-        padding: 15px 20px;
-        border-radius: 6px;
-        margin: 0px 15px 20px 15px;
-        color: #303a3f;
-        background-color: rgb(255, 255, 255);
-        box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
-    }
+	.mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
+		cursor: pointer;
+		padding: 15px 20px;
+		border-radius: 6px;
+		margin: 0px 15px 20px 15px;
+		color: #303a3f;
+		background-color: rgb(255, 255, 255);
+		box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
+	}
 }
 
 @media screen and (max-width: 335px) {
-    .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
-        cursor: pointer;
-        padding: 15px 20px;
-        border-radius: 6px;
-        max-width: 100%;
-        margin: 0px 0 20px 0;
-        color: #303a3f;
-        background-color: rgb(255, 255, 255);
-        box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
-    }
+	.mobileScreenCategoryContainer .mobileScreenCategoryContainer-item {
+		cursor: pointer;
+		padding: 15px 20px;
+		border-radius: 6px;
+		max-width: 100%;
+		margin: 0px 0 20px 0;
+		color: #303a3f;
+		background-color: rgb(255, 255, 255);
+		box-shadow: rgba(142, 142, 142, 0.14) 0px 2px 3px;
+	}
 }
 
 .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item:hover {
-    color: #24bc94;
+	color: #24bc94;
 }
 
 .mobileScreenCategoryContainer .mobileScreenCategoryContainer-item h3 {
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.5;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: center;
+	line-height: 1.5;
 }

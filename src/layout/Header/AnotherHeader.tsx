@@ -22,6 +22,7 @@ import CartBar from './CartBar';
 import MenuBar from './MenuBar';
 import AuthenticationModal from './AuthenticationModal';
 import FloatingCartIcon from './FloatingCartIcon';
+import {CatalogPlaceholder} from '../../components/Placeholders';
 
 import "../../pages/Home/maskCategory.css"
 
@@ -84,7 +85,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           const getCategoryDetailState = await handleCategoryDetailState({
             urlOptions: {
               placeHolders: {
-                categoryName : categoryName === 'categoryName' ? categoryState.data[0] && categoryState.data[0].name : categoryName,
+                categoryName : categoryName === ':categoryName' ? categoryState.data[0] && categoryState.data[0].name.toLowerCase() : categoryName,
               },
             },
           });
@@ -101,7 +102,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
 
 
-  console.log('categoryDetailStatw',categoryDetailState)
+  console.log('categoryDetailState',categoryDetailState)
 
 
   const handleToggleCartBar = () => {
@@ -196,11 +197,18 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
   };
 
 
-  console.log('categoryState',categoryState)
+  console.log('categoryState',categoryState.data[0])
 
 
 
 
+  console.log('categoryDetailState',categoryDetailState); 
+
+
+  const getMaskColor = () => {
+    const colors = ['#e1ffd9','#ffdedc','#89c74a','#ffd8ed','#e1e9fc']; 
+    return colors[Math.floor(Math.random() * 5)]; 
+  }
 
   return (
     <>
@@ -209,7 +217,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
         <div className='myHeaderContainer'>
 
 
-        {categoryDetailState.done &&  categoryDetailState.data.subCategory &&  categoryDetailState.data.subCategory['1'] && (
+        {categoryDetailState.done &&  categoryDetailState.data.subCategory &&  categoryDetailState.data.subCategory[0] && (
           <div className='myHeaderContainer__hamburgerBox'>
           <span onClick={() => setSsLeftSubMenuShown(value => !value)}>
               <i className='fa fa-bars' />
@@ -424,7 +432,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
       
       
             <section className='someClassContainer'>
-          {isLeftSubMenuShown && categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory['1'] && (
+          {isLeftSubMenuShown && categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] && (
                           <div className='someClassContainerLeftNavMenu'>
 
                               {categoryDetailState.data.subCategory.map((item: any) => {
@@ -446,20 +454,27 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
              style={{
               marginLeft: isLeftSubMenuShown 
               && categoryDetailState.done 
-              &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory['1'] ? '220px' : '0'
+              &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] ? '220px' : '0'
              }}
              className='somerContainerRightContent'>
                
-             {windowWidth && windowWidth > 450 ? (
+             {categoryDetailState.done && windowWidth && windowWidth > 450 ? (
             
             <div className='someClassContainerRightBannerContainer'>
                 <img 
-                src='https://shop.redq.now.sh/_next/static/images/grocery-f1565ac25de02b9295dccc2da13004ab.png'
+                src={categoryDetailState.data.image && categoryDetailState.data.image.length > 0 && categoryDetailState.data.image[0]}
                  alt='banner img'/>
       
                  <div className='bannerSearchBar'>
                    <span className='categoryBtn'>
-                     {categoryName === 'categoryName' || categoryState.done && categoryState.data[0] && categoryState.data[0].name}
+
+                     
+                   {categoryName === ':categoryName' || categoryName === undefined ? (
+                    categoryState.done && categoryState.data[0] && categoryState.data[0].name
+                  ) : (
+                    categoryName
+                  )}
+                     
                    </span>
                    <input
                     type='search'
@@ -480,38 +495,44 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
               </div>
                   ) : ''}
       
+
+      {categoryDetailState.isLoading || categoryState.isLoading ? <CatalogPlaceholder /> : "" }
       
            
+
+           {categoryDetailState.done && (
+             
+             <div className='bannerContainer'>
+             {/* <Carousel
+                         containerClass='bannerCardCarouselContainerClass'
+                         sliderClass='bannerCardCarouselSliderClass'
+                         itemClass='bannerCardCarouselItemClass'
+                         infinite={true}
+                         autoPlaySpeed={3000}
+                         autoPlay={true}
+                         responsive={carouselResponsive}>
+     
+                       
+                     </Carousel> */}
+                     <div className='bannerCard'>
+                       <img 
+               src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
+                alt='banner img'/>
+                       </div>
+                       <div className='bannerCard'>
+                       <img 
+               src='https://shop.redq.now.sh/_next/static/images/offer-2-90d3534e1ad62a8b8a977f1290e61e9f.png'
+                alt='banner img'/>
+                       </div>
+                       <div className='bannerCard'>
+                       <img 
+               src='https://shop.redq.now.sh/_next/static/images/offer-3-2f8285b13bef950f843cb4147666af6e.png'
+                alt='banner img'/>
+                       </div>
+     
+             </div>
+           )}
       
-              <div className='bannerContainer'>
-              {/* <Carousel
-                          containerClass='bannerCardCarouselContainerClass'
-                          sliderClass='bannerCardCarouselSliderClass'
-                          itemClass='bannerCardCarouselItemClass'
-                          infinite={true}
-                          autoPlaySpeed={3000}
-                          autoPlay={true}
-                          responsive={carouselResponsive}>
-      
-                        
-                      </Carousel> */}
-                      <div className='bannerCard'>
-                        <img 
-                src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
-                 alt='banner img'/>
-                        </div>
-                        <div className='bannerCard'>
-                        <img 
-                src='https://shop.redq.now.sh/_next/static/images/offer-2-90d3534e1ad62a8b8a977f1290e61e9f.png'
-                 alt='banner img'/>
-                        </div>
-                        <div className='bannerCard'>
-                        <img 
-                src='https://shop.redq.now.sh/_next/static/images/offer-3-2f8285b13bef950f843cb4147666af6e.png'
-                 alt='banner img'/>
-                        </div>
-      
-              </div>
               {windowWidth && windowWidth < 450 ? (
             <>
 
@@ -563,11 +584,8 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
       
       
             
-              {categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory['1'] && (
+              {categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] && (
                 <>
-                 <h3 className='maskCategoryContainerTitle'>  
-                      Our Sub Categories
-                      </h3>
                            <div className='maskCategoryContainer'>
 
                               {categoryDetailState.data.subCategory.map((item: any) => {
@@ -578,6 +596,9 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
                                         pathname: `/productList/${item.id}`,
                                         state: { isCategory: true },
                                         });
+                                    }}
+                                    style={{
+                                      backgroundColor:getMaskColor()
                                     }}
                                     className='maskCategoryContainer-item'>
                                     <h3>
