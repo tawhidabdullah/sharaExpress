@@ -11,6 +11,7 @@ import { checkIfItemExistsInCache } from '../../utils';
 import { cacheOperations } from '../../state/ducks/cache';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Header from '../../layout/Header';
+import Footer from '../../layout/Footer';
 
 interface Props {
   location: any;
@@ -571,6 +572,7 @@ const ProductSearch = ({
         </div>
       </div>
     </div>
+    <Footer />
     </>
   );
 };

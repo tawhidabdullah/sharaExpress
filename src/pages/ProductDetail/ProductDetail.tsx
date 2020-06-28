@@ -7,6 +7,7 @@ import { cacheOperations } from '../../state/ducks/cache';
 import { checkIfItemExistsInCache } from '../../utils';
 import Products from '../../pages/Home/Products';
 import Header from '../../layout/Header';
+import Footer from '../../layout/Footer';
 
 interface Props {
   match: any;
@@ -254,6 +255,7 @@ const ProductDetail = (props: Props) => {
       )}
 
       {productDetailState.isLoading && <ProductPlaceholder />}
+      <Footer />
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../layout/Header';
+import Footer from '../../layout/Footer';
 interface Props {}
 
 const NotFoundPage = (props: Props) => {
@@ -37,6 +38,7 @@ const NotFoundPage = (props: Props) => {
         <Link to='/'>Go to Home </Link>
       </p>
     </div>
+    <Footer />
     </>
   );
 };

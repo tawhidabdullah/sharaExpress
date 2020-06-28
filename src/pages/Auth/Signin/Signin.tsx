@@ -9,6 +9,7 @@ import { sessionOperations } from '../../../state/ducks/session';
 import { withAlert } from 'react-alert';
 import dictionary from '../../../dictionary';
 import Header from '../../../layout/Header';
+import Footer from '../../../layout/Footer';
 
 // import input fields
 import { TextFeildGroup } from '../../../components/Field';
@@ -146,6 +147,7 @@ const Signin = (props: Props) => {
       </div>
      
     </div>
+    <Footer />
     </>
   );
 };

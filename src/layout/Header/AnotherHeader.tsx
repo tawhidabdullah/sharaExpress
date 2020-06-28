@@ -7,6 +7,7 @@ import { cacheOperations } from '../../state/ducks/cache';
 import { cartOperations, cartSelectors } from '../../state/ducks/cart';
 import { wishListOperations } from '../../state/ducks/wishList';
 import { useFetch,useHandleFetch } from '../../hooks';
+import Footer from '../Footer';
 
 // import header components
 import TopHead from './TopHead';
@@ -621,10 +622,16 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
       
                   
               
+      {categoryState.done && categoryDetailState.done && <Footer />}
       
              </div>
+
+             
             </section>
       
+
+
+     
     </>
   );
 };

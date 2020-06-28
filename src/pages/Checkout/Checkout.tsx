@@ -29,6 +29,7 @@ import CheckoutCartItem from "./CheckoutCartItem";
 import CheckoutSuccessModal from './CheckoutSuccessModal';
 import CheckoutForm from './CheckoutForm';
 import Header from '../../layout/Header';
+import Footer from '../../layout/Footer';
 
 // validation schemeas
 
@@ -1939,6 +1940,7 @@ const Checkout = ({
                     </div>
                   </div>
                 </div>
+                <Footer />
               </>
             )}
         </Formik>

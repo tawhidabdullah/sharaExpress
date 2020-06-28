@@ -11,6 +11,7 @@ import { cacheOperations } from '../../../state/ducks/cache';
 import { withAlert } from 'react-alert';
 import dictionary from '../../../dictionary';
 import Header from '../../../layout/Header';
+import Footer from '../../../layout/Footer';
 
 
 // import input fields
@@ -530,6 +531,7 @@ const colourStyles = {
       </div>
       
     </div>
+    <Footer/>
     </>
   );
 };

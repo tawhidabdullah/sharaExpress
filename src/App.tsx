@@ -27,8 +27,6 @@ const App = () => {
 				<Switch>
 					<Route exact path={'/'} component={DearHome} />
 
-					<Route exact path={'/:categoryName'} component={AnotherHeader} />
-
 					<Route exact path={'/product/:categoryName/:productName'} component={ProductDetail} />
 
 					<Route exact path='/products' render={() => <Redirect to='/productList/all' />} />
@@ -44,6 +42,8 @@ const App = () => {
 					<Route exact path={'/checkout'} component={Checkout} />
 
 					<Route exact path={'/dashboard'} component={Dashboard} />
+
+					<Route exact path={'/:categoryName'} component={AnotherHeader} />
 
 					<Route path='*' component={NotFoundPage} />
 				</Switch>

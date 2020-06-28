@@ -7,6 +7,7 @@ import { cacheOperations } from '../../state/ducks/cache';
 import { brandOperations } from '../../state/ducks/brand';
 import { checkIfItemExistsInCache } from '../../utils';
 import Header from '../../layout/Header';
+import Footer from '../../layout/Footer';
 
 // import productlisting components
 import SideFilterBar from './SideFilterBar';
@@ -852,6 +853,7 @@ const ProductList = ({
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
