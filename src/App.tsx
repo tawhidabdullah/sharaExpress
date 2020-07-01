@@ -18,6 +18,7 @@ import Dashboard from './Dashboard';
 import { NotFoundPage } from './pages/NotFound';
 import Footer from './layout/Footer';
 import DearHome from './pages/Home/DearHome';
+import CategoryProducts from './pages/CategoryProducts';
 
 const App = () => {
 	return (
@@ -44,6 +45,7 @@ const App = () => {
 					<Route exact path={'/dashboard'} component={Dashboard} />
 
 					<Route exact path={'/:categoryName'} component={AnotherHeader} />
+					<Route exact path={'/products/:categoryName'} component={CategoryProducts} />
 
 					<Route path='*' component={NotFoundPage} />
 				</Switch>

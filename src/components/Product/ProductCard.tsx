@@ -249,14 +249,14 @@ const ProductCard = ({
         >
           {name}
         </h2>
-        <div className='product-bottom-attributes'>
+        {/* <div className='product-bottom-attributes'>
           <span>
             1KG
           </span>
           <span>
             500G
           </span>
-        </div>
+        </div> */}
 
         <div className='product-bottom-price-and-cartActions'>
 
@@ -289,8 +289,8 @@ const ProductCard = ({
                   <> <i className='fa fa-shopping-cart'></i> Added</>
                 )) || (
                     <>
-                      <i className='fa fa-shopping-cart'></i>
-                        Cart
+                      <i className='fa fa-cart-plus'></i>
+                       Add
                    </>
                   )}
               </>

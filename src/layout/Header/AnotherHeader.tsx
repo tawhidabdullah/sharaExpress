@@ -60,7 +60,7 @@ const Header = ({
   const [isShowCartBar, setIsShowCartBar] = useState(false);
   const [isShowMenuBar, setIsShowMenuBar] = useState(false);
   const [isModalShown, setIsModalShown] = useState(false);
-  const [isLeftSubMenuShown, setSsLeftSubMenuShown] = useState(true);
+  const [isLeftSubMenuShown, setSsLeftSubMenuShown] = useState(false);
   const [isCartIconVisiable, setIsCartIconVisiable] = useState(false);
 
   const {categoryName} = useParams(); 
@@ -203,10 +203,12 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
   console.log('categoryDetailState',categoryDetailState); 
 
-
+  let maskIndex = 0;
   const getMaskColor = () => {
-    const colors = ['#e1ffd9','#ffdedc','#89c74a','#ffd8ed','#e1e9fc']; 
-    return colors[Math.floor(Math.random() * 5)]; 
+    const colors = ['#e1ffd9','#ffdedc','#89c74a','#ffd8ed','#e1e9fc'];
+    maskIndex = maskIndex % 5; 
+
+    return colors[maskIndex++]; 
   }
 
   return (
@@ -455,7 +457,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
                                     <span 
                                     onClick={() => {
                                       history.push({
-                                        pathname: `/productList/${item.id}`,
+                                        pathname: `/products/${item.name}`,
                                         state: { isCategory: true }
                                       });
                                     }}
@@ -469,7 +471,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
              style={{
               marginLeft: isLeftSubMenuShown 
               && categoryDetailState.done 
-              &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] ? '220px' : '0'
+              &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] ? '250px' : '0'
              }}
              className='somerContainerRightContent'>
                

@@ -243,7 +243,7 @@ const colourStyles = {
         ...styles,
         backgroundColor: 'rgb(247, 247, 247)',
         border: '1px solid rgb(241, 241, 241)',
-        height: '50px',
+        height: '45px',
         minHeight: '40px',
         borderRadius: '6px'
     }),
@@ -275,7 +275,7 @@ const colourStyles = {
     },
     input: styles => ({ ...styles, color: '#303a3f', ...dot() }),
     placeholder: styles => ({ ...styles, color: '#303a3f', ...dot() }),
-    singleValue: (styles, { data }) => ({ ...styles, marginTop: '-2px', marginLeft: '-2px', color: '#303a3f', ...dot(data.color) }),
+    singleValue: (styles, { data }) => ({ ...styles, marginTop: '-5px', marginLeft: '-2px', fontSize:'14px', color: '#303a3f', ...dot(data.color) }),
 };
 
 

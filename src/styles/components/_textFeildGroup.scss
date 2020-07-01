@@ -1,36 +1,34 @@
 .form {
-	// max-width: 600px;
 	margin: 25px 0;
 	position: relative;
 }
 
 .form .password-eye {
 	position: absolute;
-	right: 15px;
-	top: 48px;
+	right: 12px;
+	top: 44px;
 	cursor: pointer;
-	color: $color-dark-1;
+	color: #444;
 	font-size: 13px;
 }
 .form input {
 	border: 0;
 	outline: 0;
-	padding: 0.8em;
+	padding: 0.6em;
+	margin-top: 0.8em;
 	border-radius: 6px;
 	display: block;
 	width: 100%;
-	margin-top: 0.8em;
 	resize: none;
-	font-size: 15px;
+	font-size: 14px;
 	color: $color-dark-1;
 	background-color: rgb(247, 247, 247);
 	border-color: rgb(241, 241, 241);
 	outline: none !important;
 	border-width: 1px;
 	border-style: solid;
-
 	border-image: initial;
-	min-height: 40px;
+	max-height: 45px;
 
 	@media only screen and (max-width: 600px) {
 		font-size: 14px;
@@ -70,14 +68,18 @@
 
 .form input:disabled {
 	border-radius: 6px;
-	background-color: rgb(247, 247, 247);
+	background-color: #fff;
 	outline: none !important;
-	border-width: 1px;
-	border-style: solid;
-	border-color: rgb(241, 241, 241);
+	// border-width: 1px;
+	// border-style: solid;
+	// border-color: rgb(241, 241, 241);
 	border-image: initial;
 	cursor: not-allowed;
 	color: #666;
+	border: none;
+	padding: 0.4em 0 0.4em 0;
+	margin-top: 0.2em;
+	font-size: 13px;
 }
 
 .form .invalid-feedback {
@@ -152,4 +154,13 @@
 	@media only screen and (max-width: 600px) {
 		font-size: 14px;
 	}
+}
+
+.css-tlfecz-indicatorContainer {
+	padding-right: 10px !important;
+	padding-bottom: 15px !important;
+}
+
+.css-1okebmr-indicatorSeparator {
+	width: 0 !important;
 }

@@ -13,6 +13,69 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 
+
+const dot = (color = '#111b3d') => ({
+  alignItems: 'center',
+  display: 'flex',
+
+  ':before': {
+      backgroundColor: color,
+      borderRadius: 6,
+      content: '" "',
+      display: 'block',
+      marginRight: 8,
+      // height: 10,
+      // width: 10,
+  },
+});
+
+
+
+
+const colourStyles = {
+  control: styles => ({
+      ...styles,
+      backgroundColor: 'rgb(247, 247, 247)',
+      border: '1px solid rgb(241, 241, 241)',
+      height: '45px',
+      minHeight: '40px',
+      borderRadius: '6px'
+  }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      const color = '#009e7f';
+      return {
+          ...styles,
+          backgroundColor: isDisabled
+              ? null
+              : isSelected
+                  ? color
+                  : isFocused
+                      ? color
+                      : 'rgb(247, 247, 247)',
+          color: isDisabled
+              ? '#333'
+              : isSelected
+                  ? color
+                  : isFocused
+                      ? 'rgb(247, 247, 247)'
+                      : '#303a3f',
+          cursor: isDisabled ? 'not-allowed' : 'default',
+
+          ':active': {
+              ...styles[':active'],
+              backgroundColor: !isDisabled && (isSelected ? color : '#303a3f'),
+          },
+      };
+  },
+  input: styles => ({ ...styles, color: '#303a3f', ...dot() }),
+  placeholder: styles => ({ ...styles, color: '#303a3f', ...dot() }),
+  singleValue: (styles, { data }) => ({ ...styles, marginTop: '-5px', marginLeft: '-2px', fontSize:'14px', color: '#303a3f', ...dot(data.color) }),
+};
+
+
+
+
+
 interface Props {
   location: any;
   history: any;
@@ -436,6 +499,7 @@ const ProductSearch = ({
                             </h2>
                             <div className='sortBySelectorsSelects'>
                               <Select
+                               styles={colourStyles}
                                 value={selectedCategoryValueForSort}
                                 onChange={(value) =>
                                   handleSelectCategoryChange(value)
@@ -458,6 +522,7 @@ const ProductSearch = ({
                     <h2 className='sortBySelectorsContainer-title'>Sort by</h2>
                     <div className='sortBySelectorsSelects'>
                       <Select
+                       styles={colourStyles}
                         value={selectedValueForSort}
                         onChange={(value) => setSortBySelect(value)}
                         defaultValue={{

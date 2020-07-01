@@ -622,7 +622,8 @@ class Converter {
 						})
 					: [],
 			image:
-				(data.image && data.image.length > 0 && data.image.map((img) => `${config.baseURL}${img.medium}`)) || []
+				(data.image && data.image.length > 0 && data.image.map((img) => `${config.baseURL}${img.original}`)) ||
+				[]
 		};
 
 		return convertedData;
@@ -652,7 +653,8 @@ class Converter {
 						})
 					: [],
 			image:
-				(data.image && data.image.length > 0 && data.image.map((img) => `${config.baseURL}${img.medium}`)) || []
+				(data.image && data.image.length > 0 && data.image.map((img) => `${config.baseURL}${img.original}`)) ||
+				[]
 		};
 
 		return convertedData;
