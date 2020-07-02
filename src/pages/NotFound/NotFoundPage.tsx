@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../layout/Header';
+import AnotherHeaderAgain from '../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../layout/Footer';
 interface Props {}
 
 const NotFoundPage = (props: Props) => {
   return (
     <>
-    <Header />
+    <AnotherHeaderAgain />
     <div
       style={{
         height: '400px',

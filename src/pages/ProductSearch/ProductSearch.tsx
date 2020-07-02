@@ -10,7 +10,7 @@ import { ProductCard } from '../../components/Product';
 import { checkIfItemExistsInCache } from '../../utils';
 import { cacheOperations } from '../../state/ducks/cache';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Header from '../../layout/Header';
+import AnotherHeaderAgain from '../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../layout/Footer';
 
 
@@ -411,7 +411,7 @@ const ProductSearch = ({
 
   return (
     <>
-    <Header />
+    <AnotherHeaderAgain />
     <div
       style={{
         margin: '10px 10px 10px 25px',

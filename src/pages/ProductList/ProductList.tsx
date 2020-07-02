@@ -5,8 +5,9 @@ import { useHandleFetch } from '../../hooks';
 import { SubCategoryCard } from '../../components/Category';
 import { cacheOperations } from '../../state/ducks/cache';
 import { brandOperations } from '../../state/ducks/brand';
+import { globalOperations } from '../../state/ducks/globalState';
 import { checkIfItemExistsInCache } from '../../utils';
-import Header from '../../layout/Header';
+import AnotherHeaderAgain from '../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../layout/Footer';
 
 // import productlisting components
@@ -23,6 +24,7 @@ interface Props {
   tag: any;
   addBrand: (any) => void;
   brand: any;
+  globalState: any; 
 }
 
 const ProductList = ({
@@ -35,6 +37,7 @@ const ProductList = ({
   tag,
   addBrand,
   brand,
+  globalState
 }: Props) => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -397,14 +400,35 @@ const ProductList = ({
         })) ||
       [];
 
+      console.log('globalState',globalState)
     if (tempCategories && tempCategories.length > 0) {
-      // const categoryItem = {
-      //   name: 'All Categories',
-      //   id: 'all',
-      //   [`isall`]: id ? false : true,
-      // };
 
-      return [...tempCategories];
+      if(globalState && globalState.activeCategory && globalState.activeCategory.name){
+        const realTempCategories = []; 
+
+        for (let item of tempCategories){
+          // @ts-ignore
+          if(item['name'] && globalState.activeCategory['name']){
+            // @ts-ignore
+            if(item['name'].toLowerCase() === globalState.activeCategory['name'].toLowerCase()){
+              // @ts-ignore
+              realTempCategories.push(item); 
+            }
+         
+          }
+        }
+     
+   
+         return [...realTempCategories];
+      }
+      else {
+
+        const realTempCategories = [tempCategories[0]]
+   
+         return [...realTempCategories];
+
+      }
+ 
     }
     return [...tempCategories];
   };
@@ -791,7 +815,7 @@ const ProductList = ({
 
   return (
     <>
-    <Header />
+    <AnotherHeaderAgain />
       <div className='Bcak-bg'>
         <div
           className={'container-fluid'}
@@ -868,6 +892,7 @@ const mapStateToProps = (state) => ({
   cache: state.cache,
   tag: state.tag,
   brand: state.brand,
+  globalState: state.globalState
 });
 
 // @ts-ignore

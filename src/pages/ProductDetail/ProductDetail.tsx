@@ -6,7 +6,7 @@ import ProductDetailContent from './ProductDetailContent';
 import { cacheOperations } from '../../state/ducks/cache';
 import { checkIfItemExistsInCache } from '../../utils';
 import Products from '../../pages/Home/Products';
-import Header from '../../layout/Header';
+import AnotherHeaderAgain from '../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../layout/Footer';
 
 interface Props {
@@ -129,7 +129,7 @@ const ProductDetail = (props: Props) => {
 
   return (
     <>
-<Header />
+    <AnotherHeaderAgain />
       {!fethedProductFromCache && (
         <>
           {!productDetailState.isLoading &&

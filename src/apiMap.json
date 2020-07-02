@@ -24,6 +24,10 @@
 			"url": "/api/component/slider",
 			"method": "get"
 		},
+		"banner": {
+			"url": "/api/component/banner",
+			"method": "get"
+		},
 		"sliderRight": {
 			"url": "/api/component/sliderRight",
 			"method": "get"

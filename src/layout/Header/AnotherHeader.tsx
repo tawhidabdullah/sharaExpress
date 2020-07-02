@@ -7,7 +7,9 @@ import { cacheOperations } from '../../state/ducks/cache';
 import { cartOperations, cartSelectors } from '../../state/ducks/cart';
 import { wishListOperations } from '../../state/ducks/wishList';
 import { useFetch,useHandleFetch } from '../../hooks';
+import { globalOperations } from '../../state/ducks/globalState';
 import Footer from '../Footer';
+import Header from '../Header';
 
 // import header components
 import TopHead from './TopHead';
@@ -40,9 +42,11 @@ interface Props {
   clearCart: () => void;
   clearWishList: () => void;
   totalCartPrice: number;
+  globalState: any; 
+  changeActiveCategory: any; 
 }
 
-const Header = ({
+const Anotherheader = ({
   history,
   cartItems,
   session,
@@ -54,13 +58,11 @@ const Header = ({
   cache,
   clearCart,
   clearWishList,
-  totalCartPrice
+  totalCartPrice,
+  changeActiveCategory,
+  globalState
 }: Props) => {
   const [windowWidth, setWindowWidth] = useState(0);
-  const [isShowCartBar, setIsShowCartBar] = useState(false);
-  const [isShowMenuBar, setIsShowMenuBar] = useState(false);
-  const [isModalShown, setIsModalShown] = useState(false);
-  const [isLeftSubMenuShown, setSsLeftSubMenuShown] = useState(false);
   const [isCartIconVisiable, setIsCartIconVisiable] = useState(false);
 
   const {categoryName} = useParams(); 
@@ -78,6 +80,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
     'categoryDetailByURL'
   );
 
+  const bannerState = useFetch([],[], 'banner');
 
 
   useEffect(()=> {
@@ -97,34 +100,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
       getCategoryDetail(); 
   },[categoryName,categoryState.data]); 
 
-  const [ searchBarValue, setSearchBarValue ] = useState('');
   const [ searchBarValue2, setSearchBarValue2 ] = useState('');
-
-
-
-
-  console.log('categoryDetailState',categoryDetailState)
-
-
-  const handleToggleCartBar = () => {
-    setIsShowCartBar((isShowCartBar) => !isShowCartBar);
-  };
-
-  const handleToggleMenuBar = () => {
-    setIsShowMenuBar((isShowMenuBar) => !isShowMenuBar);
-  };
-  const handleModalClose = () => {
-    setIsModalShown(false);
-  };
-
-  const handleModalShow = () => {
-    setIsModalShown(true);
-  };
-
-  const handleGoToLogin = () => {
-    setIsModalShown(false);
-    history.push('/signin');
-  };
 
   const getWindowWidth = () => {
     return Math.max(
@@ -168,20 +144,6 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
 
 
-  const handleSearch = () => {
-		history.push({
-			pathname: '/productSearch',
-			search: `?searchCategory=${categoryDetailState.data.id}&query=${searchBarValue}`
-		});
-  };
-  
-  const handleSearchBar = (e) => {
-		e.preventDefault();
-
-		setSearchBarValue(e.target.value);
-  };
-  
-
   const handleSearch2 = () => {
 		history.push({
 			pathname: '/productSearch',
@@ -201,7 +163,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
 
 
 
-  console.log('categoryDetailState',categoryDetailState); 
+  console.log('bannerState.data',bannerState.data); 
 
   let maskIndex = 0;
   const getMaskColor = () => {
@@ -211,227 +173,10 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
     return colors[maskIndex++]; 
   }
 
+
   return (
     <>
-
-      {windowWidth && windowWidth > 950 ? (
-        <div className='myHeaderContainer'>
-
-
-        {categoryDetailState.done &&  categoryDetailState.data.subCategory &&  categoryDetailState.data.subCategory[0] && (
-          <div className='myHeaderContainer__hamburgerBox'>
-          <span onClick={() => setSsLeftSubMenuShown(value => !value)}>
-              <i className='fa fa-bars' />
-          </span>
-        </div>
-
-        )}
-          <div className='myHeaderContainer__logoBox'>
-            <Logo cache={cache} addItemToCache={addItemToCache} />
-          </div>
-
-        <>
-          {categoryState.done && (
-        <div className='myHeaderContainer__menuButtonBox'>
-        <Menu 
-        history={history} 
-        // @ts-ignore
-        category={categoryState.data} categoryName={categoryName} />
-        </div>
-        )}
-           
-          <div className='myHeaderContainer__searchBox'>
-            <span className='myHeaderContainer__searchBox-icon'
-            onClick={handleSearch}
-            >
-              <i className='fa fa-search'></i>
-            </span>
-            <input
-              type='search'
-              className='myHeaderContainer__searchBox-input'
-              placeholder='Search your products from here'
-           value={searchBarValue}
-                  onChange={handleSearchBar}
-                  onKeyPress={event => {
-                    if (event.key === 'Enter') {
-                      handleSearch()
-                    }
-                  }}
-            />
-          </div>
-          </>
-          
-          <div 
-          
-          className='myHeaderContainer__links'>
-
-          <span
-          onClick={()=> history.push('/products')}
-           className='myHeaderContainer__link-item'>
-              Products
-         </span>
-
-          <span 
- onClick={()=> history.push('/products')}
-          className='myHeaderContainer__link-item'>
-              Grocery
-         </span>
-          </div>
-
-
-          <div 
-
-
-         
-          className='myHeaderContainer__joinButtonBox'>
-            {session.isAuthenticated ?   <span
-             onClick={()=> history.push('/dashboard')}
-             className='myHeaderContainer__joinButtonBox-button'>
-              Dashboard
-         </span> :   <span
-             onClick={()=> history.push('/signin')}
-             className='myHeaderContainer__joinButtonBox-button'>
-              Join
-         </span>}
-          
-          </div>
-        </div>
-      ) : ''}
-
-
-
-      {/* <TopHead
-        history={history}
-        isAuthenticated={session['isAuthenticated']}
-        logout={logout}
-        cache={cache}
-        addItemToCache={addItemToCache}
-        clearCart={clearCart}
-        clearWishList={clearWishList}
-      />
-
-      <div
-        className='navbar'
-        style={{
-          position: 'relative',
-        }}
-      >
-        <div className='navbar-center'>
-          <Logo cache={cache} addItemToCache={addItemToCache} />
-          {windowWidth && windowWidth > 600 ? (
-            <SearchBar
-              history={history}
-              addCategory={addCategory}
-              getCategory={getCategory}
-              category={category}
-            />
-          ) : ''}
-
-          {windowWidth && windowWidth < 600 ? (
-            ''
-          ) : (
-              <CartIcon
-                handleToggleCartBar={handleToggleCartBar}
-                cartLength={cartItems.length}
-              />
-            )}
-        </div>
-      </div>
-
-      {windowWidth && windowWidth < 600 ? (
-        <MobileNav
-          handleToggleCartBar={handleToggleCartBar}
-          handleToggleMenuBar={handleToggleMenuBar}
-          history={history}
-          cartLength={cartItems.length}
-        />
-      ) : (
-          ''
-        )}
-
-
-
-      {windowWidth && windowWidth > 600 ? (
-        <div className='navbar'>
-          <div className='navbar-center'>
-            <Menu history={history} category={category} />
-
-            <div className='navbar-center-navItems'>
-              <NavItems />
-            </div>
-            <Hotline />
-          </div>
-        </div>
-      ) : ''}
-
-
-      {windowWidth && windowWidth < 600 ? (
-        <MenuBar
-          isShowMenuBar={isShowMenuBar}
-          handleToggleMenuBar={handleToggleMenuBar}
-          category={category}
-          addCategory={addCategory}
-          history={history}
-
-        />
-      ) : ""}
-
- */}
-
-
-
-      {windowWidth && windowWidth < 950 ? (
-        <MobileNav
-          handleToggleCartBar={handleToggleCartBar}
-          handleToggleMenuBar={handleToggleMenuBar}
-          history={history}
-          cartLength={cartItems.length}
-        />
-      ) : (
-          ''
-        )}
-
-      {windowWidth && windowWidth < 950 ? (
-        <MenuBar
-          isShowMenuBar={isShowMenuBar}
-          handleToggleMenuBar={handleToggleMenuBar}
-          category={category}
-          addCategory={addCategory}
-          history={history}
-          session={session}
-
-        />
-      ) : ""}
-
-
-
-      <AuthenticationModal
-        isModalShown={isModalShown}
-        handleModalClose={handleModalClose}
-        handleGoToLogin={handleGoToLogin}
-      />
-
-      <CartBar
-        // @ts-ignore
-        handleToggleCartBar={handleToggleCartBar}
-        isShowCartBar={isShowCartBar}
-        history={history}
-        handleModalShow={handleModalShow}
-        isAuthenticated={session['isAuthenticated']}
-      />
-
-
-      <FloatingCartIcon
-        isCartIconVisiable={isCartIconVisiable}
-        isShowCartBar={isShowCartBar}
-        cartLength={cartItems.length}
-        windowWidth={windowWidth}
-        handleToggleCartBar={handleToggleCartBar}
-        totalCartPrice={totalCartPrice}
-      />
-
-
-
+<Header />
 {windowWidth && windowWidth < 450 ? (
       
       <div className='mobilebannerCard'>
@@ -441,15 +186,8 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
                         </div>
             ) : ''}
       
-      
-      
-      
-      
-      
-      
-      
             <section className='someClassContainer'>
-          {isLeftSubMenuShown && categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] && (
+          {globalState['isLeftMenuActive']  && categoryDetailState.done &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] && (
                           <div className='someClassContainerLeftNavMenu'>
 
                               {categoryDetailState.data.subCategory.map((item: any) => {
@@ -457,10 +195,11 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
                                     <span 
                                     onClick={() => {
                                       history.push({
-                                        pathname: `/products/${item.name}`,
-                                        state: { isCategory: true }
-                                      });
+                                        pathname: `/productList/${item.id}`,
+                                        state: { isCategory: true },
+                                        });
                                     }}
+                                    
                                     >
                                   {item.name}
                                   </span>)
@@ -469,7 +208,7 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
           )}
              <div 
              style={{
-              marginLeft: isLeftSubMenuShown 
+              marginLeft: globalState['isLeftMenuActive'] 
               && categoryDetailState.done 
               &&  categoryDetailState.data.subCategory && categoryDetailState.data.subCategory[0] ? '250px' : '0'
              }}
@@ -526,32 +265,18 @@ const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
            {categoryDetailState.done && (
              
              <div className='bannerContainer'>
-             {/* <Carousel
-                         containerClass='bannerCardCarouselContainerClass'
-                         sliderClass='bannerCardCarouselSliderClass'
-                         itemClass='bannerCardCarouselItemClass'
-                         infinite={true}
-                         autoPlaySpeed={3000}
-                         autoPlay={true}
-                         responsive={carouselResponsive}>
-     
-                       
-                     </Carousel> */}
-                     <div className='bannerCard'>
-                       <img 
-               src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
-                alt='banner img'/>
-                       </div>
-                       <div className='bannerCard'>
-                       <img 
-               src='https://shop.redq.now.sh/_next/static/images/offer-2-90d3534e1ad62a8b8a977f1290e61e9f.png'
-                alt='banner img'/>
-                       </div>
-                       <div className='bannerCard'>
-                       <img 
-               src='https://shop.redq.now.sh/_next/static/images/offer-3-2f8285b13bef950f843cb4147666af6e.png'
-                alt='banner img'/>
-                       </div>
+           
+
+           {bannerState.done && bannerState.data.length > 0 && bannerState.data.map(item => {
+             return (
+              <div className='bannerCard'>
+              <img 
+      src={item.src}
+      
+       alt='banner img'/>
+              </div>
+             )
+           })}
      
              </div>
            )}
@@ -665,6 +390,7 @@ const mapDispatchToProps = {
   addItemToCache: cacheOperations.addItemToCache,
   clearCart: cartOperations.clearCart,
   clearWishList: wishListOperations.clearWishList,
+  changeActiveCategory: globalOperations.changeActiveCategory,
 };
 
 const mapStateToProps = (state) => ({
@@ -673,6 +399,7 @@ const mapStateToProps = (state) => ({
   session: state.session,
   category: state.category,
   cache: state.cache,
+  globalState: state.globalState,
 });
 
 // @ts-ignore
@@ -680,4 +407,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
   // @ts-ignore
-)(withRouter(Header));
+)(withRouter(Anotherheader));

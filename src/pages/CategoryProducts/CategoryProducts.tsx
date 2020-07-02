@@ -36,8 +36,7 @@ const ProductList = ({
   brand,
 }: Props) => {
     const {categoryName} = useParams(); 
-
-
+    
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
@@ -417,7 +416,6 @@ const ProductList = ({
 
   return (
     <>
-    <Header />
       <div className='Bcak-bg'>
         <div
           className={'container-fluid'}

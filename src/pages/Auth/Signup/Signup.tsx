@@ -10,7 +10,7 @@ import { checkIfItemExistsInCache } from '../../../utils';
 import { cacheOperations } from '../../../state/ducks/cache';
 import { withAlert } from 'react-alert';
 import dictionary from '../../../dictionary';
-import Header from '../../../layout/Header';
+import AnotherHeaderAgain from '../../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../../layout/Footer';
 
 
@@ -288,7 +288,7 @@ const colourStyles = {
 
   return (
     <>
-    <Header/>
+    <AnotherHeaderAgain />
     <div className='auth auth-signup'>
      
       <div className='formContainer formContainer-signup'>

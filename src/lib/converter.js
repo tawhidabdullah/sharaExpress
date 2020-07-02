@@ -936,6 +936,27 @@ class Converter {
 
 	/**
    * @public
+   * @method slider convert api data from API to general format based on config server
+   * @param {Object} data response objectc from wc
+   * @returns {Object}  converted data
+   */
+	async banner(data) {
+		const sliderItems = data.items;
+		if (!sliderItems.length > 0) {
+			return sliderItems;
+		}
+
+		const images = sliderItems.map((item) => {
+			return {
+				target: item.target,
+				src: `${config['baseURL']}${item.image[0]['medium']}`
+			};
+		});
+		return images;
+	}
+
+	/**
+   * @public
    * @method sliderRight convert api data from API to general format based on config server
    * @param {Object} data response objectc from alpha
    * @returns {Object}  converted data

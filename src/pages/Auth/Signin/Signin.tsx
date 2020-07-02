@@ -8,7 +8,7 @@ import { useHandleFetch } from '../../../hooks';
 import { sessionOperations } from '../../../state/ducks/session';
 import { withAlert } from 'react-alert';
 import dictionary from '../../../dictionary';
-import Header from '../../../layout/Header';
+import AnotherHeaderAgain from '../../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../../layout/Footer';
 
 // import input fields
@@ -70,7 +70,7 @@ const Signin = (props: Props) => {
 
   return (
     <>
-    <Header/>
+    <AnotherHeaderAgain />
     <div className='auth'>
     
       <div className='formContainer'>

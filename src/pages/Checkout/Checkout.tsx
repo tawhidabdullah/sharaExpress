@@ -28,7 +28,7 @@ import CheckoutCartItem from "./CheckoutCartItem";
 // import checkout component
 import CheckoutSuccessModal from './CheckoutSuccessModal';
 import CheckoutForm from './CheckoutForm';
-import Header from '../../layout/Header';
+import AnotherHeaderAgain from '../../layout/Header/AnotherHeaderAgain';
 import Footer from '../../layout/Footer';
 
 // validation schemeas
@@ -706,7 +706,7 @@ const Checkout = ({
     if (!session.isAuthenticated) {
       history.push('/dashboard');
     } else {
-      history.push('/');
+      // history.push('/');
     }
   };
 
@@ -1048,7 +1048,7 @@ const Checkout = ({
 
   return (
     <>
-    <Header/>
+    <AnotherHeaderAgain />
       {!isAuthLoading && (
         <Formik
           enableReinitialize={isShipToDifferentAddress ? false : true}

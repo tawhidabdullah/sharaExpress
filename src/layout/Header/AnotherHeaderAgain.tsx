@@ -22,6 +22,7 @@ import NavItems from './NavItems';
 import Hotline from './Hotline';
 import CartBar from './CartBar';
 import MenuBar from './MenuBar';
+import AnotherMenu from './AnotherMenu';
 import AuthenticationModal from './AuthenticationModal';
 import FloatingCartIcon from './FloatingCartIcon';
 import {CatalogPlaceholder} from '../../components/Placeholders';
@@ -196,14 +197,6 @@ const Header = ({
         <div className='myHeaderContainer'>
 
 
-        { categoryState.done && (
-          <div className='myHeaderContainer__hamburgerBox'>
-          <span onClick={() => toggleLeftMenuButton()}>
-              <i className='fa fa-bars' />
-          </span>
-        </div>
-
-        )}
           <div className='myHeaderContainer__logoBox'>
             <Logo cache={cache} addItemToCache={addItemToCache} />
           </div>
@@ -211,7 +204,7 @@ const Header = ({
         <>
           {categoryState.done && (
         <div className='myHeaderContainer__menuButtonBox'>
-        <Menu 
+        <AnotherMenu 
         history={history} 
         // @ts-ignore
         category={categoryState.data} 

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 import { useFetch, useHandleFetch } from '../../hooks';
 import { checkIfItemExistsInCache } from '../../utils';
+import { globalOperations } from '../../state/ducks/globalState';
+
 import ReactLoading from 'react-loading';
 
 
@@ -10,22 +13,30 @@ interface Props {
   addItemToCache: (any) => void;
   cache: any;
   history: any; 
+  globalState: any; 
 }
 
-const SplashScreen = ({ addItemToCache, cache,history }: Props) => {
+const SplashScreen = ({ addItemToCache, cache,history, globalState }: Props) => {
   const [categoryListState, handleCategoryListStateFetch] = useHandleFetch([], 'categoryList');
 
 
   useEffect(() => {
     const getCategoryList = async () => {
+      if(globalState.activeCategory.name){
+        history.push(`/${globalState.activeCategory.name.toLowerCase()}`); 
+      }
+      else {
         const categoryList = await handleCategoryListStateFetch({});
         
-       console.log('categoryListfuck',categoryList); 
-
-       // @ts-ignore
-       if(categoryList && categoryList.length > 0){
-        history.push(`/${categoryList[0] && categoryList[0].name.toLowerCase()}`); 
-       }
+        console.log('categoryListfuck',categoryList); 
+ 
+        // @ts-ignore
+        if(categoryList && categoryList.length > 0){
+ 
+         history.push(`/${categoryList[0] && categoryList[0].name.toLowerCase()}`); 
+        }
+      }
+       
       };
 
       getCategoryList();
@@ -50,5 +61,17 @@ const SplashScreen = ({ addItemToCache, cache,history }: Props) => {
   );
 };
 
+const mapDispatchToProps = {
+ 
+};
+
+const mapStateToProps = (state) => ({
+  globalState: state.globalState,
+});
+
 // @ts-ignore
-export default withRouter(SplashScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+  // @ts-ignore
+)(withRouter(SplashScreen));
