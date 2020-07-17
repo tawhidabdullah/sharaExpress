@@ -486,10 +486,9 @@ navbar-center-navItems a:hover {
 
 .navbar-center-logoBox {
 	cursor: pointer;
-	width: 170px;
-	height: 55px;
-	// padding: 10px;
-	padding: 5px;
+	width: 80px;
+	height: 40px;
+	margin: 0 25px;
 }
 
 .navbar-center-logoBox img {
@@ -524,7 +523,7 @@ navbar-center-navItems a:hover {
 .nav-menu-title {
 	font-size: 14px;
 	color: $color-primary-1;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 .nav-menu .fa-sort-down {
@@ -581,9 +580,10 @@ navbar-center-navItems a:hover {
 	cursor: pointer;
 	margin-bottom: 25px;
 	color: $color-dark-1;
-	font-weight: 800;
+	font-weight: 500;
 	text-transform: capitalize;
-	font-size: 15px;
+	font-size: 14px;
+	line-height: 1.4;
 }
 
 .all-department-sideMenu ul li:hover {
@@ -1005,16 +1005,29 @@ SheraTong New Design
 	position: sticky;
 	top: 0;
 	z-index: 1000;
+	justify-content: space-between;
+	padding: 7px 0;
+	border-bottom: 1px solid #f7f7f7;
 }
 
 .myHeaderContainer__hamburgerBox {
 	margin: 0 20px;
 	margin-left: 30px;
-
+	font-weight: 500;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	color: $color-primary-1;
+	cursor: pointer;
+	h4 {
+		margin: 0;
+		padding: 0;
+	}
 	span {
+		margin-right: 10px;
 		font-size: 20px;
 		color: $color-primary-1;
-		cursor: pointer;
+	
 	}
 }
 
@@ -1038,12 +1051,12 @@ SheraTong New Design
 .myHeaderContainer__searchBox-input {
 	border: 0;
 	outline: 0;
-	padding: 12px 20px 12px 46px;
+	padding: 9px 20px 9px 46px;
 	border-radius: 5px;
 	display: block;
 	width: 100%;
 	resize: none;
-	font-size: 14px;
+	font-size: 13px;
 	color: $color-dark-1;
 	background-color: #fafafa;
 	width: 100%;
@@ -1056,8 +1069,7 @@ SheraTong New Design
 .myHeaderContainer__link-item {
 	margin: 0 20px;
 	font-size: 14px;
-	font-weight: 700;
-	color: #444;
+	font-weight: 500;
 	cursor: pointer;
 }
 
@@ -1067,17 +1079,23 @@ SheraTong New Design
 	border-radius: 3px;
 	padding: 10px 20px;
 	color: #fff;
-	font-weight: 700;
+	font-weight: 600;
 	cursor: pointer;
 	transition: all .5s;
 	margin-right: 20px;
 	margin-left: 10px;
+	font-size: 13px;
 }
 
 .myHeaderContainer__joinButtonBox-button:hover {
 	background-color: $color-primary-2;
 }
 
+
+
+.myHeaderTopContainer {
+
+}
 // .myHeaderContainer__searchBox-input::-moz-placeholder {
 //   color: #444 ;
 //   font-weight: 700;

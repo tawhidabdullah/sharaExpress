@@ -191,7 +191,7 @@
 		display: flex;
 		flex-direction: column;
 		background-color: #fff;
-		padding: 20px 25px 20px 20px;
+		padding: 0px 10px 21px 5px;
 		overflow-y: auto;
 		overflow-x: hidden;
 		position: fixed;
@@ -201,16 +201,30 @@
 			display: none;
 		}
 
-		span {
-			display: inline-block;
-			font-size: 15px;
-			font-weight: 700;
+		div {
+			display: flex;
+			font-size: 13px;
+			font-weight: 400;
 			padding: 15px;
 			cursor: pointer;
 			transition: all .5s;
+			align-items: center;
+			margin-bottom: -5px;
+
+			img {
+				width: 30px;
+				width: 30px;
+				object-fit: contain;
+			}
+
+			span {
+				font-size: 13px;
+				font-weight: 400;
+				margin-left: 15px;
+			}
 		}
 
-		span:hover {
+		div:hover {
 			color: $color-primary-1;
 		}
 	}

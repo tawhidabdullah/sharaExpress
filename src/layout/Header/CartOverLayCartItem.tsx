@@ -29,6 +29,8 @@ const CartOverLayCartItem = ({
 
   let { product, quantity } = cartItem;
   const { url, cover, name, price, id, cartKey } = product;
+
+  
   const handleChangeQuantity = async (value) => {
     if (value === 'minus') {
       if (quantity === 1) {

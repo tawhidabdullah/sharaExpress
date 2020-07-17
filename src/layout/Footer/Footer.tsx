@@ -108,117 +108,157 @@ const Footer = ({ addItemToCache, cache }: Props) => {
   }, []);
 
   return (
-    <footer className='footer'>
-      <div className='row'>
-        {Object.keys(address).length > 0 && (
-          <div className='col-md-3'>
-            <div className='our__categories'>
-              <span className='widget-title'>Address</span>
-              <ul className='footerMenu'>
-                <li
-                  key={address['name']}
-                  className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
-                >
-                  <a href={'##'}>{address['text']}</a>
-                </li>
-              </ul>
+    <>
+      <div className='upperFooterContainer'>
+        <div className='upperFooterContainer__left'>
+          <div className='upperFooterContainer__left-imgContainer'>
+            <img src={require('../../assets/shirt.png')} alt="icon img" />
+          </div>
+          <div className='upperFooterContainer__left-contactbox'>
+            <h2>
+              Get special discount in your inbox
+              </h2>
+
+            <div className='upperFooterContainer__left-contactbox-mailBox'>
+              <input type="text" />
+              <span>
+                Subscripbe
+                </span>
             </div>
           </div>
-        )}
-
-        {account.length > 0 && (
-          <div className='col-md-3'>
-            <div className='our__categories'>
-              <span className='widget-title'>Accounts</span>
-              <ul className='footerMenu'>
-                {account.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
-                    >
-                      {urlToString(item['target']).includes(
-                        urlToString(config.baseURL2)
-                      ) ? (
-                          <Link to={item['target'].replace(config.baseURL2, '')}>
-                            {item['name']}
-                          </Link>
-                        ) : (
-                          <a href={item['target']}>{item['name']}</a>
-                        )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+        </div>
+        <div className='upperFooterContainer__right'>
+          <div className='upperFooterContainer__right-imgContainer'>
+            <img src={require('../../assets/callClient.png')} alt="icon img" />
           </div>
-        )}
+          <div className='upperFooterContainer__right-contactbox'>
+            <h2>
+              For any help you may call us at
+              </h2>
 
-        {services.length > 0 && (
-          <div className='col-md-3'>
-            <div className='our__categories'>
-              <span className='widget-title'>Links </span>
-              <ul className='footerMenu'>
-                {services.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
-                    >
-                      {
-                        item['name'] && item['name'].toLowerCase() === 'sitemap' ?
-                          <a href={item['target']}>{item['name']}</a>
-                          :
-                          <>
-                            {urlToString(item['target']).includes(
-                              urlToString(config.baseURL2)
-                            ) ? (
-                                <Link to={item['target'].replace(config.baseURL2, '')}>
-                                  {item['name']}
-                                </Link>
-                              ) : (
-                                <a href={item['target']}>{item['name']}</a>
-                              )}
-                          </>
-                      }
+            <h3>
+              05353353535, 05834053805
+              </h3>
 
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            <h4>
+              Open 24 Hours a Day, 7 Days a week
+              </h4>
+
           </div>
-        )}
-
-        {aboutUs.length > 0 && (
-          <div className='col-md-3'>
-            <div className='our__categories'>
-              <span className='widget-title'>About Us</span>
-              <ul className='footerMenu'>
-                {aboutUs.map((item, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
-                    >
-                      {urlToString(item['target']).includes(
-                        urlToString(config.baseURL2)
-                      ) ? (
-                          <Link to={item['target'].replace(config.baseURL2, '')}>
-                            {item['name']}
-                          </Link>
-                        ) : (
-                          <a href={item['target']}>{item['name']}</a>
-                        )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
-    </footer>
+      <footer className='footer'>
+        <div className='row'>
+          {Object.keys(address).length > 0 && (
+            <div className='col-md-3'>
+              <div className='our__categories'>
+                <span className='widget-title'>Address</span>
+                <ul className='footerMenu'>
+                  <li
+                    key={address['name']}
+                    className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
+                  >
+                    <a href={'##'}>{address['text']}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {account.length > 0 && (
+            <div className='col-md-3'>
+              <div className='our__categories'>
+                <span className='widget-title'>Accounts</span>
+                <ul className='footerMenu'>
+                  {account.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
+                      >
+                        {urlToString(item['target']).includes(
+                          urlToString(config.baseURL2)
+                        ) ? (
+                            <Link to={item['target'].replace(config.baseURL2, '')}>
+                              {item['name']}
+                            </Link>
+                          ) : (
+                            <a href={item['target']}>{item['name']}</a>
+                          )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {services.length > 0 && (
+            <div className='col-md-3'>
+              <div className='our__categories'>
+                <span className='widget-title'>Links </span>
+                <ul className='footerMenu'>
+                  {services.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
+                      >
+                        {
+                          item['name'] && item['name'].toLowerCase() === 'sitemap' ?
+                            <a href={item['target']}>{item['name']}</a>
+                            :
+                            <>
+                              {urlToString(item['target']).includes(
+                                urlToString(config.baseURL2)
+                              ) ? (
+                                  <Link to={item['target'].replace(config.baseURL2, '')}>
+                                    {item['name']}
+                                  </Link>
+                                ) : (
+                                  <a href={item['target']}>{item['name']}</a>
+                                )}
+                            </>
+                        }
+
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {aboutUs.length > 0 && (
+            <div className='col-md-3'>
+              <div className='our__categories'>
+                <span className='widget-title'>About Us</span>
+                <ul className='footerMenu'>
+                  {aboutUs.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
+                      >
+                        {urlToString(item['target']).includes(
+                          urlToString(config.baseURL2)
+                        ) ? (
+                            <Link to={item['target'].replace(config.baseURL2, '')}>
+                              {item['name']}
+                            </Link>
+                          ) : (
+                            <a href={item['target']}>{item['name']}</a>
+                          )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </footer>
+    </>
   );
 };
 

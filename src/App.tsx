@@ -1,5 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+import { Provider as ReduxProvider } from 'react-redux';
+
 
 // import Layout
 import Header from './layout/Header';
@@ -20,38 +24,65 @@ import Footer from './layout/Footer';
 import DearHome from './pages/Home/DearHome';
 import CategoryProducts from './pages/CategoryProducts';
 
+// import store
+import { store } from './state/store';
+
+// import css
+import './styles/main.scss';
+
+
+
+
+
+
+// optional cofiguration
+const options = {
+	// you can also just use 'bottom center'
+	position: positions.BOTTOM_RIGHT,
+	timeout: 10000,
+	offset: '30px',
+	// you can also just use 'scale'
+	transition: transitions.SCALE
+};
+
+
 const App = () => {
 	return (
-		<BrowserRouter>
-			<React.Fragment>
-				{/* <Header /> */}
-				<Switch>
-					<Route exact path={'/'} component={DearHome} />
+		<ReduxProvider store={store}>
+			<AlertProvider template={AlertTemplate} {...options}>
+				<BrowserRouter>
+					<React.Fragment>
+						{/* <Header /> */}
+						<Switch>
+							<Route exact path={'/'} component={DearHome} />
 
-					<Route exact path={'/product/:categoryName/:productName'} component={ProductDetail} />
+							<Route exact path={'/product/:categoryName/:productName'} component={ProductDetail} />
 
-					<Route exact path='/products' render={() => <Redirect to='/productList/all' />} />
+							<Route exact path='/products' render={() => <Redirect to='/productList/all' />} />
 
-					<Route exact path='/productList' render={() => <Redirect to='/productList/all' />} />
-					<Route exact path={'/productList/:id'} component={ProductList} />
-					<Route exact path={'/productSearch'} component={ProductSearch} />
+							<Route exact path='/productList' render={() => <Redirect to='/productList/all' />} />
+							<Route exact path={'/productList/:id'} component={ProductList} />
+							<Route exact path={'/productSearch'} component={ProductSearch} />
 
-					<Route exact path={'/cart'} component={ShoppingCart} />
+							<Route exact path={'/cart'} component={ShoppingCart} />
 
-					<Route exact path='/signin' component={Signin} />
-					<Route exact path='/signup' component={Signup} />
-					<Route exact path={'/checkout'} component={Checkout} />
+							<Route exact path='/signin' component={Signin} />
+							<Route exact path='/signup' component={Signup} />
+							<Route exact path={'/checkout'} component={Checkout} />
 
-					<Route exact path={'/dashboard'} component={Dashboard} />
+							<Route exact path={'/dashboard'} component={Dashboard} />
 
-					<Route exact path={'/:categoryName'} component={AnotherHeader} />
-					<Route exact path={'/products/:categoryName'} component={CategoryProducts} />
+							<Route exact path={'/:categoryName'} component={AnotherHeader} />
+							<Route exact path={'/products/:categoryName'} component={CategoryProducts} />
 
-					<Route path='*' component={NotFoundPage} />
-				</Switch>
-				{/* <Footer /> */}
-			</React.Fragment>
-		</BrowserRouter>
+							<Route path='*' component={NotFoundPage} />
+						</Switch>
+						{/* <Footer /> */}
+					</React.Fragment>
+				</BrowserRouter>
+			</AlertProvider>
+		</ReduxProvider>
+
 	);
 };
 export default App;

@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
-import { withRouter,useParams } from 'react-router-dom';
+import { withRouter, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { sessionOperations } from '../../state/ducks/session';
 import { categoryOperations } from '../../state/ducks/category';
@@ -7,7 +7,7 @@ import { cacheOperations } from '../../state/ducks/cache';
 import { cartOperations, cartSelectors } from '../../state/ducks/cart';
 import { wishListOperations } from '../../state/ducks/wishList';
 import { globalOperations } from '../../state/ducks/globalState';
-import { useFetch,useHandleFetch } from '../../hooks';
+import { useFetch, useHandleFetch } from '../../hooks';
 import Footer from '../Footer';
 
 // import header components
@@ -24,7 +24,7 @@ import CartBar from './CartBar';
 import MenuBar from './MenuBar';
 import AuthenticationModal from './AuthenticationModal';
 import FloatingCartIcon from './FloatingCartIcon';
-import {CatalogPlaceholder} from '../../components/Placeholders';
+import { CatalogPlaceholder } from '../../components/Placeholders';
 
 import "../../pages/Home/maskCategory.css"
 
@@ -41,10 +41,10 @@ interface Props {
   clearCart: () => void;
   clearWishList: () => void;
   totalCartPrice: number;
-  globalState: any; 
-  changeActiveCategory: any; 
-  toggleLeftMenuButton: any; 
-  cacheCategoryList: any; 
+  globalState: any;
+  changeActiveCategory: any;
+  toggleLeftMenuButton: any;
+  cacheCategoryList: any;
 }
 
 const Header = ({
@@ -72,18 +72,18 @@ const Header = ({
   const [isLeftSubMenuShown, setSsLeftSubMenuShown] = useState(false);
   const [isCartIconVisiable, setIsCartIconVisiable] = useState(false);
 
-  const {categoryName} = useParams(); 
+  const { categoryName } = useParams();
 
   const categoryState = useFetch([], [], 'categoryList', {
-		urlOptions: {
-			params: {
-				isSubCategory: true
-			}
-		}
+    urlOptions: {
+      params: {
+        isSubCategory: true
+      }
+    }
   });
 
 
-  const [ searchBarValue, setSearchBarValue ] = useState('');
+  const [searchBarValue, setSearchBarValue] = useState('');
 
 
   const handleToggleCartBar = () => {
@@ -149,41 +149,41 @@ const Header = ({
 
 
   const handleSearch = () => {
-    if(categoryState.done && globalState.activeCategory && globalState.activeCategory['id']){
+    if (categoryState.done && globalState.activeCategory && globalState.activeCategory['id']) {
       history.push({
         pathname: '/productSearch',
         search: `?searchCategory=${globalState.activeCategory['id']}&query=${searchBarValue}`
       });
     }
-    else if (categoryState.done && categoryState.data.length > 0){
+    else if (categoryState.done && categoryState.data.length > 0) {
       history.push({
         pathname: '/productSearch',
-        search: `?searchCategory=${categoryState.data[0].id }&query=${searchBarValue}`
+        search: `?searchCategory=${categoryState.data[0].id}&query=${searchBarValue}`
       });
     }
   };
-  
-  const handleSearchBar = (e) => {
-		e.preventDefault();
 
-		setSearchBarValue(e.target.value);
+  const handleSearchBar = (e) => {
+    e.preventDefault();
+
+    setSearchBarValue(e.target.value);
   };
 
 
   const isSubMenuIsTrue = () => {
 
   }
-  
 
- 
 
-  useEffect(()=>{
-    if(categoryState.done && categoryState.data.length > 0 ){
+
+
+  useEffect(() => {
+    if (categoryState.done && categoryState.data.length > 0) {
       cacheCategoryList(categoryState.data)
     }
-  },[categoryState])
+  }, [categoryState])
 
-  console.log('categoryState',categoryState.data[0])
+  console.log('categoryState', categoryState.data[0])
 
 
 
@@ -192,90 +192,121 @@ const Header = ({
   return (
     <>
 
-      {windowWidth && windowWidth > 950 ? (
+      {/* {windowWidth && windowWidth > 950 ? (
         <div className='myHeaderContainer'>
-
-
-        { categoryState.done && (
-          <div className='myHeaderContainer__hamburgerBox'>
-          <span onClick={() => toggleLeftMenuButton()}>
-              <i className='fa fa-bars' />
-          </span>
-        </div>
-
-        )}
           <div className='myHeaderContainer__logoBox'>
             <Logo cache={cache} addItemToCache={addItemToCache} />
           </div>
 
-        <>
-          {categoryState.done && (
-        <div className='myHeaderContainer__menuButtonBox'>
-        <Menu 
-        history={history} 
-        // @ts-ignore
-        category={categoryState.data} 
-           // @ts-ignore
-        changeActiveCategory={changeActiveCategory}
-        globalState={globalState}
-        categoryName={categoryName} />
+          <div
+
+            className='myHeaderContainer__links'>
+
+            <span
+              onClick={() => history.push('/products')}
+              className='myHeaderContainer__link-item'>
+              Productss
+        </span>
+
+            <span
+              onClick={() => history.push('/products')}
+              className='myHeaderContainer__link-item'>
+              Groceryy
+</span>
+          </div>
         </div>
-        )}
-           
-          <div className='myHeaderContainer__searchBox'>
-            <span className='myHeaderContainer__searchBox-icon'
-            onClick={handleSearch}
-            >
-              <i className='fa fa-search'></i>
-            </span>
-            <input
-              type='search'
-              className='myHeaderContainer__searchBox-input'
-              placeholder='Search your products from here'
-           value={searchBarValue}
-                  onChange={handleSearchBar}
-                  onKeyPress={event => {
-                    if (event.key === 'Enter') {
-                      handleSearch()
-                    }
-                  }}
-            />
+      ) : ""} */}
+
+      {windowWidth && windowWidth > 950 ? (
+        <div className='myHeaderContainer'>
+
+
+          {categoryState.done && (
+            <div className='myHeaderContainer__hamburgerBox'>
+              <span onClick={() => toggleLeftMenuButton()}>
+                <i className='fa fa-bars' />
+              </span>
+              <h4>
+                Select Category
+              </h4>
+
+            </div>
+
+          )}
+
+          <div className='myHeaderContainer__logoBox'>
+            <Logo cache={cache} addItemToCache={addItemToCache} />
           </div>
+
+
+          <>
+            {/* {categoryState.done && (
+              <div className='myHeaderContainer__menuButtonBox'>
+                <Menu
+                  history={history}
+                  // @ts-ignore
+                  category={categoryState.data}
+                  // @ts-ignore
+                  changeActiveCategory={changeActiveCategory}
+                  globalState={globalState}
+                  categoryName={categoryName} />
+              </div>
+            )} */}
+
+            <div className='myHeaderContainer__searchBox'>
+              <span className='myHeaderContainer__searchBox-icon'
+                onClick={handleSearch}
+              >
+                <i className='fa fa-search'></i>
+              </span>
+              <input
+                type='search'
+                className='myHeaderContainer__searchBox-input'
+                placeholder='Search your products from here'
+                value={searchBarValue}
+                onChange={handleSearchBar}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
+                    handleSearch()
+                  }
+                }}
+              />
+            </div>
           </>
-          
-          <div 
-          
-          className='myHeaderContainer__links'>
 
-          <span
-          onClick={()=> history.push('/products')}
-           className='myHeaderContainer__link-item'>
-              Products
+          <div
+
+            className='myHeaderContainer__links'>
+
+            <span
+              onClick={() => history.push('/products')}
+              className='myHeaderContainer__link-item'>
+              Productss
          </span>
 
-          <span 
- onClick={()=> history.push('/products')}
-          className='myHeaderContainer__link-item'>
-              Grocery
+            <span
+              onClick={() => history.push('/products')}
+              className='myHeaderContainer__link-item'>
+              Groceryy
          </span>
           </div>
 
 
-          <div 
+          <div
 
 
-         
-          className='myHeaderContainer__joinButtonBox'>
-            {session.isAuthenticated ?   <span
-             onClick={()=> history.push('/dashboard')}
-             className='myHeaderContainer__joinButtonBox-button'>
+
+            className='myHeaderContainer__joinButtonBox'>
+            {session.isAuthenticated ? <span
+              onClick={() => history.push('/dashboard')}
+              className='myHeaderContainer__joinButtonBox-button'>
               Dashboard
-         </span> :   <span
-             onClick={()=> history.push('/signin')}
-             className='myHeaderContainer__joinButtonBox-button'>
-              Join
+         </span> : <span
+                onClick={() => history.push('/signin')}
+                className='myHeaderContainer__joinButtonBox-button'>
+                Join
          </span>}
-          
+
           </div>
         </div>
       ) : ''}
