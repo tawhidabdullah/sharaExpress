@@ -402,10 +402,19 @@ const Anotherheader = ({
             </h2>
           <div className='anotherCatContainer'>
 
+            {categoryState.isLoading && <Spinner />}
+
             {categoryState.done && categoryState.data.length > 0 && categoryState.data.map(cat => {
               return (
                 <div className='anotherCatContainer__item'>
-                  <div className='anotherCatContainer__item-imgContainer'>
+                  <div
+                    onClick={() => {
+                      history.push({
+                        pathname: `/productList/${cat.id}`,
+                        state: { isCategory: true },
+                      });
+                    }}
+                    className='anotherCatContainer__item-imgContainer'>
                     <img src={cat.cover} alt='Cat Img' />
                   </div>
                   <h3>

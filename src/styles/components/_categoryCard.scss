@@ -219,6 +219,7 @@
   padding-top: 30px;
   text-align: center;
   margin-top: 20px;
+  padding-bottom: 15px;
 }
 
 .anotherProdContainer {
@@ -254,7 +255,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 10px;
+  margin: 0px 10px 10px 10px;
   cursor: pointer;
 
 
@@ -264,14 +265,14 @@
 
 
   @media screen and (max-width: 590px) {
-    width: 48%;
+    width: 45%;
     height: 300px;
     padding: 20px 5px;
   }
 
 
   @media screen and (max-width: 520px) {
-    width: 48%;
+    width: 40%;
     height: 300px;
     padding: 10px 5px;
   }

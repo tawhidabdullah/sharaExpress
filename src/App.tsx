@@ -54,7 +54,7 @@ const App = () => {
 					<React.Fragment>
 						{/* <Header /> */}
 						<Switch>
-							<Route exact path={'/'} component={DearHome} />
+							{/* <Route exact path={'/'} component={DearHome} /> */}
 
 							<Route exact path={'/product/:categoryName/:productName'} component={ProductDetail} />
 
@@ -72,7 +72,7 @@ const App = () => {
 
 							<Route exact path={'/dashboard'} component={Dashboard} />
 
-							<Route exact path={'/:categoryName'} component={AnotherHeader} />
+							<Route exact path={'/'} component={AnotherHeader} />
 							<Route exact path={'/products/:categoryName'} component={CategoryProducts} />
 
 							<Route path='*' component={NotFoundPage} />

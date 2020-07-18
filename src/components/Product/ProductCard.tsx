@@ -148,7 +148,11 @@ const ProductCard = ({
 
     <>
       <div className='anotherProdContainer__item'>
-        <div className='anotherProdContainer__item-imgContainer'>
+        <div
+          onClick={() => {
+            history.push(url);
+          }}
+          className='anotherProdContainer__item-imgContainer'>
           <img src={cover} alt='Cat Img' />
         </div>
         <div className='anotherProdContainer__item-bottom'>

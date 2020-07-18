@@ -113,11 +113,11 @@
 			"method": "get"
 		},
 		"signup": {
-			"url": "/customer/api/auth/register",
+			"url": "/customer/auth/register",
 			"method": "post"
 		},
 		"signin": {
-			"url": "/customer/api/auth/login",
+			"url": "/customer/auth/login",
 			"method": "post"
 		},
 		"getCurrentCustomerData": {

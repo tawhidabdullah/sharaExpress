@@ -165,7 +165,8 @@ const ProductDetailContent = ({
               return (
                 <div
                   style={{
-                    maxHeight: '600px',
+                    height: '350px',
+                    background: '#fff'
                   }}
                   key={src}
                 >
