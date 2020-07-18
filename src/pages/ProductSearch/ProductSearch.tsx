@@ -19,13 +19,13 @@ const dot = (color = '#111b3d') => ({
   display: 'flex',
 
   ':before': {
-      backgroundColor: color,
-      borderRadius: 6,
-      content: '" "',
-      display: 'block',
-      marginRight: 8,
-      // height: 10,
-      // width: 10,
+    backgroundColor: color,
+    borderRadius: 6,
+    content: '" "',
+    display: 'block',
+    marginRight: 8,
+    // height: 10,
+    // width: 10,
   },
 });
 
@@ -34,42 +34,42 @@ const dot = (color = '#111b3d') => ({
 
 const colourStyles = {
   control: styles => ({
-      ...styles,
-      backgroundColor: 'rgb(247, 247, 247)',
-      border: '1px solid rgb(241, 241, 241)',
-      height: '45px',
-      minHeight: '40px',
-      borderRadius: '6px'
+    ...styles,
+    backgroundColor: 'rgb(247, 247, 247)',
+    border: '1px solid rgb(241, 241, 241)',
+    height: '45px',
+    minHeight: '40px',
+    borderRadius: '6px'
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      const color = '#009e7f';
-      return {
-          ...styles,
-          backgroundColor: isDisabled
-              ? null
-              : isSelected
-                  ? color
-                  : isFocused
-                      ? color
-                      : 'rgb(247, 247, 247)',
-          color: isDisabled
-              ? '#333'
-              : isSelected
-                  ? color
-                  : isFocused
-                      ? 'rgb(247, 247, 247)'
-                      : '#303a3f',
-          cursor: isDisabled ? 'not-allowed' : 'default',
+    const color = '#009e7f';
+    return {
+      ...styles,
+      backgroundColor: isDisabled
+        ? null
+        : isSelected
+          ? color
+          : isFocused
+            ? color
+            : 'rgb(247, 247, 247)',
+      color: isDisabled
+        ? '#333'
+        : isSelected
+          ? color
+          : isFocused
+            ? 'rgb(247, 247, 247)'
+            : '#303a3f',
+      cursor: isDisabled ? 'not-allowed' : 'default',
 
-          ':active': {
-              ...styles[':active'],
-              backgroundColor: !isDisabled && (isSelected ? color : '#303a3f'),
-          },
-      };
+      ':active': {
+        ...styles[':active'],
+        backgroundColor: !isDisabled && (isSelected ? color : '#303a3f'),
+      },
+    };
   },
   input: styles => ({ ...styles, color: '#303a3f', ...dot() }),
   placeholder: styles => ({ ...styles, color: '#303a3f', ...dot() }),
-  singleValue: (styles, { data }) => ({ ...styles, marginTop: '-5px', marginLeft: '-2px', fontSize:'14px', color: '#303a3f', ...dot(data.color) }),
+  singleValue: (styles, { data }) => ({ ...styles, marginTop: '-5px', marginLeft: '-2px', fontSize: '14px', color: '#303a3f', ...dot(data.color) }),
 };
 
 
@@ -411,233 +411,236 @@ const ProductSearch = ({
 
   return (
     <>
-    <AnotherHeaderAgain />
-    <div
-      style={{
-        margin: '10px 10px 10px 25px',
-      }}
-    >
+
+      <AnotherHeaderAgain />
       <div
-        className={'container-fluid productSearch'}
         style={{
-          padding: windowWidth < 770 ? '15px' : '0 0 20px 0',
+          padding: '10px 10px 10px 25px',
+          backgroundColor: '#f5f5f5',
+
         }}
       >
-        <div className='row'>
-          {windowWidth > 575 ? (
-            <div
-              className='col-sm-4 col-md-3 productSearchFilterSideBar'
-              style={{
-                background: '#fff',
-                borderRight: '1px solid #eee',
-              }}
-            >
+        <div
+          className={'container-fluid productSearch'}
+          style={{
+            padding: windowWidth < 770 ? '15px' : '0 0 20px 0',
+          }}
+        >
+          <div className='row'>
+            {windowWidth > 575 ? (
               <div
+                className='col-sm-4 col-md-3 productSearchFilterSideBar'
                 style={{
-                  lineHeight: 2.5,
-                  paddingLeft: '20px',
-                  borderBottom: '1px solid #eee',
+                  background: '#fff',
+                  borderRight: '1px solid #eee',
                 }}
               >
-                <h3
+                <div
                   style={{
-                    fontSize: '19px',
-                    fontWeight: 500,
-                    color: '#17252a',
+                    lineHeight: 2.5,
+                    paddingLeft: '20px',
+                    borderBottom: '1px solid #eee',
                   }}
                 >
-                  Filters
+                  <h3
+                    style={{
+                      fontSize: '19px',
+                      fontWeight: 500,
+                      color: '#17252a',
+                    }}
+                  >
+                    Filters
                 </h3>
-              </div>
-
-              <div className='category-filter'>
-                <h2 className='category-filter-title'>Categories</h2>
-                <ul>
-                  {categories &&
-                    categories.length > 0 &&
-                    categories.map((cat) => {
-                      return (
-                        <li
-                          onClick={() => handleSelectCategory(cat['id'])}
-                          key={cat['id']}
-                        >
-                          <span
-                            className={
-                              cat[`is${cat['id']}`]
-                                ? 'category-filterText active'
-                                : 'category-filterText'
-                            }
-                          >
-                            {cat['name']}
-                          </span>
-                        </li>
-                      );
-                    })}
-                </ul>
-              </div>
-            </div>
-          ) : (
-              ''
-            )}
-          <div className='col-sm-8 col-md-9'>
-            {!isLoading && products ? (
-              <>
-                <div className='showResultHeader'>
-                  <h2 className='showResultText'>
-                    Showing 1 – {products.length} of {products.length} results
-                    for {`"${queryValue || ''}"`}{' '}
-                    {activeCategoryName ? `in ${activeCategoryName}` : ''}
-                  </h2>
-
-                  <div className='sortBySelectorsContainer'>
-                    {windowWidth < 575 ? (
-                      <>
-                        {categories && categories.length > 0 && (
-                          <>
-                            <h2 className='sortBySelectorsContainer-title'>
-                              Categories
-                            </h2>
-                            <div className='sortBySelectorsSelects'>
-                              <Select
-                               styles={colourStyles}
-                                value={selectedCategoryValueForSort}
-                                onChange={(value) =>
-                                  handleSelectCategoryChange(value)
-                                }
-                                options={categories.map((cat) => ({
-                                  value: cat['id'],
-                                  label: cat['name'],
-                                }))}
-                              />
-                            </div>
-                          </>
-                        )}{' '}
-                      </>
-                    ) : (
-                        ''
-                      )}
-                  </div>
-
-                  <div className='sortBySelectorsContainer'>
-                    <h2 className='sortBySelectorsContainer-title'>Sort by</h2>
-                    <div className='sortBySelectorsSelects'>
-                      <Select
-                       styles={colourStyles}
-                        value={selectedValueForSort}
-                        onChange={(value) => setSortBySelect(value)}
-                        defaultValue={{
-                          label: 'Relevance',
-                          value: 'Relevance',
-                        }}
-                        options={options}
-                      />
-                    </div>
-                  </div>
                 </div>
-              </>
+
+                <div className='category-filter'>
+                  <h2 className='category-filter-title'>Categories</h2>
+                  <ul>
+                    {categories &&
+                      categories.length > 0 &&
+                      categories.map((cat) => {
+                        return (
+                          <li
+                            onClick={() => handleSelectCategory(cat['id'])}
+                            key={cat['id']}
+                          >
+                            <span
+                              className={
+                                cat[`is${cat['id']}`]
+                                  ? 'category-filterText active'
+                                  : 'category-filterText'
+                              }
+                            >
+                              {cat['name']}
+                            </span>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </div>
+              </div>
             ) : (
                 ''
               )}
+            <div className='col-sm-8 col-md-9'>
+              {!isLoading && products ? (
+                <>
+                  <div className='showResultHeader'>
+                    <h2 className='showResultText'>
+                      Showing 1 – {products.length} of {products.length} results
+                    for {`"${queryValue || ''}"`}{' '}
+                      {activeCategoryName ? `in ${activeCategoryName}` : ''}
+                    </h2>
 
-            {!isLoading && products && (
-              <InfiniteScroll
-                style={{
-                  overflow: 'hidden',
-                }}
-                dataLength={products.length}
-                next={fetchMoreProductsData}
-                hasMore={isNext !== null}
-                loader={
-                  <div
-                    style={{
-                      width: '100%',
-                      textAlign: 'center',
-                      margin: '10px 0',
-                    }}
-                  >
-                    <h4
-                      style={{
-                        textAlign: 'center',
-                      }}
-                    >
-                      Loading...
-                    </h4>{' '}
+                    <div className='sortBySelectorsContainer'>
+                      {windowWidth < 575 ? (
+                        <>
+                          {categories && categories.length > 0 && (
+                            <>
+                              <h2 className='sortBySelectorsContainer-title'>
+                                Categories
+                            </h2>
+                              <div className='sortBySelectorsSelects'>
+                                <Select
+                                  styles={colourStyles}
+                                  value={selectedCategoryValueForSort}
+                                  onChange={(value) =>
+                                    handleSelectCategoryChange(value)
+                                  }
+                                  options={categories.map((cat) => ({
+                                    value: cat['id'],
+                                    label: cat['name'],
+                                  }))}
+                                />
+                              </div>
+                            </>
+                          )}{' '}
+                        </>
+                      ) : (
+                          ''
+                        )}
+                    </div>
+
+                    <div className='sortBySelectorsContainer'>
+                      <h2 className='sortBySelectorsContainer-title'>Sort by</h2>
+                      <div className='sortBySelectorsSelects'>
+                        <Select
+                          styles={colourStyles}
+                          value={selectedValueForSort}
+                          onChange={(value) => setSortBySelect(value)}
+                          defaultValue={{
+                            label: 'Relevance',
+                            value: 'Relevance',
+                          }}
+                          options={options}
+                        />
+                      </div>
+                    </div>
                   </div>
-                }
-              >
-                <div
-                  style={{
-                    paddingTop: '10px',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                    alignItems: 'center',
-                  }}
-                >
-                  {products.length > 0 &&
-                    products.map((product) => {
-                      return (
-                        <Fragment key={product['id']}>
-                          <ProductCard
-                            product={product}
-                            productListing={true}
-                          />
-                        </Fragment>
-                      );
-                    })}
-                </div>
-              </InfiniteScroll>
-            )}
-
-            <div
-              style={{
-                paddingTop: '10px',
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-              }}
-            >
-              {isLoading && <Spinner />}
-
-              {!isLoading && products && !(products.length > 0) ? (
-                <div
-                  style={{
-                    width: '100%',
-                    height: '300px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <h2
-                    style={{
-                      marginBottom: '15px',
-                    }}
-                  >
-                    No Product Has Been Found
-                  </h2>
-                  <a
-                    className='btn btn-outline-secondary'
-                    onClick={(e) => {
-                      e.preventDefault();
-                      history.push('/');
-                    }}
-                    href='##'
-                  >
-                    Go Back To Home Page
-                  </a>
-                </div>
+                </>
               ) : (
                   ''
                 )}
+
+              {!isLoading && products && (
+                <InfiniteScroll
+                  style={{
+                    overflow: 'hidden',
+                  }}
+                  dataLength={products.length}
+                  next={fetchMoreProductsData}
+                  hasMore={isNext !== null}
+                  loader={
+                    <div
+                      style={{
+                        width: '100%',
+                        textAlign: 'center',
+                        margin: '10px 0',
+                      }}
+                    >
+                      <h4
+                        style={{
+                          textAlign: 'center',
+                        }}
+                      >
+                        Loading...
+                    </h4>{' '}
+                    </div>
+                  }
+                >
+                  <div
+                    style={{
+                      paddingTop: '10px',
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      justifyContent: 'space-around',
+                      alignItems: 'center',
+                    }}
+                  >
+                    {products.length > 0 &&
+                      products.map((product) => {
+                        return (
+                          <Fragment key={product['id']}>
+                            <ProductCard
+                              product={product}
+                              productListing={true}
+                            />
+                          </Fragment>
+                        );
+                      })}
+                  </div>
+                </InfiniteScroll>
+              )}
+
+              <div
+                style={{
+                  paddingTop: '10px',
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                }}
+              >
+                {isLoading && <Spinner />}
+
+                {!isLoading && products && !(products.length > 0) ? (
+                  <div
+                    style={{
+                      width: '100%',
+                      height: '300px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <h2
+                      style={{
+                        marginBottom: '15px',
+                      }}
+                    >
+                      No Product Has Been Found
+                  </h2>
+                    <a
+                      className='btn btn-outline-secondary'
+                      onClick={(e) => {
+                        e.preventDefault();
+                        history.push('/');
+                      }}
+                      href='##'
+                    >
+                      Go Back To Home Page
+                  </a>
+                  </div>
+                ) : (
+                    ''
+                  )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 };

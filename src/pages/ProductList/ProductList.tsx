@@ -24,7 +24,7 @@ interface Props {
   tag: any;
   addBrand: (any) => void;
   brand: any;
-  globalState: any; 
+  globalState: any;
 }
 
 const ProductList = ({
@@ -400,36 +400,36 @@ const ProductList = ({
         })) ||
       [];
 
-      console.log('globalState',globalState)
-    if (tempCategories && tempCategories.length > 0) {
+    console.log('globalState', globalState)
+    // if (tempCategories && tempCategories.length > 0) {
 
-      if(globalState && globalState.activeCategory && globalState.activeCategory.name){
-        const realTempCategories = []; 
+    //   if (globalState && globalState.activeCategory && globalState.activeCategory.name) {
+    //     const realTempCategories = [];
 
-        for (let item of tempCategories){
-          // @ts-ignore
-          if(item['name'] && globalState.activeCategory['name']){
-            // @ts-ignore
-            if(item['name'].toLowerCase() === globalState.activeCategory['name'].toLowerCase()){
-              // @ts-ignore
-              realTempCategories.push(item); 
-            }
-         
-          }
-        }
-     
-   
-         return [...realTempCategories];
-      }
-      else {
+    //     for (let item of tempCategories) {
+    //       // @ts-ignore
+    //       if (item['name'] && globalState.activeCategory['name']) {
+    //         // @ts-ignore
+    //         if (item['name'].toLowerCase() === globalState.activeCategory['name'].toLowerCase()) {
+    //           // @ts-ignore
+    //           realTempCategories.push(item);
+    //         }
 
-        const realTempCategories = [tempCategories[0]]
-   
-         return [...realTempCategories];
+    //       }
+    //     }
 
-      }
- 
-    }
+
+    //     return [...realTempCategories];
+    //   }
+    //   else {
+
+    //     const realTempCategories = [...tempCategories]
+
+    //     return [...realTempCategories];
+
+    //   }
+
+    // }
     return [...tempCategories];
   };
 
@@ -815,8 +815,12 @@ const ProductList = ({
 
   return (
     <>
-    <AnotherHeaderAgain />
-      <div className='Bcak-bg'>
+      <AnotherHeaderAgain />
+      <div
+        style={{
+          backgroundColor: '#f5f5f5'
+        }}
+        className='Bcak-bg'>
         <div
           className={'container-fluid'}
           style={{

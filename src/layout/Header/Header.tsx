@@ -222,8 +222,11 @@ const Header = ({
 
 
           {categoryState.done && (
-            <div className='myHeaderContainer__hamburgerBox'>
-              <span onClick={() => toggleLeftMenuButton()}>
+            <div
+              onClick={() => toggleLeftMenuButton()}
+              className='myHeaderContainer__hamburgerBox'
+            >
+              <span >
                 <i className='fa fa-bars' />
               </span>
               <h4>
@@ -277,18 +280,19 @@ const Header = ({
           <div
 
             className='myHeaderContainer__links'>
-
             <span
-              onClick={() => history.push('/products')}
+              // onClick={() => history.push('/products')}
               className='myHeaderContainer__link-item'>
-              Productss
+              Help & more
          </span>
 
             <span
               onClick={() => history.push('/products')}
               className='myHeaderContainer__link-item'>
-              Groceryy
+              products
          </span>
+
+
           </div>
 
 
@@ -306,6 +310,8 @@ const Header = ({
                 className='myHeaderContainer__joinButtonBox-button'>
                 Join
          </span>}
+
+
 
           </div>
         </div>

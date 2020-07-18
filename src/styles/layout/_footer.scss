@@ -112,8 +112,9 @@ footer .footerMenu .menu-item a::before {
 	background-color: #B90600;
 	padding: 0 20px;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	flex-wrap: wrap;
+	align-items: center;
 
 
 	&__left {
@@ -126,15 +127,16 @@ footer .footerMenu .menu-item a::before {
 		&-imgContainer {
 			margin-right: 50px;
 
-			width: 120px;
 			height: 120px;
 			border: 1px dashed #ffff;
 			padding: 20px;
 			border-radius: 50%;
+			@media screen and (max-width: 700px) {
+				margin-bottom: 30px;
+			}
 
 
 			img {
-				width: 100%;
 				height: 100%;
 				object-fit: contain;
 			}
@@ -190,15 +192,18 @@ footer .footerMenu .menu-item a::before {
 		&-imgContainer {
 			margin-right: 50px;
 
-			width: 120px;
 			height: 120px;
 			border: 1px dashed #ffff;
 			padding: 20px;
 			border-radius: 50%;
 
+			
+			@media screen and (max-width: 700px) {
+				margin-bottom: 30px;
+			}
+
 
 			img {
-				width: 100%;
 				height: 100%;
 				object-fit: contain;
 			}

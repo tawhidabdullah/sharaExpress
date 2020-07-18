@@ -231,6 +231,7 @@
 
 	.somerContainerRightContent {
 		flex: 1;
+		transition: all 50ms;
 
 		@media screen and (max-width: 750px) {
 			margin-left: 0;
@@ -238,18 +239,21 @@
 
 		.someClassContainerRightBannerContainer {
 			width: 100%;
-			height: calc(100vh - 50px);
+			height: calc(70vh - 50px);
 			position: relative;
+			background-color: #fff;
 			// max-height: 1vh;
-
+			position: relative;
 			@media screen and (max-width: 900px) {
 				height: calc(60vh - 50px);
 			}
 
 			img {
+				position: absolute;
+				bottom: 0;
 				width: 100%;
-				height: 100%;
-				object-fit: cover;
+				// height: 100%;
+				object-fit: contain;
 			}
 
 			.bannerSearchBar {
@@ -262,7 +266,7 @@
 				align-items: center;
 				height: 50px;
 				overflow: hidden;
-				top: 50%;
+				top: 43%;
 				right: 50%;
 				transform: translate(50%, -50%);
 
@@ -288,11 +292,11 @@
 				.bannerSearchBar-input {
 					border: 0;
 					outline: 0;
-					padding: 0 20px 0 0;
+					padding: 0 20px 0 20px;
 					border-radius: 5px;
 					display: block;
 					width: 100%;
-					resize: none;
+					resize: none;	
 					font-size: 14px;
 					color: $color-dark-1;
 					background-color: #fff;
@@ -326,7 +330,7 @@
 
 .bannerContainer {
 	background-color: #fff;
-	padding: 35px 25px;
+	padding: 10px 25px;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;

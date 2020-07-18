@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { withRouter, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -10,6 +11,8 @@ import { useFetch, useHandleFetch } from '../../hooks';
 import { globalOperations } from '../../state/ducks/globalState';
 import Footer from '../Footer';
 import Header from '../Header';
+import { Spinner } from '../../components/Loading';
+import ProductCard from '../../components/Product/ProductCard';
 
 // import header components
 import TopHead from './TopHead';
@@ -74,6 +77,18 @@ const Anotherheader = ({
       }
     }
   });
+
+  const productState = useFetch([], [], 'productList', {
+    urlOptions: {
+      params: {
+        limitNumber: 55,
+        pageNumber: 1,
+      },
+    },
+  });
+
+
+  console.log('categoryState', categoryState)
 
   const [categoryDetailState, handleCategoryDetailState] = useHandleFetch(
     [],
@@ -158,12 +173,10 @@ const Anotherheader = ({
   };
 
 
-  console.log('categoryState', categoryState.data[0])
 
 
 
 
-  console.log('bannerState.data', bannerState.data);
 
   let maskIndex = 0;
   const getMaskColor = () => {
@@ -183,135 +196,49 @@ const Anotherheader = ({
 
         <div className='mobilebannerCard'>
           <img
-            src='https://shop.redq.now.sh/_next/static/images/offer-1-1f7a4c9ea0ba5a216bc7af1f60d044e0.png'
+            src={require('../../assets/banner.png')}
             alt='banner img' />
         </div>
       ) : ''}
 
       <section className='someClassContainer'>
-        {true && (
-          <div className='someClassContainerLeftNavMenu'>
 
-            {/* {categoryDetailState.data.subCategory.map((item: any) => {
-              return (
-                <span
-                  onClick={() => {
-                    history.push({
-                      pathname: `/productList/${item.id}`,
-                      state: { isCategory: true },
-                    });
-                  }}
+        {windowWidth > 900 && (
+          <>
+            {globalState['isLeftMenuActive'] && categoryState.data && categoryState.data.length > 0 && (
+              <div className='someClassContainerLeftNavMenu'>
 
-                >
-                  {item.name}
-                </span>)
-            })} */}
+                {categoryState.data.map((item: any) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        history.push({
+                          pathname: `/productList/${item.id}`,
+                          state: { isCategory: true },
+                        });
+                      }}
+                    >
+                      <img src={item.cover} alt='Cat Img' />
+                      <span>
+                        {item.name}
+                      </span>
+                    </div>
 
+                  )
+                })}
+              </div>
+            )}
 
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Fruits and Vegetables
- </span>
-            </div>
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Beverages
-</span>
-            </div>
-
-
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Fruits and Vegetables
- </span>
-            </div>
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Beverages
-</span>
-            </div>
-
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Fruits and Vegetables
- </span>
-            </div>
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Beverages
-</span>
-            </div>
-
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Fruits and Vegetables
- </span>
-            </div>
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Beverages
-</span>
-            </div>
-
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Fruits and Vegetables
- </span>
-            </div>
-
-            <div
-
-            >
-              <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              <span>
-                Beverages
-</span>
-            </div>
-
-
-                )
-
-
-          </div>
+          </>
         )}
+
+
+
+
         <div
           style={{
-            marginLeft: '250px'
+            marginLeft: globalState['isLeftMenuActive']
+              ? '250px' : '0'
           }}
           className='somerContainerRightContent'>
 
@@ -319,11 +246,12 @@ const Anotherheader = ({
 
             <div className='someClassContainerRightBannerContainer'>
               <img
-                src={categoryDetailState.data.image && categoryDetailState.data.image.length > 0 && categoryDetailState.data.image[0]}
+                src={require('../../assets/banner.png')}
+
                 alt='banner img' />
 
               <div className='bannerSearchBar'>
-                <span className='categoryBtn'>
+                {/* <span className='categoryBtn'>
 
 
                   {categoryName === ':categoryName' || categoryName === undefined ? (
@@ -332,7 +260,7 @@ const Anotherheader = ({
                       categoryName
                     )}
 
-                </span>
+                </span> */}
                 <input
                   type='search'
                   className='bannerSearchBar-input'
@@ -382,7 +310,7 @@ const Anotherheader = ({
             </div>
           )}
 
-          {windowWidth && windowWidth < 450 ? (
+          {/* {windowWidth && windowWidth < 450 ? (
             <>
 
               {categoryState.done && (
@@ -419,7 +347,7 @@ const Anotherheader = ({
 
             </>
 
-          ) : ''}
+          ) : ''} */}
 
 
 
@@ -470,106 +398,22 @@ const Anotherheader = ({
 
 
           <h2 className='anotherCatContainer-title'>
-            Our Categories
+            Hot Categories
             </h2>
           <div className='anotherCatContainer'>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
-            <div className='anotherCatContainer__item'>
-              <div className='anotherCatContainer__item-imgContainer'>
-                <img src={require('../../assets/vegetables.png')} alt='Cat Img' />
-              </div>
-              <h3>
-                Vegetables and Fruit
-               </h3>
-            </div>
 
+            {categoryState.done && categoryState.data.length > 0 && categoryState.data.map(cat => {
+              return (
+                <div className='anotherCatContainer__item'>
+                  <div className='anotherCatContainer__item-imgContainer'>
+                    <img src={cat.cover} alt='Cat Img' />
+                  </div>
+                  <h3>
+                    {cat.name}
+                  </h3>
+                </div>
+              )
+            })}
           </div>
 
 
@@ -578,32 +422,18 @@ const Anotherheader = ({
             </h2>
 
           <div className='anotherProdContainer'>
-            <div className='anotherProdContainer__item'>
-              <div className='anotherProdContainer__item-imgContainer'>
-                <img src={require('../../assets/strawberry.png')} alt='Cat Img' />
-              </div>
-              <div className='anotherProdContainer__item-bottom'>
-                <p>
-                  Available (in stock)
-               </p>
-                <h2>
-                  Product Title here
-               </h2>
-                <div className='anotherProdContainer__item-bottom-price'>
-                  <h3 >
-                    $500
-               </h3>
-                  <span>
-                    $300
-                 </span>
 
-                  <h3 >
-                    /Kg
-               </h3>
-                </div>
+            {productState.isLoading && <Spinner />}
+            {productState.done && productState.data
+              && Object.keys(productState.data).length > 0 &&
+              productState.data.data.length > 0 && productState.data.data.map(prod => {
+                return (
+                  <React.Fragment key={prod.id}>
+                    <ProductCard product={prod} />
+                  </React.Fragment>
+                )
+              })}
 
-              </div>
-            </div>
           </div>
 
 

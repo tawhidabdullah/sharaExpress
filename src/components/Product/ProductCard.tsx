@@ -14,16 +14,16 @@ import {
 import { useHandleFetch } from '../../hooks';
 
 interface Props {
-  product: any;
+  product?: any;
   AddCartContent?: () => void;
-  history: any;
+  history?: any;
   addToCart?: (object, number) => void;
   alert?: any;
   cartItems?: any;
   removeFromCart?: (object) => void;
-  wishList: any;
-  addToWishList: (object) => void;
-  removeFromWishList: (object) => void;
+  wishList?: any;
+  addToWishList?: (object) => void;
+  removeFromWishList?: (object) => void;
 }
 
 const ProductCard = ({
@@ -37,7 +37,7 @@ const ProductCard = ({
   addToWishList,
   removeFromWishList,
 }: Props) => {
-  const { name, regularPrice, cover, url, id, offerPrice, availableStock } = product;
+  const { name, regularPrice, cover, url, id, offerPrice, availableStock, unit } = product;
 
   const [addToCartState, handleAddtoCartFetch] = useHandleFetch(
     [],
@@ -144,186 +144,47 @@ const ProductCard = ({
   }, [addWishlistState]);
 
   return (
-    <div className='product-card'>
-      <div className='product-top'
-   onClick={() => {
-    history.push(url);
-  }}
-      >
-        <img src={cover} alt='product img' />
 
 
-        {parseInt(availableStock) === 0 && <div className='product-top-outofstockBatch'>
-          <span>
-            Out of
-            Stock
-          </span>
-        </div>}
-
-
-        {/* <div className='product-top-overlay' onClick={handleOnClickAddToCart}>
-
-        </div> */}
-
-        {/* <div className='overlay-right'>
-          <button
-            onClick={() => {
-              history.push(url);
-            }}
-            type='button'
-            className='btn btn-secondary'
-            title={`see ${name}`}
-          >
-            <i className='fa fa-eye'></i>
-          </button>
-          <button
-            type='button'
-            className='btn btn-secondary'
-            title='Add To Cart'
-            onClick={handleOnClickAddToCart}
-          >
-            {checkIfItemExistsInCartItemById(cartItems, id) && (
-              <i className='fa fa-shopping-cart'></i>
-            )}
-            {!checkIfItemExistsInCartItemById(cartItems, id) && (
-              <i
-                style={{
-                  color: '#777',
-                }}
-                className='fa fa-shopping-cart'
-              ></i>
-            )}
-          </button>
-          <button
-            type='button'
-            className='btn btn-secondary'
-            title='Add To Wishlist'
-            onClick={handleOnClickWishlist}
-          >
-            {checkIfTheWishListExistsInArrayById(wishList, id) && (
-              <i className='fa fa-heart'></i>
-            )}
-            {!checkIfTheWishListExistsInArrayById(wishList, id) && (
-              <i
-                style={{
-                  color: '#777',
-                }}
-                className='fa fa-heart'
-              ></i>
-            )}
-          </button>
-        </div> */}
-      </div>
-
-      <div className='product-bottom'>
-        {/* <div className='cart-btn' onClick={handleOnClickAddToCart}>
-          <button className='primary-btn'>
-            {!addToCartState.isLoading && !removeFromCartState.isLoading && (
-              <>
-                {(checkIfItemExistsInCartItemById(cartItems, id) && (
-                  <span className='product-bottom-iconText'>🐎 Added</span>
-                )) || (
-                    <span className='product-bottom-iconText'>
-                      🐎 Add to cart
-                    </span>
-                  )}
-              </>
-            )}
-
-            {addToCartState.isLoading && '🐎 Adding...'}
-            {removeFromCartState.isLoading && '🐎 Removing...'}
-          </button>
-        </div> */}
-
-        {/* <div className='ratingsandtitle'>
-          <h3 className='product-bottom-title'>{name}</h3>
+    <>
+      <div className='anotherProdContainer__item'>
+        <div className='anotherProdContainer__item-imgContainer'>
+          <img src={cover} alt='Cat Img' />
         </div>
-        <h5 className='product-bottom-price'>
-          ৳{numberWithCommas(offerPrice ? offerPrice : regularPrice)}
-        </h5> */}
-
-        <h2 className='product-bottom-title'
-          // onClick={() => {
-          //   history.push(url);
-          // }}
-        >
-          {name}
-        </h2>
-        {/* <div className='product-bottom-attributes'>
-          <span>
-            1KG
-          </span>
-          <span>
-            500G
-          </span>
-        </div> */}
-
-        <div className='product-bottom-price-and-cartActions'>
-
-
-
-          {parseInt(offerPrice) ? <>
-            <h2 className='product-bottom-price'>
-
-              ৳{regularPrice}
-            </h2>
-            <h2 className='product-bottom-offerPrice'>
-              ৳{offerPrice}
-            </h2>
-          </> : <h2 className='product-bottom-offerPrice'>
-
-              ৳{regularPrice}
-            </h2>}
+        <div className='anotherProdContainer__item-bottom'>
+          <p>
+            Available (in stock)
+                 </p>
+          <h2>
+            {name}
+          </h2>
+          <div className='anotherProdContainer__item-bottom-price'>
+            {parseInt(offerPrice) ? <>
+              <h3 >
+                ৳{offerPrice}
+              </h3>
+              <span>
+                ৳{regularPrice}
+              </span>
 
 
 
 
-
-          <span
-            className='product-bottom-price-and-cartActions-cart-btn'
-            onClick={handleOnClickAddToCart}
-          >
-            {!addToCartState.isLoading && !removeFromCartState.isLoading && (
-              <>
-                {(checkIfItemExistsInCartItemById(cartItems, id) && (
-                  <> <i className='fa fa-shopping-cart'></i> Added</>
-                )) || (
-                    <>
-                      <i className='fa fa-cart-plus'></i>
-                       Add
-                   </>
-                  )}
-              </>
-            )}
-
-            {addToCartState.isLoading && '🐎 Adding...'}
-            {removeFromCartState.isLoading && '🐎 Removing...'}
+            </> : <h3 >
+                ৳{regularPrice}
+              </h3>}
 
 
 
-          </span>
 
-
-          {/* <div className='product-bottom-quantityCounter'>
-            <span>
-              <i className='fa fa-plus'></i>
-            </span>
-            <input
-              // onChange={(e) => setQuantityValue(e.target.value)}
-              type='text'
-              value={3}
-              title='Quantity'
-              className='product-bottom-quantityCounter-input'
-              size={3}
-            />
-            <span>
-              <i className='fa fa-minus'></i>
-            </span>
-          </div> */}
+            <h3 >
+              {unit && `/${unit}`}
+            </h3>
+          </div>
 
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

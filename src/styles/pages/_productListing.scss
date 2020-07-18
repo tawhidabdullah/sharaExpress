@@ -27,7 +27,7 @@
 	display: block;
 	padding-bottom: 10px;
 	font-size: 18px;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .category-header-all {
@@ -40,7 +40,7 @@
 
 .category-header-all.active {
 	color: #222;
-	font-size: 700;
+	font-size: 600;
 }
 
 .category-block ul li {
@@ -57,7 +57,7 @@
 
 .category-text.active {
 	color: $color-dark-1;
-	font-weight: 700;
+	font-weight: 600;
 	font-size: 16px;
 }
 
@@ -163,7 +163,7 @@
 
 .ratingsandtitle.active h3 {
 	color: $color-dark-1 !important;
-	font-weight: 700 !important;
+	font-weight: 600 !important;
 	font-size: 15px !important;
 }
 
@@ -335,7 +335,7 @@
 	margin: 0;
 	list-style: none;
 	text-decoration: none;
-	font-weight: 700;
+	font-weight: 500;
 	color: $color-dark-1;
 	cursor: pointer;
 }
@@ -397,19 +397,19 @@
 		cursor: pointer;
 		.subCatLink {
 			color: $color-dark-1;
-			font-weight: 700;
+			font-weight: 500;
 			text-decoration: none;
 			line-height: 38px;
 		}
 
 		.subCatLink:hover {
 			color: $color-primary-1;
-			font-weight: 700;
+			font-weight: 500;
 		}
 
 		.subCatLink.active {
 			color: $color-primary-1;
-			font-weight: 700;
+			font-weight: 500;
 		}
 	}
 }
